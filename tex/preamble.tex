@@ -1,20 +1,48 @@
-\documentclass[12pt,a4paper]{book}
-\usepackage[english]{babel}
+\documentclass[12pt,a4paper, twoside]{book}
+\usepackage[italian, english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{newlfont}
 \usepackage{color}
 
 % physics and math
 \usepackage{amsmath}
 \usepackage{physics}
-\usepackage{mhchem}
+\usepackage[version=4]{mhchem}
 
 % latex
-\usepackage{cleveref}
+\definecolor{bostonuniversityred}{rgb}{0.8, 0.0, 0.0}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=bostonuniversityred,
+    filecolor=blue,
+    urlcolor=cyan,
+    citecolor=blue,
+    pdftitle={Circuito tosatore}
+}
+
+\usepackage[capitalise]{cleveref}
+\usepackage{caption}
+\captionsetup[figure]{labelfont={bf, small}, textfont={small, sl}, position=bottom}
+\captionsetup[table]{labelfont={bf, small}, textfont={sl, small}, position=top}
+
+\usepackage{appendix}
+\renewcommand{\appendixpagename}{Appendici}
+
 
 % shortpaths
 \newcommand{\oper}[1]{\hat{#1}}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand{\adjoint}[1]{#1^\dagger}
+\newcommand{\adjop}[1]{\oper{\adjoint{#1}}}
 
 \textwidth=450pt\oddsidemargin=0pt
+
+% abstract definition
+\usepackage{fancyhdr}
+\pagestyle{empty}
+\newenvironment{abstract}%
+{\cleardoublepage \null \vfill \begin{center}%
+        \bfseries \abstractname \end{center}}%
+{\vfill \null}

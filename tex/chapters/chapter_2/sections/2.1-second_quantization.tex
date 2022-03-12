@@ -1,5 +1,5 @@
-\section{Many particle systems}
-\subsection{Occupation numbers representation}
+\section{Second quantization}
+\subsection{Occupation number representation}
 In condensed matter physics we often have to deal with systems of many particles. We can describe such a system starting from the wavefunctions of the single particles $\ket{\psi_k}$, where the particle is in the eigenstate of eigenvalue $k$ of an operator $\oper{K}$. We suppose this set of vectors to be orthonormal. We could initially write the total state vector as the product of the single ones.
 \begin{equation} \label{eq:simple_base}
     \ket{\Psi} = \ket{\psi_{P[k_1]}}\ket{\psi_{P[k_2]}}\dots\ket{\psi_{P[k_N]}}
@@ -41,7 +41,7 @@ Given the indisinguishibility of the particles, a simpler way to describe this s
 \begin{equation} \label{eq:occupation_definition}
     \ket{n_1, n_2, ... n_i, ...} = \ket{\psi_{k_1}, \dots, \psi_{k_N}}_n
 \end{equation}
-where $\psi_{k_j}$ is repeated $n_j$ times. This eliminates the inconvenience of having multiple kets describing the same state as we had before. This representation is called occupation numbers representation, and the kets are said to be elements of the Fock space.
+where $\psi_{k_j}$ is repeated $n_j$ times. This eliminates the inconvenience of having multiple kets describing the same state as we had before. This representation is called occupation number representation, and the kets are said to be elements of the Fock space.
 
 Two special cases of states in the Fock space are the following. The vacuum state
 \begin{equation}
@@ -55,7 +55,7 @@ where there is exactly one particle in the $k_i$ state.
 
 \subsection{Creation and annihilation operators}
 Now that we have defined the base kets, we can introduce two operators that are used to transform the kets. We define a \emph{creation operator} as
-\begin{equation}
+\begin{equation} \label{eq:creation_definition}
     \adjoint{\oper{a_i}} \ket{\psi_{k_1}, \psi_{k_2}, \dots} = \ket{\psi_{k_i},\psi_{k_1}, \psi_{k_2}, \dots}
 \end{equation}
 Below we show several properties that derive from these definition, but its essential role can be understood applying it to the vacuum state.
@@ -99,16 +99,18 @@ and developing it along the first column
     \\ = \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j}  \bra{\phi_{m_1}, \dots, \phi_{m_{N-1}}} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
 \end{multline}
 Confronting it with \cref{eq:annihilation_matrix} we conclude
-\begin{equation} \label{eq:annihilation_operator}
-    \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}} = \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
-\end{equation}
+\begin{multline} \label{eq:annihilation_operator}
+    \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}}
+    = \sum_{j=1}^N \xi^{j+1} \braket{\psi_{k_i}}{\psi_{k_j}} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
+    \\= \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
+\end{multline}
 If $k_i$ is not present in $\ket{\psi_{k_1}, \dots, \psi_{k_N}}$, $\delta_{k_ik_j} = 0$ and overall $ \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}} = 0$. On the other hand, if $k_i$ is included in the ket $n$ times, there will be $n_i$ non-null terms in the sum.
 
 In the case of bosons,
 \begin{equation}
     \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}} = n_i \ket{\psi_{k_1}, \dots (\text{one less }\psi_{k_i}), \psi_{k_N}}
 \end{equation}
-We can use \cref{eq:occupation_definition} to express the last relation in the occupation numbers representation.
+We can use \cref{eq:occupation_definition} to express the last relation in the occupation number representation.
 \begin{multline}
     \oper{a_i} \ket{n_1, n_2, \dots, n_i, \dots} =
     \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}}_n
@@ -123,10 +125,10 @@ The same argument, developed for the creation operator $\adjoint{\oper{a_i}}$, l
 
 %fermion case
 
-For fermions, the occupation numbers can either be 1 or 0. The creation operator $\adjoint{\oper{a_i}}$ returns a phase factor of 0 if $n_i=1$ and 1 or -1 if $n_i=0$ The annihilation operator $\oper{a_i}$ does the opposite.
+For fermions, the occupation numbers can either be 1 or 0. The creation operator $\adjoint{\oper{a_i}}$ returns a phase factor of 0 if $n_i=1$ and $\pm 1$ if $n_i=0$ The annihilation operator $\oper{a_i}$ does the opposite.
 
 It is useful defining a new operator, the number operator $\oper{N_i} = \adjoint{\oper{a_i}}\oper{a_i}$. If we apply it to base ket of a system made of bosons
-\begin{multline}
+\begin{multline} \label{eq:number_operator}
     \oper{N_i} \ket{n_1, n_2, \dots, n_i, \dots}
     = \adjoint{\oper{a_i}}\oper{a_i} \ket{n_1, n_2, \dots, n_i, \dots}
     \\ = \adjoint{\oper{a_i}} \sqrt{n_i} \ket{n_1, n_2, \dots, n_i-1, \dots}
@@ -134,3 +136,84 @@ It is useful defining a new operator, the number operator $\oper{N_i} = \adjoint
 \end{multline}
 
 \subsection{Commutation relations}
+Applying $\adjop{a_k}\adjop{a_{k'}}$ on a base ket, using  \cref{eq:creation_definition}
+\begin{multline}
+    \adjop{a_{k'}}\adjop{a_{k}} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
+    = \ket{\psi_{k'}\psi_{k},\psi_{k_1}, \psi_{k_2}, \dots}
+    \\= \xi \ket{\psi_{k}\psi_{k'},\psi_{k_1}, \psi_{k_2}, \dots}
+    = \adjop{a_k}\adjop{a_{k'}}\ket{\psi_{k_1}, \psi_{k_2}, \dots}
+\end{multline}
+We have proven the (anti)commutation relation
+\begin{equation}
+    [\adjop{a_k}, \adjop{a_{k'}}]_\xi = 0
+\end{equation}
+where $[A,B]_1 = \{A,B\} = AB+BA$ and $[A,B]_{-1} = AB - BA$. We see that for bosons the creation operators always commute, while for fermions they anti-commute.
+
+Let's now investigate the commutator of a creation and an annihilation operator. Using \cref{eq:creation_definition} and  \cref{eq:annihilation_operator}
+\begin{multline}
+    \oper{a_{k'}}\adjop{a_{k}} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
+    = \oper{a_{k'}} \ket{\psi_{k},\psi_{k_1}, \psi_{k_2}, \dots}
+    \\= \braket{\psi_{k'}}{\psi_k} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
+    +    \sum_{j} \xi^{j} \braket{\psi_{k'}}{\psi_{k_j}} \ket{\psi_{k},\psi_{k_1}, \psi_{k_2}, (\text{no } \psi_{k_j}) \dots}
+\end{multline}
+\begin{multline}
+    \adjop{a_{k}}\oper{a_{k'}} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
+    = \adjop{a_{k}} \sum_{j} \xi^{j+1} \braket{\psi_{k'}}{\psi_{k_j}} \ket{\psi_{k_1}, \psi_{k_2}, (\text{no } \psi_{k_j}) \dots}
+    \\= \sum_{j} \xi^{j+1} \braket{\psi_{k'}}{\psi_{k_j}} \ket{\psi_{k},\psi_{k_1}, \psi_{k_2}, (\text{no } \psi_{k_j}) \dots}
+\end{multline}
+thus
+\begin{equation}
+    (\oper{a_{k'}}\adjop{a_{k}} -\xi  \adjop{a_{k}}\oper{a_{k'}}) = \braket{\psi_{k'}}{\psi_k} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
+\end{equation}
+and
+\begin{equation} \label{eq:creation_annihilation_commutator}
+    [\oper{a_{k'}}, \adjop{a_k}]_\xi = \braket{\psi_{k'}}{\psi_k} = \delta_{kk'}
+\end{equation}
+The former equation is of fundamental importance in second quantization formalism. If we have a set of single-state base kets $\ket{\psi_k}$ and we define a creation and annihilation operator that satisfy \cref{eq:creation_annihilation_commutator}, we obtain multi-particle base kets $\ket{\psi_{k_1}, \psi_{k_2}, \dots}$ that automatically satisfy the symmetry condition of Fermi and Bose statistics. The kets can then be expressed in the more compact occupation number representation $\ket{n_{k_1}, n_{k_2}, \dots}$.
+
+\subsection{Dynamical variables}
+We now investigate how operators different from the ones we have already encountered can be expressed in second quantization. We focus our discussion on additive single-particle operator. Examples are momentum, kinetic energy or single body potentials. In these cases, the total value of the operator is simply the sum over all the particles.
+
+Given an operator $\oper{K}$ of eigenkets $\ket{k_i}$ and a state vector
+\begin{equation}
+    \ket{\Psi} = \ket{n_1, n_2, \dots}
+\end{equation}
+the result of applying $\oper{K}$ to $\ket{\Psi}$ is simply
+\begin{equation}
+    \oper{K}\ket{\Psi} = \left( \sum_i n_i k_i \right) \ket{\Psi}
+\end{equation}
+Confronting this expression with the definition of the number operator expressed in \cref{eq:number_operator} we can write $\oper{K}$ as
+\begin{equation}
+    \oper{K} = \sum_i k_i N_i = \sum_i k_i  \adjop{a_i}\oper{a_i}
+\end{equation}
+It could happen that we have a state ket expressed in base different from the eigenkets of our operator of interest. If we suppose this base to be formed by $\ket{l_j}$, using completeness
+\begin{equation} \label{eq:change_basis}
+    \ket{k_i} = \sum_j \ket{l_j} \braket{l_j}{k_i}
+\end{equation}
+It makes then sense to write
+\begin{equation} \label{eq:creation_change_basis}
+    \adjop{a_i} = \sum_j \adjop{b_j} \braket{l_j}{k_i}
+\end{equation}
+which implies
+\begin{equation}
+    \oper{a_i} = \sum_j \oper{b_j} \braket{k_i}{l_j}
+\end{equation}
+where operators $\adjop{b_j}$ and $\oper{b_j}$ create and annihilate the single-particle states $\ket{l_j}$. The result of applying \cref{eq:creation_change_basis} on the vacuum state is then
+\begin{equation}
+    \adjop{a_i} \ket{\vec{0}} = \sum_j \adjop{b_j} \braket{l_j}{k_i} \ket{\vec{0}} = \sum_j \ket{l_j} \braket{l_j}{k_i} = \ket{k_i}
+\end{equation}
+in agreement with \cref{eq:change_basis}.
+
+We are now ready to express the operator $\oper{K}$ in the basis $\ket{l_j}$.
+\begin{multline}
+    \oper{K} =  \sum_i k_i  \adjop{a_i}\oper{a_i}
+    = \sum_i k_i \sum_{mn} \adjop{b_m}\oper{b_n} \braket{l_m}{k_i}\braket{k_i}{l_n}
+    \\ = \sum_{mn} \adjop{b_m}\oper{b_n} \sum_i \braket{l_m}{k_i} k_i \braket{k_i}{l_n}
+    = \sum_{mn} \adjop{b_m}\oper{b_n} \bra{l_m} \left[ \oper{K} \sum_i \op{k_i} \right] \ket{l_n}
+    \\= \sum_{mn}  \bra{l_m}\oper{K}\ket{l_n} \adjop{b_m}\oper{b_n}
+\end{multline}
+This allow us to write every additive operator in terms of the creation and annihilation operators. It is then possible to write the Hamiltonian for a non-interacting system of particles, where the potential and the kinetic energy satisfy the additivity requirement.
+\begin{equation}
+    \oper{H} = \sum_{mn} \bra{l_m}\oper{T}+\oper{V_1}\ket{l_n} \adjop{b_m}\oper{b_n}
+\end{equation}
+where $V_1$ is the non-interacting (single particle) potential.
