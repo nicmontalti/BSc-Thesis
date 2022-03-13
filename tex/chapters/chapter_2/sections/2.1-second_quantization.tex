@@ -1,47 +1,48 @@
 \section{Second quantization}
 \subsection{Occupation number representation}
-In condensed matter physics we often have to deal with systems of many particles. We can describe such a system starting from the wavefunctions of the single particles $\ket{\psi_k}$, where the particle is in the eigenstate of eigenvalue $k$ of an operator $\oper{K}$. We suppose this set of vectors to be orthonormal. We could initially write the total state vector as the product of the single ones.
+In condensed matter physics we often have to deal with systems of many particles. We can describe such a system starting from the wavefunctions of the single particles $\ket{k}$, where the particle is in the eigenstate of eigenvalue $k$ of an operator $\oper{K}$. We suppose this set of vectors to be orthonormal. We could initially write the total state vector as the product of the single ones.
 \begin{equation} \label{eq:simple_base}
-    \ket{\Psi} = \ket{\psi_{P[k_1]}}\ket{\psi_{P[k_2]}}\dots\ket{\psi_{P[k_N]}}
+    \ket{\Psi} = \ket{k_1}\ket{k_2}\dots\ket{k_N}
 \end{equation}
 However, the former expression does not take into account the indistinguishability of quantum particles. In fact, the physics of the system must be invariant under the exchange of two particles. This is possible only if $\ket{\Psi}$ is symmetric or antisymmetric for the exchange of two particles. The former case is true for bosons, the latter for fermions. %reference
 
 In order to satisfy this condition, we have to modify \cref{eq:simple_base}. An appropriate linear combination of the products of the single kets, compatible with the symmetry constraints required by Bose and Fermi statistics is given by
 \begin{equation} \label{eq:complete_base}
-    \ket{\Psi} = \ket{\psi_{k_1}, \psi_{k_2}, \dots, \psi_{k_N}} = \sqrt{\frac{1}{N!}} \sum_P \xi^P \ket{\psi_{P[k_1]}}\ket{\psi_{P[k_2]}}\dots\ket{\psi_{P[k_N]}}
+    \ket{\Psi} = \ket{k_1, k_2, \dots, k_N} = \sqrt{\frac{1}{N!}} \sum_P \xi^P \ket{P[k_1]}\ket{P[k_2]}\dots\ket{P[k_N]}
 \end{equation}
 where the sum is extended to all the $N!$ permutations $P$ of ${k_1, k_2, \dots k_N}$. $\xi = 1$ for bosons and $\xi = -1$ for fermions, so that for fermions $\xi^P = 1$ for even permutations and $\xi^P = -1$ for odd permutations. This construction assures that the total wavefunction is symmetric for the exchange of two bosons and antisymmetric for the exchange of two fermions. It is important to notice that \cref{eq:complete_base} has an ambiguity in the phase of the final vector. To remove it, we chose the permutation to be even when $k_1 < k_2 < \dots k_N$.
 
 It is useful to compute the product of a base bra and a base ket of two total state vectors.
 \begin{multline} \label{eq:base_product}
-    \bra{\psi_{m_1}, \dots, \psi_{m_N}} \ket{\psi_{k_1}, \dots, \psi_{k_N}} = \frac{1}{N!}
-    \\ = \sum_P \sum_{P'} \xi^{P+P'} \bra{\psi_{P[m_1]}}\bra{\psi_{P[m_2]}}\dots\bra{\psi_{P[m_N]}} \cross \ket{\psi_{P'[k_1]}}\ket{\psi_{P'[k_2]}}\dots\ket{\psi_{P'[k_N]}}
-    \\ = \sum_{P''} \xi^{P''} \braket{\psi_{m_1}}{\psi_{P''[k_1]}} \dots \braket{\psi_{m_N}}{\psi_{P''[k_N]}}
+    \bra{m_1, \dots, m_N} \ket{k_1, \dots, k_N} = \frac{1}{N!}
+    \\ = \sum_P \sum_{P'} \xi^{P+P'} \bra{P[m_1]}\bra{P[m_2]}\dots\bra{P[m_N]} \cross \ket{P'[k_1]}\ket{P'[k_2]}\dots\ket{P'[k_N]}
+    \\ = \sum_{P''} \xi^{P''} \braket{m_1}{P''[k_1]} \dots \braket{m_N}{P''[k_N]}
     \\ = \begin{vmatrix}
-        \braket{\psi_{m_1}}{\psi_{k_1}} & \braket{\psi_{m_1}}{\psi_{k_2}} & \dots & \braket{\psi_{m_1}}{\psi_{k_N}} \\
-        \braket{\psi_{m_2}}{\psi_{k_2}} & \braket{\psi_{m_2}}{\psi_{k_2}} & \dots & \braket{\psi_{m_2}}{\psi_{k_N}} \\
-        \dots                           & \dots                           & \dots & \dots                           \\
-        \braket{\psi_{m_N}}{\psi_{k_1}} & \braket{\psi_{m_N}}{\psi_{k_2}} & \dots & \braket{\psi_{m_N}}{\psi_{k_N}}
+        \braket{m_1}{k_1} & \braket{m_1}{k_2} & \dots & \braket{m_1}{k_N} \\
+        \braket{m_2}{k_2} & \braket{m_2}{k_2} & \dots & \braket{m_2}{k_N} \\
+        \dots             & \dots             & \dots & \dots             \\
+        \braket{m_N}{k_1} & \braket{m_N}{k_2} & \dots & \braket{m_N}{k_N}
     \end{vmatrix}_\xi
 \end{multline}
-where $|\cdot|_{\xi = 1}$ represents a permanent and $|\cdot|_{\xi = -1}$ a determinant. Given the orthonormality of the single state kets, the only terms of the sum that differ from zero are the ones where
+where $|\cdot|_{\xi = -1}$ represents a determinant and $|\cdot|_{\xi = 1}$ a permanent (a determinant with all positive signs). Given the orthonormality of the single state kets, the only terms of the sum that differ from zero are the ones where
 \begin{equation}
     P''\{k_1, \dots, k_N\} = \{m_1, \dots, m_N\}
 \end{equation}
-If a state $\psi_j$ appears $n_j$ times, the norm of the state vector will be
+If a state is made of $n_j$ bosons in the state $k_j$, the norm squared of the state vector will be equal to the total number of identical permutations
 \begin{equation}
-    \braket{\psi_{k_1}, \dots, \psi_{k_N}} = n_1!n_2!\dots n_N!
+    \braket{k_1, \dots, k_N} = n_1!n_2!\dots n_N!
 \end{equation}
 Thus, the normalized state vector is
 \begin{equation}
-    \ket{\psi_{k_1}, \dots, \psi_{k_N}}_n= \frac{1}{\sqrt{n_1!n_2!\dots n_N!}} \ket{\psi_{k_1}, \dots, \psi_{k_N}}
+    \ket{k_1, \dots, k_N}_n= \frac{1}{\sqrt{n_1!n_2!\dots n_N!}} \ket{k_1, \dots, k_N}
 \end{equation}
+The case of fermions is easier, since $n_j$ can either be 1 or 0. Thus, there is only one identical permutation and the state is already normalized.
 
-Given the indisinguishibility of the particles, a simpler way to describe this state vector is using only the number $n_j$ of particles that are in the state $\psi_{k_j}$.
+Given the indistinguishability of the particles, a simpler way to describe this state vector is using only the number $n_j$ of particles that are in the state $k_j$.
 \begin{equation} \label{eq:occupation_definition}
-    \ket{n_1, n_2, ... n_i, ...} = \ket{\psi_{k_1}, \dots, \psi_{k_N}}_n
+    \ket{n_1, n_2, ... n_i, ...} = \ket{k_1, \dots, k_N}_n
 \end{equation}
-where $\psi_{k_j}$ is repeated $n_j$ times. This eliminates the inconvenience of having multiple kets describing the same state as we had before. This representation is called occupation number representation, and the kets are said to be elements of the Fock space.
+where $k_j$ is repeated $n_j$ times. This eliminates the inconvenience of having multiple kets describing the same state as we had before. This representation is called occupation number representation, and the kets are said to be elements of the Fock space.
 
 Two special cases of states in the Fock space are the following. The vacuum state
 \begin{equation}
@@ -49,74 +50,74 @@ Two special cases of states in the Fock space are the following. The vacuum stat
 \end{equation}
 is a state with no particles in any single-particle states. The second is
 \begin{equation}
-    \ket{0,0,\dots, n_i = 1, \dots} = \ket{\psi_{k_i}}
+    \ket{0,0,\dots, n_i = 1, \dots} = \ket{k_i}
 \end{equation}
 where there is exactly one particle in the $k_i$ state.
 
 \subsection{Creation and annihilation operators}
-Now that we have defined the base kets, we can introduce two operators that are used to transform the kets. We define a \emph{creation operator} as
+Now that we have defined the base kets, we can introduce two operators that are used to transform the kets. We define the \emph{creation operator} as
 \begin{equation} \label{eq:creation_definition}
-    \adjoint{\oper{a_i}} \ket{\psi_{k_1}, \psi_{k_2}, \dots} = \ket{\psi_{k_i},\psi_{k_1}, \psi_{k_2}, \dots}
+    \adjoint{\oper{a_i}} \ket{k_1, k_2, \dots} = \ket{k_i,k_1, k_2, \dots}
 \end{equation}
 Below we show several properties that derive from these definition, but its essential role can be understood applying it to the vacuum state.
 \begin{equation}
-    \adjoint{\oper{a_i}} \ket{\vec{0}} = \ket{\psi_{k_i}}
+    \adjoint{\oper{a_i}} \ket{\vec{0}} = \ket{k_i}
 \end{equation}
 Its effect is to add a particle in $k_i$ state to the system. It is easy to interpret its adjoint as an \emph{annihilation operator}, in fact
 \begin{equation}
-    1 = \braket{\psi_{k_i}}{\psi_{k_i}} = \bra{\vec{0}}\oper{a_i}\adjoint{\oper{a_i}}\ket{\vec{0}} = \bra{\vec{0}}\oper{a_i}\ket{\psi_{k_i}}
+    1 = \braket{k_i}{k_i} = \bra{\vec{0}}\oper{a_i}\adjoint{\oper{a_i}}\ket{\vec{0}} = \bra{\vec{0}}\oper{a_i}\ket{k_i}
 \end{equation}
 which implies that
 \begin{equation}
-    \oper{a_i}\ket{\psi_{k_i}} = \ket{\vec{0}}
+    \oper{a_i}\ket{k_i} = \ket{\vec{0}}
 \end{equation}
 We now try to prove these properties on a general base ket. We consider the transition matrix element
 \begin{multline} \label{eq:annihilation_matrix}
-    \mathcal{A} =  \bra{\phi_{m_1}, \dots, \phi_{m_{N-1}}} \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}} =
-    \\ =  \bra{\psi_{k_1}, \dots, \psi_{k_N}} \adjoint{\oper{a_i}} \ket{\phi_{m_1}, \dots, \phi_{m_{N-1}}}^*
-    = \bra{\psi_{k_1}, \dots, \psi_{k_N}} \ket{\psi_{k_i}, \phi_{m_1}, \dots, \phi_{m_{N-1}}}^*
+    \mathcal{A} =  \bra{m_1, \dots, m_{N-1}} \oper{a_i} \ket{k_1, \dots, k_N} =
+    \\ =  \bra{k_1, \dots, k_N} \adjoint{\oper{a_i}} \ket{m_1, \dots, m_{N-1}}^*
+    = \bra{k_1, \dots, k_N} \ket{k_i, m_1, \dots, m_{N-1}}^*
 \end{multline}
 using \cref{eq:base_product}
 \begin{equation}
     \mathcal{A} = \begin{vmatrix}
-        \braket{\psi_{k_1}}{\psi_{k_i}} & \braket{\psi_{k_1}}{\phi_{m_1}} & \dots & \braket{\psi_{k_1}}{\phi_{m_{N-1}} } \\
-        \braket{\psi_{k_2}}{\psi_{k_i}} & \braket{\psi_{k_2}}{\phi_{m_1}} & \dots & \braket{\psi_{k_2}}{\phi_{m_{N-1}}}  \\
-        \dots                           & \dots                           & \dots & \dots                                \\
-        \braket{\psi_{k_N}}{\psi_{k_i}} & \braket{\psi_{k_N}}{\phi_{m_1}} & \dots & \braket{\psi_{k_N}}{\phi_{m_{N-1}}}  \\
+        \braket{k_1}{k_i} & \braket{k_1}{m_1} & \dots & \braket{k_1}{m_{N-1} } \\
+        \braket{k_2}{k_i} & \braket{k_2}{m_1} & \dots & \braket{k_2}{m_{N-1}}  \\
+        \dots             & \dots             & \dots & \dots                  \\
+        \braket{k_N}{k_i} & \braket{k_N}{m_1} & \dots & \braket{k_N}{m_{N-1}}  \\
     \end{vmatrix}_\xi^*
 \end{equation}
 and developing it along the first column
 \begin{multline}
-    \mathcal{A} = \left( \sum_{j=1}^N \xi^{j+1} \braket{\psi_{k_j}}{\psi_{k_i}}
+    \mathcal{A} = \left( \sum_{j=1}^N \xi^{j+1} \braket{k_j}{k_i}
     \begin{vmatrix}
-        \braket{\psi_{k_1}}{\phi_{m_1}} & \dots                   & \braket{\psi_{k_1}}{\phi_{m_{N-1}} } \\
-        \braket{\psi_{k_2}}{\phi_{m_1}} & \dots                   & \braket{\psi_{k_2}}{\phi_{m_{N-1}}}  \\
-        \dots                           & (\text{no } \psi_{k_j}) & \dots                                \\
-        \braket{\psi_{k_N}}{\phi_{m_1}} & \dots                   & \braket{\psi_{k_N}}{\phi_{m_{N-1}}}  \\
+        \braket{k_1}{m_1} & \dots            & \braket{k_1}{m_{N-1} } \\
+        \braket{k_2}{m_1} & \dots            & \braket{k_2}{m_{N-1}}  \\
+        \dots             & (\text{no } k_j) & \dots                  \\
+        \braket{k_N}{m_1} & \dots            & \braket{k_N}{m_{N-1}}  \\
     \end{vmatrix}_\xi
     \right)^*
-    \\ = \sum_{j=1}^N \xi^{j+1} \braket{\psi_{k_i}}{\psi_{k_j}}  \bra{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}} \ket{\phi_{m_1}, \dots, \phi_{m_{N-1}}}^*
-    \\ = \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j}  \bra{\phi_{m_1}, \dots, \phi_{m_{N-1}}} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
+    \\ = \sum_{j=1}^N \xi^{j+1} \braket{k_i}{k_j}  \bra{k_1, \dots (\text{no } k_j), k_N} \ket{m_1, \dots, m_{N-1}}^*
+    \\ = \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j}  \bra{m_1, \dots, m_{N-1}} \ket{k_1, \dots (\text{no } k_j), k_N}
 \end{multline}
 Confronting it with \cref{eq:annihilation_matrix} we conclude
 \begin{multline} \label{eq:annihilation_operator}
-    \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}}
-    = \sum_{j=1}^N \xi^{j+1} \braket{\psi_{k_i}}{\psi_{k_j}} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
-    \\= \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j} \ket{\psi_{k_1}, \dots (\text{no } \psi_{k_j}), \psi_{k_N}}
+    \oper{a_i} \ket{k_1, \dots, k_N}
+    = \sum_{j=1}^N \xi^{j+1} \braket{k_i}{k_j} \ket{k_1, \dots (\text{no } k_j), k_N}
+    \\= \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j} \ket{k_1, \dots (\text{no } k_j), k_N}
 \end{multline}
-If $k_i$ is not present in $\ket{\psi_{k_1}, \dots, \psi_{k_N}}$, $\delta_{k_ik_j} = 0$ and overall $ \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}} = 0$. On the other hand, if $k_i$ is included in the ket $n$ times, there will be $n_i$ non-null terms in the sum.
+If $k_i$ is not present in $\ket{k_1, \dots, k_N}$, $\delta_{k_ik_j} = 0$ and overall $ \oper{a_i} \ket{k_1, \dots, k_N} = 0$. On the other hand, if $k_i$ is included in the ket $n_i$ times, there will be $n_i$ non-null terms in the sum.
 
 In the case of bosons,
 \begin{equation}
-    \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}} = n_i \ket{\psi_{k_1}, \dots (\text{one less }\psi_{k_i}), \psi_{k_N}}
+    \oper{a_i} \ket{k_1, \dots, k_N} = n_i \ket{k_1, \dots (\text{one less }k_i), k_N}
 \end{equation}
 We can use \cref{eq:occupation_definition} to express the last relation in the occupation number representation.
 \begin{multline}
     \oper{a_i} \ket{n_1, n_2, \dots, n_i, \dots} =
-    \oper{a_i} \ket{\psi_{k_1}, \dots, \psi_{k_N}}_n
-    \\ = \oper{a_i} \left( \prod_{j=1}^N \sqrt{n_j!} \right)^{-1} \ket{\psi_{k_1}, \dots, \psi_{k_N}}
-    = n_i \left( \prod_{j=1}^N \sqrt{n_j!} \right)^{-1} \ket{\psi_{k_1}, \dots (\text{one less }\psi_{k_i}), \psi_{k_N}}
-    \\ = \sqrt{n_i} \ket{\psi_{k_1}, \dots (\text{one less }\psi_{k_i}), \psi_{k_N}}_n = \sqrt{n_i} \ket{n_1, n_2, \dots, n_i-1, \dots}
+    \oper{a_i} \ket{k_1, \dots, k_N}_n
+    \\ = \oper{a_i} \left( \prod_{j=1}^N \sqrt{n_j!} \right)^{-1} \ket{k_1, \dots, k_N}
+    = n_i \left( \prod_{j=1}^N \sqrt{n_j!} \right)^{-1} \ket{k_1, \dots (\text{one less }k_i), k_N}
+    \\ = \sqrt{n_i} \ket{k_1, \dots (\text{one less }k_i), k_N}_n = \sqrt{n_i} \ket{n_1, n_2, \dots, n_i-1, \dots}
 \end{multline}
 The same argument, developed for the creation operator $\adjoint{\oper{a_i}}$, leads to
 \begin{equation}
@@ -138,10 +139,10 @@ It is useful defining a new operator, the number operator $\oper{N_i} = \adjoint
 \subsection{Commutation relations}
 Applying $\adjop{a_k}\adjop{a_{k'}}$ on a base ket, using  \cref{eq:creation_definition}
 \begin{multline}
-    \adjop{a_{k'}}\adjop{a_{k}} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
-    = \ket{\psi_{k'}\psi_{k},\psi_{k_1}, \psi_{k_2}, \dots}
-    \\= \xi \ket{\psi_{k}\psi_{k'},\psi_{k_1}, \psi_{k_2}, \dots}
-    = \adjop{a_k}\adjop{a_{k'}}\ket{\psi_{k_1}, \psi_{k_2}, \dots}
+    \adjop{a_{k'}}\adjop{a_{k}} \ket{k_1, k_2, \dots}
+    = \ket{\psi_{k'}k,k_1, k_2, \dots}
+    \\= \xi \ket{k\psi_{k'},k_1, k_2, \dots}
+    = \adjop{a_k}\adjop{a_{k'}}\ket{k_1, k_2, \dots}
 \end{multline}
 We have proven the (anti)commutation relation
 \begin{equation}
@@ -151,28 +152,28 @@ where $[A,B]_1 = \{A,B\} = AB+BA$ and $[A,B]_{-1} = AB - BA$. We see that for bo
 
 Let's now investigate the commutator of a creation and an annihilation operator. Using \cref{eq:creation_definition} and  \cref{eq:annihilation_operator}
 \begin{multline}
-    \oper{a_{k'}}\adjop{a_{k}} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
-    = \oper{a_{k'}} \ket{\psi_{k},\psi_{k_1}, \psi_{k_2}, \dots}
-    \\= \braket{\psi_{k'}}{\psi_k} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
-    +    \sum_{j} \xi^{j} \braket{\psi_{k'}}{\psi_{k_j}} \ket{\psi_{k},\psi_{k_1}, \psi_{k_2}, (\text{no } \psi_{k_j}) \dots}
+    \oper{a_{k'}}\adjop{a_{k}} \ket{k_1, k_2, \dots}
+    = \oper{a_{k'}} \ket{k,k_1, k_2, \dots}
+    \\= \braket{\psi_{k'}}{k} \ket{k_1, k_2, \dots}
+    +    \sum_{j} \xi^{j} \braket{\psi_{k'}}{k_j} \ket{k,k_1, k_2, (\text{no } k_j) \dots}
 \end{multline}
 \begin{multline}
-    \adjop{a_{k}}\oper{a_{k'}} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
-    = \adjop{a_{k}} \sum_{j} \xi^{j+1} \braket{\psi_{k'}}{\psi_{k_j}} \ket{\psi_{k_1}, \psi_{k_2}, (\text{no } \psi_{k_j}) \dots}
-    \\= \sum_{j} \xi^{j+1} \braket{\psi_{k'}}{\psi_{k_j}} \ket{\psi_{k},\psi_{k_1}, \psi_{k_2}, (\text{no } \psi_{k_j}) \dots}
+    \adjop{a_{k}}\oper{a_{k'}} \ket{k_1, k_2, \dots}
+    = \adjop{a_{k}} \sum_{j} \xi^{j+1} \braket{\psi_{k'}}{k_j} \ket{k_1, k_2, (\text{no } k_j) \dots}
+    \\= \sum_{j} \xi^{j+1} \braket{\psi_{k'}}{k_j} \ket{k,k_1, k_2, (\text{no } k_j) \dots}
 \end{multline}
 thus
 \begin{equation}
-    (\oper{a_{k'}}\adjop{a_{k}} -\xi  \adjop{a_{k}}\oper{a_{k'}}) = \braket{\psi_{k'}}{\psi_k} \ket{\psi_{k_1}, \psi_{k_2}, \dots}
+    (\oper{a_{k'}}\adjop{a_{k}} -\xi  \adjop{a_{k}}\oper{a_{k'}}) = \braket{\psi_{k'}}{k} \ket{k_1, k_2, \dots}
 \end{equation}
 and
 \begin{equation} \label{eq:creation_annihilation_commutator}
-    [\oper{a_{k'}}, \adjop{a_k}]_\xi = \braket{\psi_{k'}}{\psi_k} = \delta_{kk'}
+    [\oper{a_{k'}}, \adjop{a_k}]_\xi = \braket{\psi_{k'}}{k} = \delta_{kk'}
 \end{equation}
-The former equation is of fundamental importance in second quantization formalism. If we have a set of single-state base kets $\ket{\psi_k}$ and we define a creation and annihilation operator that satisfy \cref{eq:creation_annihilation_commutator}, we obtain multi-particle base kets $\ket{\psi_{k_1}, \psi_{k_2}, \dots}$ that automatically satisfy the symmetry condition of Fermi and Bose statistics. The kets can then be expressed in the more compact occupation number representation $\ket{n_{k_1}, n_{k_2}, \dots}$.
+The former equation is of fundamental importance in second quantization formalism. If we have a set of single-state base kets $\ket{k}$ and we define a creation and annihilation operator that satisfy \cref{eq:creation_annihilation_commutator}, we obtain multi-particle base kets $\ket{k_1, k_2, \dots}$ that automatically satisfy the symmetry condition of Fermi and Bose statistics. The kets can then be expressed in the more compact occupation number representation $\ket{n_{k_1}, n_{k_2}, \dots}$.
 
 \subsection{Dynamical variables}
-We now investigate how operators different from the ones we have already encountered can be expressed in second quantization. We focus our discussion on additive single-particle operator. Examples are momentum, kinetic energy or single body potentials. In these cases, the total value of the operator is simply the sum over all the particles.
+We now investigate how operators different from the ones we have already encountered can be expressed in second quantization \cite{sakurai2020}. We focus our discussion on additive single-particle operator. Examples are momentum, kinetic energy or single body potentials. In these cases, the total value of the operator is simply the sum over all the particles.
 
 Given an operator $\oper{K}$ of eigenkets $\ket{k_i}$ and a state vector
 \begin{equation}
