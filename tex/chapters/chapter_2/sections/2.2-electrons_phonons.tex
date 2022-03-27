@@ -1,4 +1,4 @@
-\section{Electrons and phonons in a crystal}
+\section{Electrons and phonons in crystals}
 In this section we will briefly describe how free electrons and phonons behave in a crystal, starting with a description of a crystal lattice. The interaction between two electrons and two phonons will not be considered. The electron-phonon interaction will be discussed in the following section.
 \subsection{Crystal lattice}
 Solid state physics deals with materials made of huge numbers of atoms, of the order of the Avogadro number. We have just developed a mathematical formalism (second quantization) with which it is possible to treat such systems. However, it is clearly impossible to solve the equations for a general N-body system. Luckily, X-ray diffraction experiments showed that many solids exhibit particular symmetry properties, useful to simplify the problem.
@@ -31,8 +31,8 @@ where $\Omega = \vec{a}_1 \cdot \vec{a}_2 \cross \vec{a}_3$ is the volume of a u
     \vec{a}_i \cdot \vec{b}_j = 2\pi \delta_{ij}
 \end{equation}
 
-\subsection{Electrons in crystals}
-The simplest model of electrons in a solid is the Sommerfield model. It was developed by Arnold Sommerfield in 1928 \cite{sommerfeldZurElektronentheorieMetalle1928}, combining the Drude model \cite{drude1900a} with Fermi-Dirac statistics. The electrons are treated as quantum non-interacting free particles. The electrons are treated as quantum non-interacting free particles, which implies that the wavefunctions are plane waves
+\subsection{Electrons in crystals} \label{sec:electrons}
+The simplest model of electrons in a solid is the Sommerfield model. It was developed by Arnold Sommerfeld in 1928 \cite{sommerfeldZurElektronentheorieMetalle1928}, combining the Drude model \cite{drude1900a} with Fermi-Dirac statistics. The electrons are treated as quantum non-interacting free particles, which implies that the wavefunctions are plane waves
 \begin{equation} \label{eq:plane_wave}
     \psi_\vec{k} = e^{i\vec{k}\cdot\vec{r}}
 \end{equation}
@@ -49,13 +49,14 @@ To correctly describe the properties of electrons, we have to take into account 
 \end{equation}
 where the first sum is extended on all the electrons and the second on the nuclei. It is convenient to divide the electrons in inner core electrons and valence electrons. The formers are tightly bound to the nucleus and occupy closed inner shells. They do not interact with other atoms of the crystal, so the nucleus together with its core electrons can be treated as a positive ion. The valence electrons belong to  non-closed shells and form chemical bonds with other atoms. Despite this description of electrons being apparently simpler, the potential of interaction between valence electrons and ions cannot be treated as simple Coulomb potential anymore.
 
-To overcome the complexity of solving a many-body \sche   with a long range electromagnetic interaction, we leverage the symmetry of the crystal. Recalling our previous discussion, we know the potential of the ions to be translationally invariant. Recalling \cref{eq:translational_invariance}
+To overcome the complexity of solving a many-body \sche   with a long range electromagnetic interaction, we leverage the symmetry of the crystal. Recalling our previous discussion, we know the potential of the ions to be translationally invariant:
 \begin{equation}
-    V(\vec{r}+\vec{R}_n) = V(\vec{r})
+    V_{e-I}(\vec{r}+\vec{R}_n) = V_{e-I}(\vec{r})
 \end{equation}
-The \sche for a periodic potential $V$ is then
+where $r$ is the position of the electron and $R_n$ is a Bravais lattice vector.
+The \sche for the periodic potential $V_{e-I}$ is then
 \begin{equation}
-    \oper{H}_\text{Bloch} \Psi = \left(-\frac{\hbar^2}{2m} \laplacian + V \right)\Psi = \epsilon\Psi
+    \oper{H}_\text{Bloch} \Psi = \left(-\frac{\hbar^2}{2m} \laplacian + V_{e-I} \right)\Psi = \epsilon\Psi
 \end{equation}
 Block proved in 1929 \cite{bloch1929} that the solutions of this problem are the Bloch functions $\Psi_{n\vec{k}}$:
 \begin{equation}
@@ -65,18 +66,158 @@ Block proved in 1929 \cite{bloch1929} that the solutions of this problem are the
     \quad
     \Psi_{n\vec{k}}(\vec{r}) = u_{n\vec{k}}(\vec{r}) e^{i\vec{k}\cdot\vec{r}}
 \end{equation}
-where $u$ is a function with the same periodicity of $V$, $\vec{k}$ is a wavevector and $n$ is the band index. The plane wave solution showed in \cref{eq:plane_wave} is a simple case where $V$ and $u$ are constant. An important consequence of the Bloch theorem is that the solutions to the \sche, even if they are not plane waves, can still be indexed with the quantum number $\vec{k}$, along with the band index $n$.
+where $u$ is a function with the same periodicity of $V_{e-I}$, $\vec{k}$ is a wavevector and $n$ is the band index. The plane wave solution showed in \cref{eq:plane_wave} is a simple case where $V_{e-I}$ and $u$ are constant. An important consequence of the Bloch theorem is that the solutions to the \sche, even if they are not plane waves, can still be indexed with the quantum number $\vec{k}$, along with the band index $n$.
 
 Expanding $\epsilon_n(\vec{k})$ around $\vec{k} = 0$, for an isotropic energy band,
 \begin{equation} \label{eq:effective_mass}
-    \epsilon_n(\vec{k}) = \epsilon_n(0) + \frac{\hbar k^2}{2m^*} + \mathcal{O}(k^2)
+    \epsilon_n(\vec{k}) = \epsilon_n(\vec{0}) + \frac{\hbar k^2}{2m^*} + \mathcal{O}(k^3)
 \end{equation}
 where $m^*$ is the effective mass, defined as
 \begin{equation}
     \frac{1}{m^*} = \frac{1}{\hbar^2} \pdv[2]{\epsilon}{k}
 \end{equation}
 Expression \labelcref{eq:effective_mass} is formally identical to \cref{eq:free_dispersion} with $m^*$ in place of $m$. For small values of $k$ electrons can then be treated as free particles of mass $m^*$.
-The final non-interacting electron hamiltonian can be rewritten in second quantization as
-\begin{equation}
+The final non-interacting electron Hamiltonian can be rewritten in second quantization as
+\begin{equation}\label{eq:electron_hamiltonian}
     \oper{H}_\text{el} = \sum_{n\vec{k}} \epsilon_{n\vec{k}} \adjop{c}_{n\vec{k}}\oper{c}_{n\vec{k}}
 \end{equation}
+
+\subsection{Phonons} \label{sec:phonons}
+So far, we have treated a crystal as a collection of ions fixed in a lattice and non-interacting valence electrons. However, the atoms are not really fixed. The crystal is held together by the bonds between the atoms. We can write the corresponding potential as
+\begin{equation} \label{eq:ion_ion_potential}
+    V_{I-I}(\vec{R}_1, \vec{R}_2, \dots) = \frac{1}{2} \sum_{ij} v_{I-I}(|\vec{R}_i - \vec{R}_j|)
+\end{equation}
+where the sum is extended to all the ions, and we have implicitly assumed the potential to be dependent only on the distance between the ions. The positions of the atoms in the lattice
+\begin{equation}
+    \vec{R}_n^a = \vec{R}_n + \vec{\tau}_a
+\end{equation}
+are now interpreted as the equilibrium positions of the potential \labelcref{eq:ion_ion_potential}. Whereas the actual positions are given by
+\begin{equation} \label{eq:atom_position_perturbed}
+    \vec{R}_n^a(t) = \vec{R}_n^a + \delta \vec{R}_n^a(t)
+\end{equation}
+Expanding \labelcref{eq:ion_ion_potential} in a Taylor series up to the second order, we can treat the system in the harmonic approximation. In this form, the Hamiltonian is not separable. Making a canonical change of coordinate from the position space to the reciprocal space, we can decouple the Hamiltonian into a sum of non-interacting Hamiltonians \cite{cohenFundamentalsCondensedMatter}. Thus, the vibrational modes are described as a collection of bosonic quasi-particles called phonons. The final Hamiltonian for a crystal with $r$ atoms per unit cell in $d$ dimensions, expressed in second quantization is
+\begin{equation} \label{eq:phonon_hamiltonian}
+    \oper{H}_\text{ph} = \sum_{\lambda \vec{q}} \hbar \omega_{\lambda\vec{q}} \left( \adjop{b}_{\lambda \vec{q}} \oper{b}_{\lambda \vec{q}} + \frac{1}{2} \right)
+\end{equation}
+where $\vec{q}$ is the wavevector, $\lambda = (0,1,\dots rd)$ the branch index, $\omega$ the eigenfrquencies and $\adjop{b}$ and $\oper{b}$ the creation and annihilation operators. The system has a non-zero energy ground state
+\begin{equation}
+    E_0 = \sum_{\lambda \vec{q}} \frac{1}{2} \hbar\omega_{\lambda\vec{q}}
+\end{equation}
+
+The relation between the displacement and the creation and annihilation operators is
+\begin{equation} \label{eq:phonon_coordinates}
+    \delta \vec{R}_n^a = \sum_{\vec{q}\lambda} A_{\vec{q}\lambda}^a \vec{\epsilon}_{\vec{q}\lambda}^a e^{i\vec{q} \cdot \vec{R}_n^a} (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+\end{equation}
+where $\vec{\epsilon}_{\vec{q}\lambda}^a$ is the polarization vector and
+\begin{equation} \label{eq:A_phonon_constant}
+    A_{\vec{q}\lambda}^a = \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}
+\end{equation}
+where $M_a$ is mass of the $a^\text{th}$ atom and $N$ the number of atoms. The polarization vector is used to describe the direction of the displacement $\delta \vec{R}_n^a$ with respect to the direction of propagation $\vec{q}$. We have transversal phonons if $\vec{q} \cdot \vec{\epsilon}_{\vec{q}\lambda}^a = 0$ and longitudinal phonons if $\vec{q} \cross \vec{\epsilon}_{\vec{q}\lambda}^a = 0$
+
+To generalize \cite{cohenFundamentalsCondensedMatter}, we have considered a Hamiltonian
+\begin{equation}
+    \oper{H} = \sum_i \oper{H}_i(\vec{r}_i, \vec{p}_i) + \sum_{ij} \oper{H}_{ij}(\vec{r}_i, \vec{p}_i, \vec{r}_j, \vec{p}_j)
+\end{equation}
+and after a canonical change of coordinates, we have transformed it in
+\begin{equation}
+    \oper{H} = E_0 + \sum_\vec{q} E_\vec{q} \adjop{c}_\vec{q}\oper{c}_\vec{q} + \Delta E
+\end{equation}
+The first term, $E_0$ is the ground state energy, the second describe a system of non-interacting particles and the third is the residual energy. This method is valid as long as $\Delta E_\vec{q} << E_\vec{q}$. In the case of phonons, $\Delta E = 0$ because we made a harmonic approximation. The non-harmonic terms would describe the interaction between phonons, which would result in $\Delta E \neq 0$.
+
+\subsection{Electron-phonon interaction}
+Now that we have described electrons and phonons, we can investigate how they interact with each other \cite{cohenFundamentalsCondensedMatter, tempere}. Their interaction is of vital importance in solid state physics. It influences transport properties in metals and mobility and optical properties in semiconductors and polar crystals \cite{tempere}. Our discussion starts with a periodic potential $V(\vec{r})$ perturbed from its equilibrium position
+\begin{equation} \label{eq:general_electron_phonon_potential}
+    V(\vec{r}, t) = \sum_{l,a} V_a(\vec{r} - \vec{R}_l^a(t))
+\end{equation}
+where $l$ is an index of lattice points and $a$ of atoms in the unit cell. $\vec{R}_l^a(t)$ is the position of the atom, and it is given by \cref{eq:atom_position_perturbed}:
+\begin{equation}
+    \vec{R}_l^a(t) = \vec{R}_l^a + \delta \vec{R}_l^a(t)
+\end{equation}
+For typical vibrations, it can be shown that the displacements $\xi = |\delta \vec{R}_l^a(t)|$ are much smaller than the atomic spacing $d$. In particular
+\begin{equation}
+    \frac{\xi}{d} \simeq \left[ \frac{m}{M} \right]^\frac{1}{4}
+\end{equation}
+and the phonon energy $E_\text{ph}$ scales as
+\begin{equation}
+    \frac{E_\text{ph}}{E_\text{el}} \simeq \left( \frac{m}{M} \right)^\oh
+\end{equation}
+where $E_\text{el}$ is the electron energy, $m$ the electron mass and $M$ the atomic mass. Given this scaling consideration, we can assume the general band structure of the crystal not to be modified. However, the interaction with the phonons can slightly modify it. This results in a modification of the electron effective mass, of the order of the phonon energies.
+
+Using the assumption of small displacements, we can expand the potential in \cref{eq:general_electron_phonon_potential} in a Taylor series.
+\begin{multline}
+    V(\vec{r}, t) = \sum_{l,a} V_a(\vec{r} - \vec{R}_l^a - \delta \vec{R}_l^a(t))
+    \simeq \sum_{l,a} \left[ V_a(\vec{r} - \vec{R}_l^a) + \delta \vec{R}_l^a(t) \cdot \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a) \right]
+\end{multline}
+Terms of higher orders take into account anharmonic oscillations, which were already neglected in the study of phonon Hamiltonian. The term $V_a(\vec{r} - \vec{R}_l^a)$ does not depend on the deviations of atoms from the equilibrium positions. In fact, it is the periodic potential considered in the study of electrons.
+
+The total Hamiltonian of the system can be written as the sum of three terms
+\begin{equation}
+    \oper{H} = \oper{H}_\text{el} + \oper{H}_\text{ph} + \oper{H}_\text{el-ph}
+\end{equation}
+where $\oper{H}_\text{el}$ and $\oper{H}_\text{ph}$ are given by \cref{eq:electron_hamiltonian} and \cref{eq:phonon_hamiltonian}. The last term describes the  electron-phonon contribution, and it can be identified with
+\begin{equation}
+    \oper{H}_\text{el-ph} = \sum_{l,a} \delta \vec{R}_l^a(t) \cdot \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a)
+\end{equation}
+We can use \cref{eq:phonon_coordinates} to rewrite it expanding the displacements in phonon coordinates
+\begin{equation} \label{eq:first_electron_phonon_hamiltonian}
+    \oper{H}_\text{el-ph} = \sum_{a} \sum_{\vec{q}\lambda} A_{\vec{q}\lambda}^a \vec{\epsilon}_{\vec{q}\lambda}^a \cdot \left( \sum_l e^{i\vec{q} \cdot \vec{R}_l^a}   \cdot \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a) \right) (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+\end{equation}
+where $A_{\vec{q}\lambda}^a$ is given by \cref{eq:A_phonon_constant}, $\vec{\epsilon}_{\vec{q}\lambda}^a$ is the polarization vector, $\vec{q}$ the momentum of the phonon and $\adjop{b}_{-\vec{q}\lambda}$ and $\oper{b}_{\vec{q}\lambda}$ the phonon creation and annihilation operators.
+
+The electron part of the previous expression is still written in the language of first quantization. Using \cref{eq:second_quantization}, we can express in a second-quantized form. Suppressing the band indices and using the extended zone scheme, so that $\vec{k}'$ and $\vec{k}$ are not limited to the first Brillouin zone,
+\begin{equation} \label{eq:general_electron_phonon_hamiltonian}
+    \oper{H}_\text{el-ph} = \sum_{\vec{k}'\vec{k}} \bra{\vec{k}'} \oper{H}_\text{el-ph} \ket{\vec{k}} \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}}
+    = \sum_{\vec{k}'\vec{k}} \sum_{\vec{q}\lambda} M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}} (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+\end{equation}
+where the electron-phonon matrix $M$ is defined by \cref{eq:first_electron_phonon_hamiltonian}. The previous expression can be interpreted as the transition of an electron from the state $\ket{\vec{k}}$ to the state $\ket{\vec{k}'}$ with either the creation of a phonon of momentum $-\vec{q}$ or the annihilation of a phonon of momentum $\vec{q}$. The matrix element $M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q})$ gives the mechanical amplitude of such a process.
+
+In order to evaluate $M$, we need to compute $\bra{\vec{k}'} \oper{H}_\text{el-ph} \ket{\vec{k}}$. We start with a Fourier transform of the potential. The atomic form factor is given by
+\begin{equation}
+    V_a(\vec{q}) = \frac{1}{\Omega_a} \int e^{-i\vec{q
+            }\cdot \vec{r}} V_a(\vec{r}) \differential \vec{r} = \frac{wN}{\Omega} \int e^{-i\vec{q
+            }\cdot \vec{r}} V_a(\vec{r}) \differential \vec{r}
+\end{equation}
+where $\Omega_a$ is the volume of a unit cell, $\Omega$ the volume of the crystal, $N$ the number of unit cells and $w$ the number of atoms per unit cell. We compute the gradient of the potential $\grad_\vec{r} V_a(\vec{r})$ expressed as a Fourier series, and we evaluate it at $\vec{r}-\vec{R}_l^a$
+\begin{equation}
+    \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a) = \frac{i}{wN} \sum_{\vec{q}'} \vec{q}' e^{i\vec{q}'\cdot \vec{r}} V_a(\vec{r}) e^{-i\vec{q}'\cdot \vec{R}_l^a}
+\end{equation}
+\Cref{eq:first_electron_phonon_hamiltonian} can be rewritten as
+\begin{equation}
+    \oper{H}_\text{el-ph} = \frac{i}{wN} \sum_{la\lambda} \sum_{\vec{q}\vec{q}'} A_{\vec{q}\lambda}^a \vec{\epsilon}_{\vec{q}\lambda}^a \cdot \vec{q}' e^{i\vec{q}'\cdot \vec{r}} e^{i(\vec{q}-\vec{q}') \cdot \vec{R}_l^a} V_a(\vec{q}'   )  (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+\end{equation}
+We know that
+\begin{equation}
+    \sum_l e^{i(\vec{q}-\vec{q}') \cdot \vec{R}_l^a} = N \delta(\vec{q} - \vec{q}' + \vec{G})
+\end{equation}
+where $\vec{G}$ is a vector of the reciprocal lattice. Then, most of the terms of the previous expression are zero, and we obtain
+\begin{multline}
+    \bra{\vec{k}'}\oper{H}_\text{el-ph}\ket{\vec{k}}
+    \\ = \frac{i}{w} \sum_{a\lambda\vec{q}} A_{\vec{q}\lambda}^a \sum_{\vec{G}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}   ) \vec{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda}) \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}}
+\end{multline}
+where we have used $\vec{G} \cdot \vec{R}_l = 2\pi n$, with $n$ integer, to simplify the sum over $l$. Finally, inserting this result in \cref{eq:general_electron_phonon_hamiltonian}, we obtain an expression for the matrix element $M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q})$
+\begin{equation}
+    M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) =  \frac{i}{w} \sum_{a\vec{G}} \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}) \vec{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}}
+\end{equation}
+
+We can compute the matrix element for a simple case where the initial and final state of the electron are plane waves. In this case,
+\begin{equation}
+    \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}} = \delta_{\vec{k}', \vec{k}+\vec{q}+\vec{G}}
+\end{equation}
+and
+\begin{equation}
+    M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) =  \frac{i}{w} \sum_{a\vec{G}} \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}) \vec{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) \delta_{\vec{k}', \vec{k}+\vec{q}+\vec{G}}
+\end{equation}
+The scattering process that we have explained earlier is now more clear. An electron of momentum $\hbar\vec{k}$ is scattered in an electron of momentum $\hbar (\vec{k}+\vec{q}+\vec{G})$ by the emission of a phonon of momentum $-\vec{q}$ or the absorption of a phonon of momentum $\vec{q}$. We can identify two processes: the normal (N) process, where $\vec{G} = 0$, and the umklapp (U) process, where $\vec{G} \neq 0$. In the normal process $\vec{k}' = \vec{k} + \vec{q}$, and assuming $w=1$,
+\begin{equation}
+    M_{\vec{k} \rightarrow \vec{k} + \vec{q}}^\lambda(\vec{q}) =  i \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}   V_a(\vec{q}) \vec{\epsilon}_{\vec{q}\lambda} \cdot \vec{q}
+\end{equation}
+It is clear that in this type of process, only longitudinal phonons contribute to the scattering, since for transversal phonons $\vec{\epsilon}_{\vec{q}\lambda} \cdot \vec{q} = 0$.
+
+The electrons are affected by deformations of the lattice in several ways \cite{kittel1987}. The main effects of the coupling between  electrons and phonons are:
+\begin{itemize}
+    \item the scattering of electrons from a state $\vec{k}$ to a state $\vec{k}'$, resulting in electrical resistivity;
+    \item the absorption or creation of phonons;
+    \item the creation of an attractive force between electrons, which is essential to explain superconductivity;
+    \item the electron will carry a lattice polarization field with him. The particle resulting from the combination of the electron and the polarization field is called \emph{polaron}, and it has a larger effective mass than the electron alone.
+\end{itemize}
+In the next section, and in the rest of the thesis, we will focus on this last type of interaction.

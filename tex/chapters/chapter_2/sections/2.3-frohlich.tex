@@ -1,0 +1,90 @@
+\section{Fr\"{o}hlich polarons}
+We have already anticipated in \cref{sec:landau_pekar} a simple model for polarons (the Landau-Pekar model). We are now ready to improve that first simple model, taking now into account a more precise mechanics of the lattice polarization. In this section we will discuss the Fr\"ohlich Hamiltonian, derived by Fr\"{o}hlich in 1950 \cite{frohlich1950}. This Hamiltonian is appropriate to describe polarons in ionic crystals and polar semiconductors. In these materials we expect electrons to interact strongly with longitudinal optical phonons through the electric field produced by the polarization of the lattice. Transversal are expected to be negligible because of the smaller electric field they produce.
+
+\subsection{Derivation of the Fr\"{o}hlich Hamiltonian}
+In this section we derive the Fr\"{o}hlich Hamiltonian following the approach described by Kittel \cite{kittel1987}. We assume the longitudinal phonons to be dispersionless (with frequency $\omega_\text{LO}$) and we treat the polarizable medium as continuum.
+
+In an ionic crystal, the polarization $\vec{P}$ can be considered as the sum of two components: the optical polarization $\vec{P}_o$ and the infra-red polarization $\vec{P}_\text{ir}$. The former is due to the displacement of bound electrons and it is characterized by a resonance frequency in the optical or ultra-violet region; the latter is due to the displacement of ions and its resonance frequency is in the infra-red region. Given the slow velocities of the electrons that we are going to consider, the optical polarization is always excited at its static value. Thus, given the absence of a dependence on the velocity of the electron, the optical polarization $\vec{P}_o$ is of no interest to us, since it does not modify the energy of the electron between different states. On the other hand, this does not apply to the infra-red polarization, because of its lower resonance frequency. At long distances from the electric charge (placed at $\vec{r}_0)$, $\vec{P}_\text{ir}$ can be obtained subtracting the optical polarization $\vec{P}_o$ from the total polarization $\vec{P}$. Thus, it can be derived from an electric potential $V(\vec{r})$ by
+\begin{equation} \label{eq:polarization_potential}
+    4\pi\vec{P}_\text{ir}(\vec{r}) = \grad V(\vec{r})
+\end{equation}
+where
+\begin{equation}
+    V(\vec{r}) = \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0}\right) \frac{e}{|\vec{r}-\vec{r}_0|}
+\end{equation}
+
+The infra-red polarization is proportional to the amplitude of the displacement of the ions. Generalizing \cref{eq:phonon_coordinates} for a generic point $\vec{r}$, we can express $\vec{P}_\text{ir}$ in phonon coordinates
+\begin{equation} \label{eq:polarization_field}
+    \vec{P}_\text{ir} = F  \sum_{\vec{q}} A \vec{\epsilon}_{\vec{q}} e^{i\vec{q} \cdot \vec{r}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
+\end{equation}
+where F is a constant to be determined and where we have dropped the indices $a$ and $\lambda$ because we are considering atoms of the same mass and phonons of the same branch. Moreover, $A$ does not depend on $\vec{q}$ because the phonons are assumed to be dispersionless. We expand also the electric potential in a Fourier series
+\begin{equation}
+    V(\vec{r}) = \sum_\vec{q} V(\vec{q}) e^{i\vec{q} \cdot \vec{r}}
+\end{equation}
+and we compute the gradient
+\begin{equation} \label{eq:electric_field}
+    \grad V(\vec{r}) = i \sum_\vec{q} \vec{q} V(\vec{q}) e^{i\vec{q} \cdot \vec{r}}
+\end{equation}
+Using \cref{eq:polarization_potential} and comparing \cref{eq:polarization_field} with \cref{eq:electric_field}, we find
+\begin{equation}
+    V(\vec{q}) = -i4\pi \frac{F A}{q} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
+\end{equation}
+We now want to express the constant $F$ in terms of the interaction energy of two electrons in a polarizable material of dielectric constant $\epsilon$. We consider two electrons completely localized in two points $\vec{r}_1$ and $\vec{r}_2$. The electrons will interact directly through the vacuum electric field and indirectly through a perturbation induced by the optical phonon field. The interaction Hamiltonian is given by the sum of the potential of the two electrons
+\begin{multline} \label{eq:hamiltonian_coulomb_medium}
+    H_\text{el-el} = -e V(\vec{r}_1) -e V(\vec{r}_2)
+    = -i 4\pi e F A \sum_\vec{q} q^{-1} (e^{i\vec{q} \cdot \vec{r}_1} + e^{i\vec{q} \cdot \vec{r}_2} ) (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
+    \\ = -i 4\pi e F A \sum_\vec{q} q^{-1} \left[ \oper{b}_{\vec{q}} (e^{i\vec{q} \cdot \vec{r}_1} + e^{i\vec{q} \cdot \vec{r}_2} )   - \adjop{b}_{\vec{q}} (e^{-i\vec{q} \cdot \vec{r}_1} + e^{-i\vec{q} \cdot \vec{r}_2} )\right]
+\end{multline}
+where in the second line we have changed the sign of $\vec{q}$ in the second term, using the fact that the sum is extended over all $\vec{q}$. The extra minus sign comes from the factor $\vec{q}$ in \cref{eq:electric_field}. The second-order energy perturbation caused by the previous Hamiltonian is given by
+\begin{equation}
+    \Delta E = -\sum_\vec{q} \frac{\bra{0}H_\text{el-el}\ket{\vec{q}}\bra{\vec{q}}H_\text{el-el}\ket{0}}{\hbar\omega_\text{LO}}
+\end{equation}
+where $\ket{0}$ and $\ket{\vec{q}}$ are respectively states with no phonons and a single LO phonon in the state $\vec{q}$ with energy $\hbar\omega_\text{LO}$. Inserting \cref{eq:hamiltonian_coulomb_medium} in the previous expression and dropping the terms with $\vec{r}_1$ and $\vec{r}_2$ alone, which are self-energy terms,
+\begin{multline}
+    \Delta E = -2\sum_\vec{q} \frac{\bra{0}eV(\vec{r}_1)\ket{\vec{q}}\bra{\vec{q}}eV(\vec{r}_2)\ket{0}}{\hbar\omega_\text{LO}}
+    \\ = 2 \frac{(4\pi eFA)^2}{\hbar \omega_\text{LO}} \sum_\vec{q} q^{-2} \bra{0}e^{i\vec{q}\cdot\vec{r}_1}(\oper{b}_{\vec{q}} - \adjop{b}_{\vec{q}})\ket{\vec{q}}\bra{\vec{q}}e^{-i\vec{q}\cdot\vec{r}_2}(\oper{b}_{\vec{q}} - \adjop{b}_{\vec{q}})\ket{0}
+    \\ = - 2 \frac{(4\pi eFA)^2}{\hbar \omega_\text{LO}} \sum_\vec{q} q^{-2} \bra{\vec{q}}e^{i\vec{q}\cdot\vec{r}_1}\ket{\vec{q}}\bra{\vec{q}}e^{-i\vec{q}\cdot\vec{r}_2}\ket{\vec{q}}
+    \\ = - 2 \frac{(4\pi eFA)^2}{\hbar \omega_\text{LO}} \sum_\vec{q}\frac{e^{i\vec{q}\cdot(\vec{r}_1 - \vec{r}_2)}}{q^2}
+\end{multline}
+Knowing that, when summed over all $\vec{q}$,
+\begin{equation}
+    \sum_\vec{q} \frac{4\pi}{q^2} e^{i\vec{q}\cdot \vec{r}} = \Omega \frac{1}{|\vec{r}|}
+\end{equation}
+where $\Omega$ is the volume of the region of interest, we can rewrite the perturbation energy as
+
+\begin{equation}
+    \Delta E = - \frac{8\pi \Omega A^2 F^2}{\hbar \omega_\text{LO}} \frac{e^2}{|\vec{r}_1 - \vec{r}_2|}
+\end{equation}
+
+The form of this interaction is exactly the same of an attractive Coulomb potential between two charges placed at $\vec{r}_1$ and $\vec{r}_2$. The origin of this attraction is the polarization of the ions of the medium. Thus, the factor
+\begin{equation} \label{eq:dielectric_factor}
+    - \frac{8\pi \Omega A^2 F^2}{\hbar \omega_\text{LO}}
+\end{equation}
+gives exactly the contribution of the ions to the dielectric constant. Since the static dielectric constant $\epsilon^0$ includes both the contribution of ions and of the electrons, and the high-frequency dielectric constant $\epsilon^\infty$ only the contribution of the electrons, we can express \cref{eq:dielectric_factor} as
+\begin{equation}
+    \frac{1}{\epsilon^0} = \frac{1}{\epsilon^\infty} - \frac{8\pi \Omega A^2 F^2}{\hbar \omega_\text{LO}}
+\end{equation}
+The electric potential is then given by
+\begin{equation}
+    V(\vec{r}) = \sum_\vec{q} V(\vec{q}) e^{i\vec{q} \cdot \vec{r}}
+    = -i \sum_\vec{q} \left[ \frac{2\pi e^2 \hbar \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}}) e^{i\vec{q}\cdot\vec{r}}
+\end{equation}
+and writing it in a full second-quantization form
+\begin{equation}
+    \oper{H}_\text{el-ph} = -i \sum_{\vec{k}'\vec{k}} \sum_{\vec{q}} \left[ \frac{2\pi e^2 \hbar \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2}(\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda}) \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}}
+\end{equation}
+Confronting the previous expression with \cref{eq:general_electron_phonon_hamiltonian}, we can identify the interaction matrix
+\begin{equation}
+    M_{\vec{k} \rightarrow \vec{k} + \vec{q}} = -i \left[ \frac{2\pi e^2 \hbar \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2}
+\end{equation}
+which is more commonly written as
+\begin{equation}
+    M_\vec{q} = -i \frac{\hbar \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hbar}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2}
+\end{equation}
+where $\alpha$ is the dimsensionless Fr\"{o}hlich coupling constant,  defined as
+\begin{equation}
+    \alpha = \frac{e^2}{\hbar} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \sqrt{\frac{m}{2\hbar\omega_\text{LO}}}
+\end{equation}
+where $m$ is the electron band mass.
+
+\subsection{Perturbation theory for the polaron problem}

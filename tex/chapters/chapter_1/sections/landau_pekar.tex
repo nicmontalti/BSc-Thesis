@@ -1,0 +1,51 @@
+\section{Landau-Pekar model} \label{sec:landau_pekar}
+The electron is described by a wavefunction $\Psi(\vec{r})$ moving in a dielectric continuum medium. The static potential of the crystal is taken into account associating at the electron an effective mass $m^*$ (see \Cref{sec:electrons}). If we allow the medium to be polarized, the energy of the system is given by the kinetic energy of electron plus the energy of the electromagnetic field
+\begin{equation} \label{eq:energy_landau}
+    E = \frac{\hbar^2}{2m^*} \int \differential\vec{r} |\grad \psi(\vec{r})|^2 + \oh \int \differential \vec{r} \vec{E}\cdot \vec{D}
+\end{equation}
+$\vec{D}$ can expressed using Gauss law $\div\vec{D} = \rho = -e |\psi(\vec{r}|^2$, or equivalently
+\begin{equation}
+    \vec{D} = -\frac{e}{4\pi} \grad \int \differential \vec{r}' \frac{|\psi(\vec{r})|^2}{|\vec{r}-\vec{r}'|}
+\end{equation}
+Remembering that for a dielectric medium $\vec{D} = \varepsilon_0 \epsilon^0 \vec{E}$, where $\varepsilon_0$ is the vacuum permittivity and $\epsilon^0$ the static dielectric constant, we obtain for the electrostatic energy
+\begin{equation} \label{eq:electric_energy_e0}
+    \oh \int \differential \vec{r}  \vec{E}\cdot \vec{D} =
+    \oh \frac{1}{4\pi\varepsilon_0} \frac{e^2}{\epsilon^0} \int \differential \vec{r} \differential \vec{r}' \frac{|\psi(\vec{r})|^2|\psi(\vec{r}')|^2}{|\vec{r}-\vec{r}'|}
+\end{equation}
+In the previous expression, $\vec{E}$ includes contributions both from the displacement of the ions and of the electric screening of the electrons. The latter effect is already taken into account by the effective mass in the expression of the kinetic energy. Since the ions have a much larger mass than the electrons, they will not contribute to the high-frequency dielectric constant $\epsilon^\infty$. Removing this contribution, \cref{eq:electric_energy_e0} becomes
+\begin{equation}
+    \oh \int \differential \vec{r} \vec{E}\cdot \vec{D} =
+    \oh \frac{e^2}{4\pi\varepsilon_0} \left( \frac{1}{\epsilon^0} - \frac{1}{\epsilon^\infty} \right) \int \differential \vec{r} \differential \vec{r}' \frac{|\psi(\vec{r})|^2|\psi(\vec{r}')|^2}{|\vec{r}-\vec{r}'|}
+\end{equation}
+If we define $1/\kappa = 1/\epsilon^\infty - 1/\epsilon^0$, we can rewrite the total energy as a functional of $\psi$
+\begin{equation}
+    E[\psi] = \frac{\hbar^2}{2m^*} \int \differential\vec{r} |\grad \psi(\vec{r})|^2 - \oh \frac{e^2}{4\pi\varepsilon_0} \frac{1}{\kappa} \int \differential \vec{r} \differential \vec{r}' \frac{|\psi(\vec{r})|^2|\psi(\vec{r}')|^2}{|\vec{r}-\vec{r}'|}
+\end{equation}
+Following a variational approach, this functional can be minimized to find the polaron ground state energy. To do so, we must include a normalization constraint. This is done with the help of a Lagrange multiplier $\varepsilon$
+\begin{multline} \label{eq:landau_variational_energy}
+    E[\psi, \varepsilon] = \frac{\hbar^2}{2m^*} \int \differential\vec{r} |\grad \psi(\vec{r})|^2 - \oh \frac{e^2}{4\pi\varepsilon_0} \frac{1}{\kappa} \int \differential \vec{r}' \frac{|\psi(\vec{r})|^2|\psi(\vec{r}')|^2}{|\vec{r}-\vec{r}'|}
+    \\ - \varepsilon \left( \int \differential\vec{r} |\psi(\vec{r})|^2 -1 \right)
+\end{multline}
+Minimizing with respect to $\psi^*$ and $\varepsilon$, we obtain a Schr\"{o}dinger-type equation
+\begin{equation} \label{eq:landau_schr_eq}
+    \left(-\frac{\hbar^2}{2m^*} \laplacian - \frac{e^2}{4\pi\varepsilon_0} \frac{1}{\kappa} \int \differential \vec{r}' \frac{\psi(\vec{r}')|^2}{|\vec{r}-\vec{r}'|} \right) \psi(\vec{r}) = \varepsilon \psi(\vec{r})
+\end{equation}
+The Lagrange multiplier $\varepsilon$ has the dimension of an energy, but it not exactly the polaron ground state energy. Projecting \cref{eq:landau_schr_eq} onto $\psi^*$ and confronting the result with \cref{eq:landau_variational_energy}, we obtain a ground state energy $E_0$
+\begin{equation}
+    E_0 = \varepsilon + \oh \frac{e^2}{4\pi\varepsilon_0} \frac{1}{\kappa} \int \differential \vec{r}' \frac{|\psi(\vec{r})|^2|\psi(\vec{r}')|^2}{|\vec{r}-\vec{r}'|}
+\end{equation}
+
+\Cref{eq:landau_schr_eq} is not known to have an exact solution. However, given the similarity with the hydrogen atom Hamiltonian, we can use as a trial wavefunction $(\pi r_p^3)^{-1/2} e^{-r/r_p}$ and minimize $E$ with respect to $r_p$. As in the hydrogen atom, the kinetic term minimization favours larger $r_p$ (delocalized states) and the potential term favours smaller $r_p$ (localized states). Performing the minimization \cite{alexandrov2010}, $r_p$ is found to be
+\begin{equation}
+    r_p = \frac{16}{5} \frac{\kappa}{m^*/m_e} a_0
+\end{equation}
+where $m_e$ is the mass of the electron and $a_0$ the Bohr radius. The value of the ground state energy is
+\begin{equation}
+    E_0 = -\frac{50}{512} \alpha^2 \hbar \omega_\text{LO}
+\end{equation}
+where $\omega_\text{LO}$ is the characteristic frequency of longitudinal optical phonon (see \cref{sec:phonons}) and
+\begin{equation}
+    \alpha = \frac{e^2}{4\pi\varepsilon_0\hbar} \sqrt{\frac{m^*}{2\hbar\omega_\text{LO}}} \frac{1}{\kappa}
+\end{equation}
+
+Despite its simplicity, the Landau-Pekar model provides simple formulas for the polaron ground state, radius and effective mass \cite{landau1948}. However, to have polaron bound states, $\kappa$ must be positive, which implies $\epsilon^0 > \epsilon^\infty$. This is true only for polar crystals, but polarons are observed in non-polar crystals as well. Moreover, this model carries an intrinsic contradiction. Treating the medium as a continuum requires the polaron to be large, but formally justified results can only be obtained in the strong coupling regime, a situation improbable for real materials.

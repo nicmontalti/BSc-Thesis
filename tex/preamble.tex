@@ -34,16 +34,18 @@
 \renewcommand{\appendixpagename}{Appendici}
 
 %bibliography
-\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\usepackage[backend=biber, style=numeric, url=false, eprint=false, sorting=none]{biblatex}
 \addbibresource{thesis.bib}
+%\let\cite=\supercite
 
 
 % shortpaths
 \newcommand{\oper}[1]{\hat{#1}}
-\renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\vec}[1]{\mathbf{\boldsymbol{#1}}}
 \newcommand{\adjoint}[1]{#1^\dagger}
 \newcommand{\adjop}[1]{\adjoint{\oper{#1}}}
 \newcommand{\sche}{Schr\"{o}dinger equation\xspace}
+\newcommand{\oh}{\frac{1}{2}}
 
 % abstract definition
 %\usepackage{fancyhdr}
