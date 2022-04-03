@@ -1,0 +1,24 @@
+SYSTEM=TiO2
+
+ISTART = 0      # start from scratch
+ICHARG  = 0     # charge from superposition of individual charges
+ISMEAR = 0      # gaussian
+SIGMA = 0.01
+
+LOUT = 10       # DOSCAR and PROCAR
+LCHARGE.true
+LWAVE.true
+
+# lattice relaxation
+ENCUT = 420 
+EDIFF = 0.1E-04
+
+GGA+U
+  LDAU      = .TRUE.
+  LDAUTYPE  = 2
+  LDAUL     = 2 -1
+  LDAUU     = 3.90 0.00
+  LDAUJ     = 0.00 0.00
+  LDAUPRINT = 2
+  LMAXMIX   = 4 
+

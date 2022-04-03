@@ -1,0 +1,23 @@
+SYSTEM=TiO2
+
+ISTART = 1      # start from WAVECAR
+ICHARG  = 11     # non-selfconsistent
+ISMEAR = 0      # gaussian
+SIGMA = 0.01
+
+LOUT = 10       # DOSCAR and PROCAR
+LCHARGE.false
+LWAVE.false
+
+# lattice relaxation
+ENCUT = 500     # from convergence
+EDIFF = 0.1E-04
+
+GGA+U
+  LDAU      = .TRUE.
+  LDAUTYPE  = 2
+  LDAUL     = 2 -1
+  LDAUU     = 3.90 0.00
+  LDAUJ     = 0.00 0.00
+  LDAUPRINT = 2
+  LMAXMIX   = 4 
