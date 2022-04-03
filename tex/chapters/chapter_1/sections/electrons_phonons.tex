@@ -106,13 +106,13 @@ where $\vec{q}$ is the wavevector, $\lambda = (0,1,\dots rd)$ the branch index, 
 
 The relation between the displacement and the creation and annihilation operators is
 \begin{equation} \label{eq:phonon_coordinates}
-    \delta \vec{R}_n^a = \sum_{\vec{q}\lambda} A_{\vec{q}\lambda}^a \vec{\epsilon}_{\vec{q}\lambda}^a e^{i\vec{q} \cdot \vec{R}_n^a} (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+    \delta \vec{R}_n^a = \sum_{\vec{q}\lambda} A_{\vec{q}\lambda}^a \vers{\epsilon}_{\vec{q}\lambda}^a e^{i\vec{q} \cdot \vec{R}_n^a} (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
 \end{equation}
-where $\vec{\epsilon}_{\vec{q}\lambda}^a$ is the polarization vector and
+where $\vers{\epsilon}_{\vec{q}\lambda}^a$ is the polarization vector and
 \begin{equation} \label{eq:A_phonon_constant}
     A_{\vec{q}\lambda}^a = \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}
 \end{equation}
-where $M_a$ is mass of the $a^\text{th}$ atom and $N$ the number of atoms. The polarization vector is used to describe the direction of the displacement $\delta \vec{R}_n^a$ with respect to the direction of propagation $\vec{q}$. We have transversal phonons if $\vec{q} \cdot \vec{\epsilon}_{\vec{q}\lambda}^a = 0$ and longitudinal phonons if $\vec{q} \cross \vec{\epsilon}_{\vec{q}\lambda}^a = 0$
+where $M_a$ is mass of the $a^\text{th}$ atom and $N$ the number of atoms. The polarization vector is used to describe the direction of the displacement $\delta \vec{R}_n^a$ with respect to the direction of propagation $\vec{q}$. We have transversal phonons if $\vec{q} \cdot \vers{\epsilon}_{\vec{q}\lambda}^a = 0$ and longitudinal phonons if $\vec{q} \cross \vers{\epsilon}_{\vec{q}\lambda}^a = 0$
 
 To generalize \cite{cohenFundamentalsCondensedMatter}, we have considered a Hamiltonian
 \begin{equation}
@@ -160,30 +160,34 @@ where $\oper{H}_\text{el}$ and $\oper{H}_\text{ph}$ are given by \cref{eq:electr
 \end{equation}
 We can use \cref{eq:phonon_coordinates} to rewrite it expanding the displacements in phonon coordinates
 \begin{equation} \label{eq:first_electron_phonon_hamiltonian}
-    \oper{H}_\text{el-ph} = \sum_{a} \sum_{\vec{q}\lambda} A_{\vec{q}\lambda}^a \vec{\epsilon}_{\vec{q}\lambda}^a \cdot \left( \sum_l e^{i\vec{q} \cdot \vec{R}_l^a}   \cdot \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a) \right) (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+    \oper{H}_\text{el-ph} = \sum_{a} \sum_{\vec{q}\lambda} A_{\vec{q}\lambda}^a \vers{\epsilon}_{\vec{q}\lambda}^a \cdot \left( \sum_l e^{i\vec{q} \cdot \vec{R}_l^a}   \cdot \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a) \right) (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
 \end{equation}
-where $A_{\vec{q}\lambda}^a$ is given by \cref{eq:A_phonon_constant}, $\vec{\epsilon}_{\vec{q}\lambda}^a$ is the polarization vector, $\vec{q}$ the momentum of the phonon and $\adjop{b}_{-\vec{q}\lambda}$ and $\oper{b}_{\vec{q}\lambda}$ the phonon creation and annihilation operators.
+where $A_{\vec{q}\lambda}^a$ is given by \cref{eq:A_phonon_constant}, $\vers{\epsilon}_{\vec{q}\lambda}^a$ is the polarization vector, $\vec{q}$ the momentum of the phonon and $\adjop{b}_{-\vec{q}\lambda}$ and $\oper{b}_{\vec{q}\lambda}$ the phonon creation and annihilation operators.
 
-The electron part of the previous expression is still written in the language of first quantization. Using \cref{eq:second_quantization}, we can express in a second-quantized form. Suppressing the band indices and using the extended zone scheme, so that $\vec{k}'$ and $\vec{k}$ are not limited to the first Brillouin zone,
+The electron part of the previous expression is still written in the language of first quantization. Using \cref{eq:second_quantization}, we can express it in a second-quantized form. Suppressing the band indices and using the extended zone scheme, so that $\vec{k}'$ and $\vec{k}$ are not limited to the first Brillouin zone,
 \begin{equation} \label{eq:general_electron_phonon_hamiltonian}
     \oper{H}_\text{el-ph} = \sum_{\vec{k}'\vec{k}} \bra{\vec{k}'} \oper{H}_\text{el-ph} \ket{\vec{k}} \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}}
     = \sum_{\vec{k}'\vec{k}} \sum_{\vec{q}\lambda} M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}} (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
 \end{equation}
 where the electron-phonon matrix $M$ is defined by \cref{eq:first_electron_phonon_hamiltonian}. The previous expression can be interpreted as the transition of an electron from the state $\ket{\vec{k}}$ to the state $\ket{\vec{k}'}$ with either the creation of a phonon of momentum $-\vec{q}$ or the annihilation of a phonon of momentum $\vec{q}$. The matrix element $M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q})$ gives the mechanical amplitude of such a process.
 
-In order to evaluate $M$, we need to compute $\bra{\vec{k}'} \oper{H}_\text{el-ph} \ket{\vec{k}}$. We start with a Fourier transform of the potential. The atomic form factor is given by
+In order to evaluate $M$, we need to compute $\bra{\vec{k}'} \oper{H}_\text{el-ph} \ket{\vec{k}}$. We start with a Fourier transform of the potential
+\begin{equation}
+    V(\vec{r}) = \sum_\vec{q} V_a(\vec{q})e^{i\vec{q}\cdot\vec{r}}
+\end{equation}
+where the atomic form factor is given by
 \begin{equation}
     V_a(\vec{q}) = \frac{1}{\Omega_a} \int e^{-i\vec{q
             }\cdot \vec{r}} V_a(\vec{r}) \differential \vec{r} = \frac{wN}{\Omega} \int e^{-i\vec{q
             }\cdot \vec{r}} V_a(\vec{r}) \differential \vec{r}
 \end{equation}
-where $\Omega_a$ is the volume of a unit cell, $\Omega$ the volume of the crystal, $N$ the number of unit cells and $w$ the number of atoms per unit cell. We compute the gradient of the potential $\grad_\vec{r} V_a(\vec{r})$ expressed as a Fourier series, and we evaluate it at $\vec{r}-\vec{R}_l^a$
-\begin{equation}
+$\Omega_a$ is the volume of a unit cell, $\Omega$ the volume of the crystal, $N$ the number of unit cells and $w$ the number of atoms per unit cell. We compute the gradient of the potential $\grad_\vec{r} V_a(\vec{r})$ expressed as a Fourier series, and we evaluate it at $\vec{r}-\vec{R}_l^a$
+\begin{equation}\label{eq:gradient_fourier}
     \grad_\vec{r} V_a(\vec{r} - \vec{R}_l^a) = \frac{i}{wN} \sum_{\vec{q}'} \vec{q}' e^{i\vec{q}'\cdot \vec{r}} V_a(\vec{r}) e^{-i\vec{q}'\cdot \vec{R}_l^a}
 \end{equation}
-\Cref{eq:first_electron_phonon_hamiltonian} can be rewritten as
+\Cref{eq:first_electron_phonon_hamiltonian} can now be rewritten using \cref{eq:gradient_fourier} as
 \begin{equation}
-    \oper{H}_\text{el-ph} = \frac{i}{wN} \sum_{la\lambda} \sum_{\vec{q}\vec{q}'} A_{\vec{q}\lambda}^a \vec{\epsilon}_{\vec{q}\lambda}^a \cdot \vec{q}' e^{i\vec{q}'\cdot \vec{r}} e^{i(\vec{q}-\vec{q}') \cdot \vec{R}_l^a} V_a(\vec{q}'   )  (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
+    \oper{H}_\text{el-ph} = \frac{i}{wN} \sum_{la\lambda} \sum_{\vec{q}\vec{q}'} A_{\vec{q}\lambda}^a \vers{\epsilon}_{\vec{q}\lambda}^a \cdot \vec{q}' e^{i\vec{q}'\cdot \vec{r}} e^{i(\vec{q}-\vec{q}') \cdot \vec{R}_l^a} V_a(\vec{q}'   )  (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda})
 \end{equation}
 We know that
 \begin{equation}
@@ -192,11 +196,11 @@ We know that
 where $\vec{G}$ is a vector of the reciprocal lattice. Then, most of the terms of the previous expression are zero, and we obtain
 \begin{multline}
     \bra{\vec{k}'}\oper{H}_\text{el-ph}\ket{\vec{k}}
-    \\ = \frac{i}{w} \sum_{a\lambda\vec{q}} A_{\vec{q}\lambda}^a \sum_{\vec{G}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}   ) \vec{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda}) \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}}
+    \\ = \frac{i}{w} \sum_{a\lambda\vec{q}} A_{\vec{q}\lambda}^a \sum_{\vec{G}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}   ) \vers{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) (\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda}) \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}}
 \end{multline}
-where we have used $\vec{G} \cdot \vec{R}_l = 2\pi n$, with $n$ integer, to simplify the sum over $l$. Finally, inserting this result in \cref{eq:general_electron_phonon_hamiltonian}, we obtain an expression for the matrix element $M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q})$
+where we have used $\vec{G} \cdot \vec{R}_l = 2\pi n$, with $n$ integer, to simplify the sum over $l$. Finally, inserting this result in \cref{eq:general_electron_phonon_hamiltonian}, we obtain an expression for the matrix element
 \begin{equation}
-    M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) =  \frac{i}{w} \sum_{a\vec{G}} \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}) \vec{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}}
+    M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) =  \frac{i}{w} \sum_{a\vec{G}} \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}) \vers{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) \bra{\vec{k}'} e^{i(\vec{q} + \vec{G})\cdot \vec{r}} \ket{\vec{k}}
 \end{equation}
 
 We can compute the matrix element for a simple case where the initial and final state of the electron are plane waves. In this case,
@@ -205,19 +209,19 @@ We can compute the matrix element for a simple case where the initial and final 
 \end{equation}
 and
 \begin{equation}
-    M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) =  \frac{i}{w} \sum_{a\vec{G}} \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}) \vec{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) \delta_{\vec{k}', \vec{k}+\vec{q}+\vec{G}}
+    M_{\vec{k} \rightarrow \vec{k}'}^\lambda(\vec{q}) =  \frac{i}{w} \sum_{a\vec{G}} \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}  e^{-i \vec{G} \cdot \vec{\tau}_a} V_a(\vec{q} + \vec{G}) \vers{\epsilon}_{\vec{q}\lambda}^a \cdot (\vec{q}+\vec{G}) \delta_{\vec{k}', \vec{k}+\vec{q}+\vec{G}}
 \end{equation}
 The scattering process that we have explained earlier is now more clear. An electron of momentum $\hbar\vec{k}$ is scattered in an electron of momentum $\hbar (\vec{k}+\vec{q}+\vec{G})$ by the emission of a phonon of momentum $-\vec{q}$ or the absorption of a phonon of momentum $\vec{q}$. We can identify two processes: the normal (N) process, where $\vec{G} = 0$, and the umklapp (U) process, where $\vec{G} \neq 0$. In the normal process $\vec{k}' = \vec{k} + \vec{q}$, and assuming $w=1$,
 \begin{equation}
-    M_{\vec{k} \rightarrow \vec{k} + \vec{q}}^\lambda(\vec{q}) =  i \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}   V_a(\vec{q}) \vec{\epsilon}_{\vec{q}\lambda} \cdot \vec{q}
+    M_{\vec{k} \rightarrow \vec{k} + \vec{q}}^\lambda(\vec{q}) =  i \sqrt{\frac{\hbar}{2M_aN\omega_{\vec{q}\lambda}}}   V_a(\vec{q}) \vers{\epsilon}_{\vec{q}\lambda} \cdot \vec{q}
 \end{equation}
-It is clear that in this type of process, only longitudinal phonons contribute to the scattering, since for transversal phonons $\vec{\epsilon}_{\vec{q}\lambda} \cdot \vec{q} = 0$.
+It is clear that in this type of process, only longitudinal phonons contribute to the scattering, since for transversal phonons $\vers{\epsilon}_{\vec{q}\lambda} \cdot \vec{q} = 0$.
 
 The electrons are affected by deformations of the lattice in several ways \cite{kittel1987}. The main effects of the coupling between  electrons and phonons are:
 \begin{itemize}
     \item the scattering of electrons from a state $\vec{k}$ to a state $\vec{k}'$, resulting in electrical resistivity;
     \item the absorption or creation of phonons;
     \item the creation of an attractive force between electrons, which is essential to explain superconductivity;
-    \item the electron will carry a lattice polarization field with him. The particle resulting from the combination of the electron and the polarization field is called \emph{polaron}, and it has a larger effective mass than the electron alone.
+    \item the electrons carry a lattice polarization field with them. The particle resulting from the combination of the electron and the polarization field is called \emph{polaron}, and it has a larger effective mass than the electron alone.
 \end{itemize}
-In the next section, and in the rest of the thesis, we will focus on this last type of interaction.
+In the next chapter, and in the rest of the thesis, we will focus on this last type of interaction.
