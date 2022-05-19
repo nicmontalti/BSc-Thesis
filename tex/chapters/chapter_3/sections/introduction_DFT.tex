@@ -1,0 +1,156 @@
+Condensed Matter Physics often has to deal with systems of many interacting particles, typically electrons. We have already introduced a mathematical formalism that allows to describe such systems. However, the resulting Hamiltonians often do not have analytical solutions. In these cases, we rely on numerical simulations. One particular approach has emerged as a popular choice in the last decades: Density Functional Theory (DFT). It is based on two seminal papers, respectively written by Hohenberg and Kohn \cite{hohenberg1964} and Kohn and Sham \cite{kohn1965}. DFT allows us to solve many-electrons problems in an \emph{ab-initio} fashion. It is effective for understanding properties related to the electronic ground state of a system. The key advantage of this formalism is that it provides a means to transform a many interacting electrons problem to an effective-field one-electron self-consistent problem, which is exact in principle.
+
+In the next sections we will introduce this formalism and its application, focusing on VASP (Vienna Ab-initio Simulation Package).
+\section{Introduction to DFT}
+\subsection{Ground state and density functional formalism}
+The basic assumption of DFT is that, for a system of interacting electrons in an external potential $v(\vec{r})$, the ground-state energy $E_g$ can be expressed as a functional of the sole charge density $\rho(\vec{r})$. We will indicate this with the standard notation $E_g[\rho]$. This statement was proven for the first time by Hohenberg and Kohn in 1964 \cite{hohenberg1964}. This allows a great simplification of the original problem, since the ground-state energy depends only on a single scalar field $\rho(\vec{r})$, instead on a multi-particle wavefunction $\Psi{(\vec{r}_1\dots \vec{r}_N})$. The external potential is usually assumed to be the ionic potential.
+
+We want to show that we can write $E_g$ as a functional of $\rho(\vec{r})$ only. We will take the point of view that our problem is entirely determined by the external potential $v(\vec{r})$. In fact, the Hamiltonian can be expressed as a sum of three components
+\begin{equation} \label{eq:hamiltonian_DFT}
+    \oper{H} = \sum_i v(\vec{r}_i) + \sum_i \frac{\vec{p}_i^2}{2m} + \oh \sum_{i\neq j} \frac{e^2}{|\vec{r}_i - \vec{r}_j|} = V + T + U
+\end{equation}
+If we have a system of $N$ electrons and we want to determine its ground-state energy, the last two terms ($T$ and $U$) are universal for all such problems. The solution $\Psi$ is then entirely determined by the first term $V$. If we define
+\begin{equation}
+    \rho(\vec{r}) = \sum_i \bra{\Psi} \delta^3(\vec{r}-\vec{r}_i)\ket{\Psi}
+\end{equation}
+since $\Psi$ is determined by $V$, $\rho$ is a unique functional of $V$. The main point of the theory is that also the converse is true. We can prove it by contradiction.
+
+Let's assume that the contrary is true. That is, there exists another external potential $v'(\vec{r})$ such that the ground state solution of the respective \sche $\ket{\Psi'}$ gives the same density $\rho'(\vec{r}) = \rho(\vec{r})$. The two potentials are assumed to differ for more than a constant. Since $\ket{\Psi'}$ and $\ket{\Psi}$ are solutions to \sches with different potentials, they will differ for more than a phase factor. We know from variational theory that the ground-state wavefunction minimizes the expectation value of the Hamiltonian, so
+\begin{equation}
+    E' = \bra{\Psi'} H' \ket{\Psi'} < \bra{\Psi} H' \ket{\Psi}
+\end{equation}
+but
+\begin{equation}
+    \bra{\Psi} H' \ket{\Psi} = \bra{\Psi} H - V + V' \ket{\Psi} = E + \int [v'(\vec{r}) - v(\vec{r})] \rho(\vec{r}) \differential r
+\end{equation}
+which leads to the inequality
+\begin{equation}
+    E' < E + \int [v'(\vec{r}) - v(\vec{r})] \rho(\vec{r}) \differential \vec{r}
+\end{equation}
+Similarly, for the primed system, we find
+\begin{equation}
+    E < E' + \int [v(\vec{r}) - v'(\vec{r})] \rho'(\vec{r}) \differential \vec{r}
+\end{equation}
+Adding the previous two equations, remembering that $\rho'(\vec{r}) = \rho(\vec{r})$, we get
+\begin{equation}
+    E' + E < E + E'
+\end{equation}
+which is obviously absurd. This proves that $v(\vec{r})$ is a unique functional of $\rho(\vec{r})$. In other words, given a physical electron density, there is a unique external potential that may cause it. In addition, since knowing $v(\vec{r})$ defines completely the problem, $\ket{\Psi}$ is also a functional of $\rho(\vec{r})$.
+
+We can define a new functional
+\begin{equation}
+    F[\rho] = \bra{\Psi[\rho]} T+U \ket{\Psi[\rho]}
+\end{equation}
+and, using \cref{eq:hamiltonian_DFT}, express the ground-state energy as
+\begin{equation} \label{eq:ground_functional}
+    E_g[\rho] = \bra{\Psi[\rho]} V+T+U \ket{\Psi[\rho]} = \int v(\vec{r}) \rho(\vec{r}) \differential \vec{r} + F[\rho]
+\end{equation}
+where $v(\vec{r})$ is a functional of $\rho$. The problem is than now reduced to minimizing the functional $E_g[\rho]$ with the constraint $N = \int \rho(\vec{r}) \differential \vec{r}$. If $F[\rho]$ had a simple known expression, the problem would be quite straight forward. Unfortunately, this in not the case, and the expression of $F[\rho]$ is not explicitly known.
+
+\subsection{The Kohn-Sham Equations}
+Kohn and Shamk proved in 1965 that $\rr{\rho}$ can be determined solving a set of $N$ Shr\"{o}dinger-type equations, subject to an effective potential $v'(\vec{r})$. It is important to emphasize that the solutions of the $N$ equations should not be interpreted as orbitals of the real system. In the Kohn-Sham formalism two different systems are considered: the real system, made of $N$ interacting particles subject to an external potential $\rr{v}$, and a fictitious system, made of $N$ non-interacting particles subject to an effective potential $\rr{v'}$.
+
+In the expression of the ground-state energy shown in \cref{eq:ground_functional}, $F[\rho]$ contains both the kinetic energy $T$ and the interaction energy $U$, for which there are no known expressions in terms of the density $\rr{\rho}$. However, we can estimate $F[\rho]$ in some limiting cases. If we neglect exchange and correlation effects, the interaction energy is given by the Hartree term
+\begin{equation} \label{eq:kohn_interaction}
+    U_\text{KS} = \frac{e^2}{2} \int \frac{\rho(\vec{r})\rho(\vec{r}')}{|\vec{r}-\vec{r}'|}  \dr \dr'
+\end{equation}
+For a non-interacting system of $N$ particles of density $\rr{\rho}$, where each particle is described by a wavefunction $\rr{\phi_i}$, the total kinetic energy is given by
+\begin{equation} \label{eq:kohn_kinetic}
+    T_\text{KS} = -\frac{\hbar^2}{2m}\sum_i \int \rr{\phi_i^*} \laplacian \rr{\phi_i} \dr
+\end{equation}
+with
+\begin{equation}
+    \rr{\rho} = \sum_i \rr{\phi_i^*}\rr{\phi_i}
+\end{equation}
+It is reasonable to expect that the interaction and kinetic energy of the real system will be close to the sum of \cref{eq:kohn_interaction} and \cref{eq:kohn_kinetic}. It is then convenient to write the functional $F[\rho]$ as
+\begin{equation}
+    F[\rho] = T_\text{KS}[\rho] + U_\text{KS}[\rho] + E_\text{xc}[\rho]
+\end{equation}
+where $E_\text{xc}$ is added to take into account exchange and correlation effects. Our entire ignorance on $F[\rho]$ is now contained in $E_\text{xc}[\rho]$.  We can express the ground-state energy functional as
+\begin{equation} \label{eq:kohn_ground}
+    E_g[\rho] = \int \rr{v} \rr{\rho} \dr +  T_\text{KS} + \frac{e^2}{2} \int \frac{\rho(\vec{r})\rho(\vec{r}')}{|\vec{r}-\vec{r}'|}  \dr \dr' + E_\text{xc}[\rho]
+\end{equation}
+
+It is now time to bring in the fictitious systems we introduced above. Our goal is to determine a second system of $N$ interacting particles with the same density $\rr{\rho}$ of the real system. The \sche of the fictitious system are solved to determine $\rr{\rho}$. Then, the density is plugged in \cref{eq:kohn_ground} to determine the value of the ground-state energy functional. Using the variational principles, the non-interacting system is varied to minimize the real system ground state energy. The minimum will give us the charge density and the ground-state energy of the real system. The variation gives rise to a set of Euler-Lagrange equations that governs the single-particle orbitals and energies of the fictitious system.
+
+Let's then consider a non-interacting system of $N$ particles subject to an effective potential $\rr{v'}$. The density $\rr{\rho'}$ is determined solving
+\begin{equation}
+    \left(-\frac{\hbar^2}{2m} \laplacian + \rr{v'} \right) \rr{\phi_i} = \epsilon_i \rr{\phi_i}
+\end{equation}
+and computing $\rr{\rho'} = \sum_i |\rr{\phi_i}|^2$. The kinetic energy is then given by
+\begin{equation}
+    T_\text{KS}[\rho'] = \sum_i \epsilon_i - \int \rr{v'} \rr{\rho'} \dr
+\end{equation}
+Inserting this result in \cref{eq:kohn_ground}, we find an expression for the ground-state energy functional
+\begin{multline} \label{eq:kohn_ground_non_int}
+    E_g[\rho'] = \int \rr{v} \rr{\rho'} \dr
+    \\+ \left(\sum_i \epsilon_i - \int \rr{v'} \rr{\rho'} \dr\right) + \frac{e^2}{2} \int \frac{\rho'(\vec{r})\rho'(\vec{r}')}{|\vec{r}-\vec{r}'|}  \dr \dr' + E_\text{xc}[\rho']
+\end{multline}
+To obtain the physical density and the actual ground-state energy, we minimize \cref{eq:kohn_ground_non_int} by varying $\rho$. That is, we evaluate the shift in energy $E_g \rightarrow E_g + \delta E_g$ after a variation $\rho' \rightarrow \rho' + \delta\rho'$
+\begin{multline} \label{eq:kohn_ground_variation}
+    \delta E_g =
+    \int \rr{v} \delta\rr{\rho'} \dr
+    + \sum_i \delta \epsilon_i
+    - \int \delta \rr{\rho'} \left[ \rr{v'} + \int \frac{\delta v'(\vec{r}')}{\delta\rr{\rho'}}\rho'(\vec{r}') \dr' \right] \dr
+    \\+ e^2 \int \delta\rr{\rho'} \frac{\rho'(\vec{r}')}{|\vec{r}-\vec{r}'|}  \dr \dr'
+    + \int \delta\rr{\rho'} \frac{\delta E_\text{xc}}{\delta\rr{\rho'}} \dr
+    \\ = \sum_i \delta \epsilon_i + \int \delta\rr{\rho'} \left[ \rr{v} - \rr{v'} - \int \frac{\delta v'(\vec{r}')}{\delta\rr{\rho'}}\rho'(\vec{r}') \dr' + e^2 \int \frac{\rho'(\vec{r}')}{|\vec{r}-\vec{r}'|} \dr' + \frac{\delta E_\text{xc}}{\delta\rr{\rho'}} \right] \dr
+\end{multline}
+When $\rr{\rho'}$ minimizes the functional, the previous expression is equal to zero. Minimizing with respect to $\rr{\rho'}$ is equivalent to doing it with respect to $\rr{v'}$. Since, to first order in $\delta v'$,
+\begin{equation}
+    \sum_i \delta \epsilon_i = \sum_i \bra{\phi_i} \delta v' \ket{\phi_i}
+    = \int \rrp{\delta v'} \rrp{\rho'} \dr'
+    = \int \delta \rr{\rho'} \frac{\delta v'(\vec{r}')}{\delta \rr{\rho'}} \rrp{\rho'} \dr \dr'
+\end{equation}
+setting \cref{eq:kohn_ground_variation} equals to zero gives
+\begin{equation}
+    \rr{v'} = \rr{v} + e^2 \int \frac{\rho'(\vec{r}')}{|\vec{r}-\vec{r}'|} \dr' + \frac{\delta E_\text{xc}}{\delta\rr{\rho'}}
+\end{equation}
+The equations that govern the fictitious non-interacting system are then
+\begin{equation} \label{eq:kohn_sche}
+    \left(-\frac{\hbar^2}{2m} \laplacian + \rr{v} + \rr{v_H} + \rr{v_\text{xc}} \right) \rr{\phi_i} = \epsilon_i \rr{\phi_i}
+\end{equation}
+where
+\begin{align}
+    \rr{v_H}         & = e^2 \int \frac{\rho'(\vec{r}')}{|\vec{r}-\vec{r}'|} \dr' \\
+    \rr{v_\text{xc}} & =  \frac{\delta E_\text{xc}}{\delta\rr{\rho'}}
+\end{align}
+and $\rr{\rho'}$ is given by
+\begin{equation} \label{eq:kohn_rho}
+    \rr{\rho'} = \sum_i |\rr{\phi_i}|^2
+\end{equation}
+Equations \ref{eq:kohn_sche} are known as Kohn-Sham equations. They look like a set of \sches, but they are inherently different. In fact, the LHS of the equations depends on $\rho$, and so on $\phi_i$, like the RHS.
+
+If $E_\text{xc}$ were exactly known, the equations would be solvable with a self-consistent calculation. In a self-consistent calculation, an initial $\rr{\rho}$ is assumed and the LHS of the equation is evaluated. Then, the equation is solved like a standard \sche, and a new $\rr{\rho}$ is computed through \cref{eq:kohn_rho}. The solution is plugged in \cref{eq:kohn_ground_non_int} to find the ground-state energy of the real system. The procedure is repeated with the new density, and it ends when the difference in energy between two successive steps is smaller than a pre-chosen value. It is important to emphasize that the coefficients $\epsilon_i$ have nothing to do with the energies of the electrons of the interacting system. The only quantities with physical meaning are the total electron density $\rr{\rho}$ and the ground-state energy $E_g$.
+
+Since $E_\text{xc}$ is not exactly known, different approximations have been developed. The different models are developed based on some constraints that the exchange-correlation functional must satisfy. The models are tested on simple systems that are exactly solvable, like the uniform electron gas. The functional are generally parametrized, and the parameters can be set based on \emph{ab-initio} calculations or fitting experimental data.
+
+A common approach is to write $E_\text{xc}$ as
+\begin{equation}
+    E_\text{xc} = \int \rr{\rho} \rr{\epsilon_\text{xc}} \dr
+\end{equation}
+The functionals $E_\text{xc}$ are generally divided in two classes: the local density approximation (LDA) and generalized gradient approximation (GGA). In the LDA, $\rr{\epsilon_\text{xc}}$ is assumed to be dependent on the density $\rr{\rho}$ only, whereas in the GGA also on its gradient $\grad \rr{\rho}$. The functionals take the form
+\begin{align}
+    E_\text{xc}^\text{LDA} & = \int \rr{\rho} \epsilon_\text{xc}(\rho) \dr             \\
+    E_\text{xc}^\text{GGA} & = \int \rr{\rho} \epsilon_\text{xc}(\rho, \grad \rho) \dr
+\end{align}
+
+\subsection{DFT corrections: DFT+U}
+\label{sec:dft+u}
+DFT has a good accuracy when determining structural and cohesive properties, but it often fails in the prediction of electronic properties. The fundamental problem of DFT resides in the Hartree term
+\begin{equation}
+    \frac{e^2}{2} \int \frac{\rho'(\vec{r})\rho'(\vec{r}')}{|\vec{r}-\vec{r}'|}
+\end{equation}
+In fact, this term does not exclude the contribution of self-interaction to the electronic repulsion energy. This effect cannot be counterbalanced by the exchange-correlation term, because the form of the two is inherently different. The Hartree term is given by a double integral, whereas the exchange-correlation energy by a single integral.
+
+The effect is that DFT favors delocalized states, which have a lower self-interaction energy. As a result, band gaps energies of semiconductors are usually underestimated \cite{seidl1996}. Many alternative solutions have been proposed, like the hybrid functionals and the post-Hartree-Fock methods \cite{tolba2018}. However, we will focus on the approach proposed by Anisimov, called DFT+U \cite{anisimov1991}. This approach has the advantage to be as reliable as the other methods, but with significantly lower computational cost.
+
+The developing of DFT+U was inspired by another model: the Hubbard model. This model is useful to describe the transition between conducting and isolating systems. It is based on the tight-binding approximation: the electrons are described by the usual atomic orbitals and are allowed to "jump" from one atom to the other. The probability of the jump is described by a transfer integral $t$. The Hubbard model adds to the tight-binding model an onsite repulsion, consequence of the repulsion of the electrons residing in the same orbital. In its simpler formulation, the Hubbard model can be applied to a linear chain of hydrogen atoms. The electrons occupy s orbitals and may have spin up or down. This system can be described by the following Hubbard Hamiltonian
+\begin{equation}
+    \oper{H}_\text{Hub} = -t \sum_{\langle i,j \rangle} \adjop{c}_{j,\sigma}\oper{c}_{j,\sigma} + U \sum_i \oper{n}_{i\uparrow} \oper{n}_{i\downarrow}
+\end{equation}
+where $\langle i,j \rangle$ indicates two nearest neighbor atoms, $\sigma$ is the spin, $\adjop{c}$ and $\oper{c}$ the creation and annihilation operators and $\oper{n}$ the number operator. The first term is parametrized by the transfer integral $t$, which represents the kinetic energy of the electron that jumps between the atoms. The second term takes into account the potential energy given by the repulsion of the electrons. The first term favors delocalized states, whereas the second one tends to localize the electrons.
+
+The original DFT Hamiltonian is corrected adding the Hubbard contribution. This is not done for all the electrons, but only for the electrons that reside in the most localized orbitals (d and f). Electrons in s and p orbitals are treated with standard DFT. The parameters $t$ and $U$ are usually determined semi-empirically, fitting the data from the experimental band gaps. This method was simplified by Dudarev et al. in 1998 \cite{dudarev1998}. In their model, the intra-atomic self-interaction error is corrected via a Hubbard-like model which depends only on the difference $U-t$. The final effect of using a DFT+U approach instead of doing a standard DFT calculation is the broadening of the band gap. The greater the value assigned to $U$ is, the more the states are localized and the more the gap broadens.
+
+

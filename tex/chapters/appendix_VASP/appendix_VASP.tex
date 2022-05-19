@@ -1,0 +1,28 @@
+\chapter{VASP files used in the simulation}
+In this appendix we report the input files used in all the simulation steps. The meaning of each parameter can be found on the VASP wiki \cite{zotero-172}.
+
+\section{DFT and DFT+U calculation on $\ce{TiO_2}$}
+\subsection{Unit cell relaxation} \label{app:simple_relaxation}
+\begin{itemize}
+    \item POSCAR
+          \lstinputlisting{simple_relaxation/POSCAR}
+    \item KPOINTS
+          \lstinputlisting{simple_relaxation/KPOINTS}
+    \item       INCAR
+          \lstinputlisting{simple_relaxation/INCAR}
+\end{itemize}
+
+\subsection{Standard calculation} \label{app:standard_calculation}
+\subsection{DFT+U calculation} \label{app:DFT+U_calculation}
+\subsection{Band structure} \label{app:simle_non_self}
+\subsection{Supercell} \label{app:supercell}
+
+\section{Electron localization}
+\subsection{Central vanadium atom, U-J = \SI{9}{eV}} \label{app:localization}
+\subsection{Central titanum atom, U-J = \SI{9}{eV}} \label{app:substitution}
+\subsection{Central titanum atom, U-J = \SI{3.9}{eV}} \label{app:normal_U}
+
+\section{Polaron}
+\subsection{Precise polaron simulation} \label{app:final}
+\subsection{Delocalized electron simulation} \label{app:delocalized}
+\subsection{Bands of the polaronic system} \label{app:polaron_bands}

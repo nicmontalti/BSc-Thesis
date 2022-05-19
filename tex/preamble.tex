@@ -1,41 +1,70 @@
-\documentclass[11pt,a4paper, twoside]{book}
+\documentclass[11pt,a4paper, oneside]{book}
 \usepackage[italian, english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{newlfont}
 \usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{bostonuniversityred}{rgb}{0.8, 0.0, 0.0}
+
 
 % physics and math
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{physics}
 \usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+
+\usepackage{float}
+\usepackage{listings}
+\definecolor{veryLightGrey}{rgb}{0.9629411,0.9629411,0.9629411}
+\lstset{
+    inputpath=listings/,
+    language=bash,
+    basicstyle=\ttfamily\footnotesize,
+    commentstyle=\fontseries{lc}\selectfont\itshape\color{OliveGreen},
+    numbers=left,
+    numberstyle=\ttfamily\scriptsize,
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{veryLightGrey},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=tb,
+    tabsize=4,
+    captionpos=t,
+    breaklines=false,
+    %commentstyle=\color{BrickRed},%\color{OliveGreen},
+    stringstyle=\color{BrickRed},
+    keywordstyle=\color{RoyalBlue}
+}
 
 % latex
 \usepackage{geometry}
-\definecolor{bostonuniversityred}{rgb}{0.8, 0.0, 0.0}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=bostonuniversityred,
+    linkcolor=BrickRed,
     filecolor=blue,
     urlcolor=cyan,
     citecolor=blue,
     pdftitle={Polarons}
 }
+\usepackage{graphicx}
 
 \usepackage[capitalise]{cleveref}
 \usepackage{caption}
 \captionsetup[figure]{labelfont={bf, small}, textfont={small, sl}, position=bottom}
 \captionsetup[table]{labelfont={bf, small}, textfont={sl, small}, position=top}
+\usepackage{subcaption}
 
 \usepackage{xspace} % spaces after \newcommand
 
 \usepackage{appendix}
-\renewcommand{\appendixpagename}{Appendici}
 
 %bibliography
-\usepackage[backend=biber, style=numeric, url=false, eprint=false, sorting=none]{biblatex}
+\usepackage[backend=biber, citestyle=numeric-comp, url=false, eprint=false, sorting=none]{biblatex}
 \addbibresource{thesis.bib}
 %\let\cite=\supercite
 
@@ -48,6 +77,11 @@
 \newcommand{\adjop}[1]{\adjoint{\oper{#1}}}
 \newcommand{\sche}{Schr\"{o}dinger equation\xspace}
 \newcommand{\oh}{\frac{1}{2}}
+\newcommand{\rr}[1]{#1(\vec{r})}
+\newcommand{\dr}{\differential \vec{r}}
+\newcommand{\rrp}[1]{#1(\vec{r}')}
+\newcommand{\sches}{Schr\"{o}dinger equations\xspace}
+
 
 % abstract definition
 %\usepackage{fancyhdr}
