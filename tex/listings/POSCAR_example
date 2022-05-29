@@ -1,0 +1,14 @@
+Cubic diamond               # first line used as comment
+   5.5                      # lattice constant (in angstrom)
+#--- Definition of the base vectors of the primitive cell---
+  0.0    0.5     0.5        # a1
+  0.5    0.0     0.5        # a2
+  0.5    0.5     0.0        # a3
+Si                          # atomic species
+2                           # number of atoms in the primitive cell
+#--- Positions of the atoms in the primitive cell---
+Direct                      # Direct: lattice vectors basis
+                            # Cartesian: cartesian basis
+  0.00  0.00  0.00          # first atom
+  0.25  0.25  0.25          # second atom
+                            # [...]

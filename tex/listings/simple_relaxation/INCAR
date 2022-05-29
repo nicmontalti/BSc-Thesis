@@ -1,0 +1,28 @@
+SYSTEM=TiO2
+
+ISTART = 0      # start from scratch
+ICHARGE = 2     # charge from superposition of individual charges
+ISMEAR = 0      # gaussian smearing
+SIGMA = 0.01    # standard deviation of the gaussian smearing
+
+#output
+LOUT = 10       # DOSCAR and PROCAR file printed in output
+LCHARGE.true    # save final charge density
+LWAVE.true      # save final wavefunctions
+
+# lattice relaxation
+ENCUT = 460     # cutoff energy
+EDIFF = 0.1E-04 # condition to stop self-consistent calculation
+EDIFFG = -0.01  # force to stop the ions relaxation
+IBRION = 1      # perform the relaxation
+ISIF = 0        # modify positions, don't calculate stress tensor
+NSW = 25        # max number of relaxation steps
+
+# DOS
+EMIN = -15      # min energy in DOS
+EMAX = 15       # max energy in DOS
+NEDOS = 2000    # number of points in DOS
+
+# parallelization for better performance
+KPAR = 20
+NCORE = 2

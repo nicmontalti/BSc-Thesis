@@ -1,0 +1,12 @@
+Bandstructure G-X-W-G                 # first line used as coment
+  10                                  # number of k-points per line
+Line                                  # line between the specified points
+Reciprocal                            # Reciprocal or Cartesian
+  0.0  0.0  0.0    Gamma              # first point
+  0.5  0.5  0.0    X                  # second point
+  
+  0.5  0.5  0.0    X                  # [...] 
+  0.5  0.75 0.25   W
+  
+  0.5  0.75 0.25   W
+  0.0  0.0  0.0    Gamma
