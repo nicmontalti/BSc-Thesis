@@ -1,3 +1,5 @@
+Before starting discussing polarons and their properties, we offer a brief review of some fundementals of condesed matter physics. We start discussing the second quantization formalism, which will be used extensively in the rest of the thesis. Then we will briefly describe the behaviour of electrons and phonons in materials, included their interaction, which serves as a basis for the descrition of polarons.
+
 \section{Second quantization} \label{sec:second_quantization}
 Second quantization, also referred to as occupation number representation, is a formalism used to describe and analyze quantum many-body systems. The key ideas of this method were introduced in 1927 by Paul Dirac \cite{dirac1927}, and were later developed by Vladimir Fock and Pascual Jordan \cite{fock1932}. The key idea of second quantization is to reppresent states of a many-body system as elements of a Fock space. The elements of a Fock space are labeled only by the number of particles in the different single-particle states. This approach is particularly useful because it allows us to neglect the individual single-particle states, and focus only on the whole system.
 
@@ -180,7 +182,7 @@ The previous equation is of fundamental importance in second quantization formal
 The final aim of second-quantization is to express every operator in terms of the creation and annihilation operators. The action of every operator can be interpreted as the creation ($\adjop{a}$), annihilation ($\oper{a}$) or counting ($\oper{N}$) of the partices in the system. This allows us to use Fock states as kets and to simplify our equations.
 We focus our discussion on additive single-particle operator \cite{sakurai2020}. Examples are momentum, kinetic energy and single body potentials. In these cases, the total expectation value of the operator is simply given by the sum of the expectation values of the operator applied to the single particles.
 
-Given an operator $\oper{K}$ of eigenkets $\ket{k_i}$ and a state vector
+Given an operator $\oper{K}$ of eigenkets $\ket{k_i}$, with $\oper{K} \ket{k_i} = k_i\ket{k_i}$, and a state vector
 \begin{equation}
     \ket{\Psi} = \ket{n_1, n_2, \dots}
 \end{equation}
@@ -190,9 +192,10 @@ the result of applying $\oper{K}$ to $\ket{\Psi}$ is simply
 \end{equation}
 Confronting this expression with the definition of the number operator expressed in \cref{eq:number_operator} we can write $\oper{K}$ as
 \begin{equation}
-    \oper{K} = \sum_i k_i N_i = \sum_i k_i  \adjop{a_i}\oper{a_i}
+    \label{eq:creation_annihilation_operator}
+    \oper{K} = \sum_i k_i \oper{N}_i = \sum_i k_i  \adjop{a_i}\oper{a_i}
 \end{equation}
-It could happen that we have a state ket expressed in base different from the eigenkets of our operator of interest. If we suppose this base to be formed by $\ket{l_j}$, using completeness
+It could happen to have a state ket expressed in a base different from the eigenkets of our operator of interest. If we suppose this base to be formed by $\ket{l_j}$, using the relation of completeness,
 \begin{equation} \label{eq:change_basis}
     \ket{k_i} = \sum_j \ket{l_j} \braket{l_j}{k_i}
 \end{equation}

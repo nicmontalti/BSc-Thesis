@@ -56,7 +56,7 @@ In the expression of the ground-state energy shown in \cref{eq:ground_functional
 \end{equation}
 For a non-interacting system of $N$ particles of density $\rr{\rho}$, where each particle is described by a wavefunction $\rr{\phi_i}$, the total kinetic energy is given by
 \begin{equation} \label{eq:kohn_kinetic}
-    T_\text{KS} = -\frac{\hbar^2}{2m}\sum_i \int \rr{\phi_i^*} \laplacian \rr{\phi_i} \dr
+    T_\text{KS} = -\frac{\hslash^2}{2m}\sum_i \int \rr{\phi_i^*} \laplacian \rr{\phi_i} \dr
 \end{equation}
 with
 \begin{equation}
@@ -75,7 +75,7 @@ It is now time to bring in the fictitious systems we introduced above. Our goal 
 
 Let's then consider a non-interacting system of $N$ particles subject to an effective potential $\rr{v'}$. The density $\rr{\rho'}$ is determined solving
 \begin{equation}
-    \left(-\frac{\hbar^2}{2m} \laplacian + \rr{v'} \right) \rr{\phi_i} = \epsilon_i \rr{\phi_i}
+    \left(-\frac{\hslash^2}{2m} \laplacian + \rr{v'} \right) \rr{\phi_i} = \epsilon_i \rr{\phi_i}
 \end{equation}
 and computing $\rr{\rho'} = \sum_i |\rr{\phi_i}|^2$. The kinetic energy is then given by
 \begin{equation}
@@ -108,7 +108,7 @@ setting \cref{eq:kohn_ground_variation} equals to zero gives
 \end{equation}
 The equations that govern the fictitious non-interacting system are then
 \begin{equation} \label{eq:kohn_sche}
-    \left(-\frac{\hbar^2}{2m} \laplacian + \rr{v} + \rr{v_H} + \rr{v_\text{xc}} \right) \rr{\phi_i} = \epsilon_i \rr{\phi_i}
+    \left(-\frac{\hslash^2}{2m} \laplacian + \rr{v} + \rr{v_H} + \rr{v_\text{xc}} \right) \rr{\phi_i} = \epsilon_i \rr{\phi_i}
 \end{equation}
 where
 \begin{align}

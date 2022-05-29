@@ -2,7 +2,7 @@
 We have anticipated in \cref{sec:landau_pekar} a simple model for polarons. We are now ready to improve that first simple model, taking now into account a more precise mechanics of the lattice polarization. In this section we will discuss the Fr\"ohlich Hamiltonian, derived by Fr\"{o}hlich in 1950 \cite{frohlich1950}. This Hamiltonian is appropriate to describe polarons in ionic crystals and polar semiconductors. In these materials we expect electrons to interact strongly with longitudinal optical phonons through the electric field produced by the polarization of the lattice. The contribution of transversal phonons is expected to be negligible because of the smaller electric field they produce.
 
 \subsection{Derivation of the Fr\"{o}hlich Hamiltonian}
-In this section we derive the Fr\"{o}hlich Hamiltonian following the approach described by Kittel \cite{kittel1987}. We assume the longitudinal phonons to be dispersionless (with frequency $\omega_\text{LO}$) and we treat the polarizable medium as continuum.
+In this section we derive the Fr\"{o}hlich Hamiltonian following the approach described by Kittel \cite{kittel1987}. We assume the longitudinal phonons to be dispersionless (with frequency $\omega_\text{LO}$) and we treat the polarizable medium as a continuum.
 
 In an ionic crystal, the polarization $\vec{P}$ can be considered as the sum of two components: the optical polarization $\vec{P}_o$ and the infra-red polarization $\vec{P}_\text{ir}$. The former is due to the displacement of bound electrons, and it is characterized by a resonance frequency in the optical or ultra-violet region; the latter is due to the displacement of ions and its resonance frequency is in the infra-red region. Given the slow velocities of the electrons that we are going to consider, the optical polarization is always excited at its static value. Thus, given the absence of a dependence on the velocity of the electron, the optical polarization $\vec{P}_o$ is of no interest to us, since it does not modify the energy of the electron between different states. On the other hand, this does not apply to the infra-red polarization, because of its lower resonance frequency. At long distances from the electric charge (placed at $\vec{r}_0)$, $\vec{P}_\text{ir}$ can be obtained subtracting the optical polarization $\vec{P}_o$ from the total polarization $\vec{P}$. Thus, it can be derived from an electric potential $V(\vec{r})$ by
 \begin{equation} \label{eq:polarization_potential}
@@ -31,7 +31,7 @@ As we anticipated, $\vec{P}_\text{ir}$ is proportional to the amplitude of the d
 \begin{equation} \label{eq:polarization_field}
     \vec{P}_\text{ir} = F \vec{\xi}(\vec{r}) = i F \sum_{\vec{q}} A \vers{q} e^{i\vec{q} \cdot \vec{r}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{equation}
-where F is a constant to be determined. We expand also the electric potential in a Fourier series
+where F is a constant to be determined. We expand the electric potential in a Fourier series
 \begin{equation}
     V(\vec{r}) = \sum_\vec{q} V(\vec{q}) e^{i\vec{q} \cdot \vec{r}}
 \end{equation}
@@ -51,14 +51,14 @@ We now want to express the constant $F$ in terms of the interaction energy of tw
 \end{multline}
 where in the second line we have changed the sign of $\vec{q}$ in the second term, using the fact that the sum is extended over all $\vec{q}$. The second-order energy perturbation caused by the previous Hamiltonian is given by
 \begin{equation}
-    \Delta E = -\sum_\vec{q} \frac{\bra{0}H_\text{el-el}\ket{\vec{q}}\bra{\vec{q}}H_\text{el-el}\ket{0}}{\hbar\omega_\text{LO}}
+    \Delta E = -\sum_\vec{q} \frac{\bra{0}H_\text{el-el}\ket{\vec{q}}\bra{\vec{q}}H_\text{el-el}\ket{0}}{\hslash\omega_\text{LO}}
 \end{equation}
-where $\ket{0}$ and $\ket{\vec{q}}$ are respectively states with no phonons and a single LO phonon in the state $\vec{q}$ with energy $\hbar\omega_\text{LO}$. Inserting \cref{eq:hamiltonian_coulomb_medium} in the previous expression and dropping the terms with $\vec{r}_1$ and $\vec{r}_2$ alone, which are self-energy terms,
+where $\ket{0}$ and $\ket{\vec{q}}$ are respectively states with no phonons and a single LO phonon in the state $\vec{q}$ with energy $\hslash\omega_\text{LO}$. Inserting \cref{eq:hamiltonian_coulomb_medium} in the previous expression and dropping the terms with $\vec{r}_1$ and $\vec{r}_2$ alone, which are self-energy terms,
 \begin{multline}
-    \Delta E = -2\sum_\vec{q} \frac{\bra{0}eV(\vec{r}_1)\ket{\vec{q}}\bra{\vec{q}}eV(\vec{r}_2)\ket{0}}{\hbar\omega_\text{LO}}
-    \\ = -2 \frac{(4\pi eFA)^2}{\hbar \omega_\text{LO}} \sum_\vec{q} q^{-2} \bra{0}e^{i\vec{q}\cdot\vec{r}_1}(\oper{b}_{\vec{q}} + \adjop{b}_{\vec{q}})\ket{\vec{q}}\bra{\vec{q}}e^{-i\vec{q}\cdot\vec{r}_2}(\oper{b}_{\vec{q}} + \adjop{b}_{\vec{q}})\ket{0}
-    \\ = - 2 \frac{(4\pi eFA)^2}{\hbar \omega_\text{LO}} \sum_\vec{q} q^{-2} \bra{\vec{q}}e^{i\vec{q}\cdot\vec{r}_1}\ket{\vec{q}}\bra{\vec{q}}e^{-i\vec{q}\cdot\vec{r}_2}\ket{\vec{q}}
-    \\ = - 2 \frac{(4\pi eFA)^2}{\hbar \omega_\text{LO}} \sum_\vec{q}\frac{e^{i\vec{q}\cdot(\vec{r}_1 - \vec{r}_2)}}{q^2}
+    \Delta E = -2\sum_\vec{q} \frac{\bra{0}eV(\vec{r}_1)\ket{\vec{q}}\bra{\vec{q}}eV(\vec{r}_2)\ket{0}}{\hslash\omega_\text{LO}}
+    \\ = -2 \frac{(4\pi eFA)^2}{\hslash \omega_\text{LO}} \sum_\vec{q} q^{-2} \bra{0}e^{i\vec{q}\cdot\vec{r}_1}(\oper{b}_{\vec{q}} + \adjop{b}_{\vec{q}})\ket{\vec{q}}\bra{\vec{q}}e^{-i\vec{q}\cdot\vec{r}_2}(\oper{b}_{\vec{q}} + \adjop{b}_{\vec{q}})\ket{0}
+    \\ = - 2 \frac{(4\pi eFA)^2}{\hslash \omega_\text{LO}} \sum_\vec{q} q^{-2} \bra{\vec{q}}e^{i\vec{q}\cdot\vec{r}_1}\ket{\vec{q}}\bra{\vec{q}}e^{-i\vec{q}\cdot\vec{r}_2}\ket{\vec{q}}
+    \\ = - 2 \frac{(4\pi eFA)^2}{\hslash \omega_\text{LO}} \sum_\vec{q}\frac{e^{i\vec{q}\cdot(\vec{r}_1 - \vec{r}_2)}}{q^2}
 \end{multline}
 Knowing that, when summed over all $\vec{q}$,
 \begin{equation}
@@ -67,67 +67,67 @@ Knowing that, when summed over all $\vec{q}$,
 where $\Omega$ is the volume of the region of interest, we can rewrite the perturbation energy as
 
 \begin{equation}
-    \Delta E = - \frac{8\pi \Omega A^2 F^2}{\hbar \omega_\text{LO}} \frac{e^2}{|\vec{r}_1 - \vec{r}_2|}
+    \Delta E = - \frac{8\pi \Omega A^2 F^2}{\hslash \omega_\text{LO}} \frac{e^2}{|\vec{r}_1 - \vec{r}_2|}
 \end{equation}
 
 The form of this interaction is exactly the same of an attractive Coulomb potential between two charges placed at $\vec{r}_1$ and $\vec{r}_2$. The origin of this attraction is the polarization of the ions of the medium. Thus, the factor
 \begin{equation} \label{eq:dielectric_factor}
-    - \frac{8\pi \Omega A^2 F^2}{\hbar \omega_\text{LO}}
+    - \frac{8\pi \Omega A^2 F^2}{\hslash \omega_\text{LO}}
 \end{equation}
 gives exactly the contribution of the ions to the dielectric constant. Since the static dielectric constant $\epsilon^0$ includes both the contribution of ions and of the electrons, and the high-frequency dielectric constant $\epsilon^\infty$ only the contribution of the electrons, we can express \cref{eq:dielectric_factor} as
 \begin{equation}
-    \frac{1}{\epsilon^0} = \frac{1}{\epsilon^\infty} - \frac{8\pi \Omega A^2 F^2}{\hbar \omega_\text{LO}}
+    \frac{1}{\epsilon^0} = \frac{1}{\epsilon^\infty} - \frac{8\pi \Omega A^2 F^2}{\hslash \omega_\text{LO}}
 \end{equation}
 The electric potential is then given by
 \begin{equation}
     V(\vec{r}) = \sum_\vec{q} V(\vec{q}) e^{i\vec{q} \cdot \vec{r}}
-    =  \sum_\vec{q} \left[ \frac{2\pi e^2 \hbar \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}}) e^{i\vec{q}\cdot\vec{r}}
+    =  \sum_\vec{q} \left[ \frac{2\pi e^2 \hslash \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}}) e^{i\vec{q}\cdot\vec{r}}
 \end{equation}
 and writing it in a fully second-quantized form, we find
-\begin{equation} \label{eq:frohlich_hamiltonian}
-    \oper{H}_\text{el-ph} =  \sum_{\vec{k}'\vec{k}} \sum_{\vec{q}} \left[ \frac{2\pi e^2 \hbar \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2} \bra{\vec{k}'}e^{i\vec{q}\cdot\vec{r}}\ket{\vec{k}}(\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda}) \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}}
+\begin{equation}
+    \oper{H}_\text{el-ph} =  \sum_{\vec{k}'\vec{k}} \sum_{\vec{q}} \left[ \frac{2\pi e^2 \hslash \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2} \bra{\vec{k}'}e^{i\vec{q}\cdot\vec{r}}\ket{\vec{k}}(\oper{b}_{\vec{q}\lambda} + \adjop{b}_{-\vec{q}\lambda}) \adjop{c}_{\vec{k}'}\oper{c}_{\vec{k}}
 \end{equation}
 Confronting the previous expression with \cref{eq:general_electron_phonon_hamiltonian}, we can identify the interaction matrix
 \begin{equation}
-    M_{\vec{k} \rightarrow \vec{k} + \vec{q}} =  \left[ \frac{2\pi e^2 \hbar \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2}
+    M_{\vec{k}-\vec{q} \rightarrow \vec{k}} =  \left[ \frac{2\pi e^2 \hslash \omega_\text{LO}}{\Omega q^2} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \right]^{1/2}
 \end{equation}
 which is more commonly written as
 \begin{equation} \label{eq:frohlich_matrix}
-    M_\vec{q} =  \frac{\hbar \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hbar}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2}
+    M_\vec{q} =  \frac{\hslash \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hslash}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2}
 \end{equation}
 where $\alpha$ is the dimsensionless Fr\"{o}hlich coupling constant,  defined as
 \begin{equation}
-    \alpha = \frac{e^2}{\hbar} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \sqrt{\frac{m}{2\hbar\omega_\text{LO}}}
+    \alpha = \frac{e^2}{\hslash} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \sqrt{\frac{m}{2\hslash\omega_\text{LO}}}
 \end{equation}
 where $m$ is the electron band mass.
 
 Adding the electrons and phonons contributions, and approximating the wavefunctions of the electrons to plane waves as we did in \cref{eq:plane_waves}, we can write the Fr\"{o}hlich Hamiltonian as
 \begin{multline} \label{eq:frohlich_hamiltonian}
-    H_\text{Fr\"{o}hlich} = \sum_{\vec{k}} \frac{\hbar^2\vec{k}^2}{2m}
-    + \sum_{\vec{q}} \hbar \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
-    \\ + \sum_{\vec{k}\vec{q}} \frac{\hbar \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hbar}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2} \adjop{c}_{\vec{k}-\vec{q}}\oper{c}_{\vec{k}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
+    H_\text{Fr\"{o}hlich} = \sum_{\vec{k}} \frac{\hslash^2\vec{k}^2}{2m}
+    + \sum_{\vec{q}} \hslash \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
+    \\ + \sum_{\vec{k}\vec{q}} \frac{\hslash \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hslash}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2} \adjop{c}_{\vec{k}}\oper{c}_{\vec{k}-\vec{q}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{multline}
 The interaction of the electrons with the lattice described by \cref{eq:frohlich_hamiltonian} has multiple effects. Some consequences we may expect are:
 \begin{itemize}
     \item The electron band energy is decreased, because part of the energy is used to produce phonons.
-    \item The effective mass of the electron is increases, because the electron has to deform the lattice while moving.
+    \item The effective mass of the electron is increased, because the electron has to deform the lattice while moving, carrying the deformation with itself.
     \item The mobility of the electron is modified, because the polaron experiences scattering effects different from the ones of a free electron.
 \end{itemize}
 We can analyse quantitatively the first of these two effects using approximation techniques. We will do it in the next two sections, applying perturbation theory and variational methods to the Fr\"{o}hlich Hamiltonian.
 
-\subsection{Weak coupling: perturbation theory} \label{sec:weak_frohlich}
+\subsection{Weak coupling limit} \label{sec:weak_frohlich}
 Polarons are often divided in two classes: large and small. The name is due to their effective radius $l_p$, which is defined as the effective radius of the polarized area. If $l_p$ is greater than the interatomic distance $d$, the polaron is said to be large; on the contrary, if $l_p \lesssim d$, the polaron is said to be small. In the former case, the coupling is usually weak ($\alpha < 1$), in the latter it is strong ($\alpha > 1$). In the weak-coupling regime, it is possible to use perturbation theory to derive some properties of large polarons.
 
 The total Hamiltonian is
 \begin{multline}
     \oper{H} = \oper{H}_\text{el} + \oper{H}_\text{ph} + \oper{H}_\text{el-ph}
-    \\ = \sum_{\vec{k}} \frac{\hbar^2\vec{k}^2}{2m}
-    + \sum_{\vec{q}} \hbar \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
-    + \sum_{\vec{k}\vec{q}} M_{\vec{q}}\adjop{c}_{\vec{k}-\vec{q}}\oper{c}_{\vec{k}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
+    \\ = \sum_{\vec{k}} \frac{\hslash^2\vec{k}^2}{2m}
+    + \sum_{\vec{q}} \hslash \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
+    + \sum_{\vec{k}\vec{q}} M_{\vec{q}}\adjop{c}_{\vec{k}}\oper{c}_{\vec{k}-\vec{q}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{multline}
 where $M_\vec{q}$ is given by \cref{eq:frohlich_matrix}
 \begin{equation} \label{eq:frohlich_matrix_perturbation}
-    M_\vec{q} =  \frac{\hbar \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hbar}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2}
+    M_\vec{q} =  \frac{\hslash \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hslash}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2}
 \end{equation}
 and it is supposed to be small ($\alpha < 1$). The unperturbed Hamiltonian
 \begin{equation}
@@ -135,7 +135,7 @@ and it is supposed to be small ($\alpha < 1$). The unperturbed Hamiltonian
 \end{equation}
 has plane waves $\ket{\vec{k}}$ as eigenfcuntions for the single  electron part and many-body basis kets $\ket{n_1 \dots n_\vec{q} \dots}$ as eigenfunctions for the phonon part. The full eigenkets are given by the composition of the two parts $\ket{\vec{k}; \{n_\vec{q}\}} = \ket{\vec{k}}\ket{n_1 \dots n_\vec{q} \dots}$. The energy of this state is
 \begin{equation}
-    E_{\vec{k}, \{n_\vec{q}\}}^{(0)} = \frac{\hbar^2\vec{k}^2}{2m} + \hbar \omega_\text{LO}\sum n_\vec{q}
+    E_{\vec{k}, \{n_\vec{q}\}}^{(0)} = \frac{\hslash^2\vec{k}^2}{2m} + \hslash \omega_\text{LO}\sum n_\vec{q}
 \end{equation}
 and the ground state is given by an electron with $\vec{k}=0$ and the vacuum state $\ket{0}$ for the phonon part.
 First-order perturbation theory results in no energy shift, since
@@ -144,16 +144,17 @@ First-order perturbation theory results in no energy shift, since
 \end{equation}
 Going to second order
 \begin{equation}
-    \Delta E_\vec{k}^{(2)} = \sum_{a\neq{\{\vec{k};0\}}} \frac{\bra{\vec{k};0}\oper{H}_\text{el-ph}\ket{a}\bra{a}\oper{H}_\text{el-ph}\ket{\vec{k};0}}{E_{\{\vec{k};0\}} - E_a}
+    \Delta E_\vec{k}^{(2)} = \sum_{a\neq{\{\vec{k};0\}}} \frac{\left|\bra{\vec{k};0}\oper{H}_\text{el-ph}\ket{a}\right|^2}{E_{\{\vec{k};0\}} - E_a}
+    = \sum_{a\neq{\{\vec{k};0\}}} \frac{\left|\bra{\vec{k};0} M_{\vec{q}}\adjop{c}_{\vec{k}}\oper{c}_{\vec{k}-\vec{q}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})\ket{a}\right|^2}{E_{\{\vec{k};0\}} - E_a}
 \end{equation}
-where $\ket{a}$ is an excited state. The only states that contribute with non-null terms are states composed of an electron and a single phonon of wavevector $\vec{q}$. The electron is scattered by the phonon in a state of wavevector $\vec{k} - \vec{q}$. The kets $\ket{a}$ are thus of the form $\ket{\vec{k}-\vec{q}; n_\vec{q}=1}$, with energy
+where $\ket{a}$ is an excited state. The only states that contribute with non-null terms are states composed of an electron and a single phonon of wavevector $\vec{q}$. The electron is scattered by the phonon in a state of wavevector $\vec{k} - \vec{q}$, so that the total momentum is conserved. The kets $\ket{a}$ are thus of the form $\ket{\vec{k}-\vec{q}; n_\vec{q}=1}$, with energy
 \begin{equation}
-    E_a = \frac{\hbar^2}{2m}(\vec{k}-\vec{q})^2 + \hbar\omega_\text{LO}
-    = \frac{\hbar^2\vec{k}^2}{2m} - \frac{\hbar^2\vec{k}\cdot\vec{q}}{m} + \frac{\hbar^2\vec{q}^2}{2m} + \hbar\omega_\text{LO}
+    E_a = \frac{\hslash^2}{2m}(\vec{k}-\vec{q})^2 + \hslash\omega_\text{LO}
+    = \frac{\hslash^2\vec{k}^2}{2m} - \frac{\hslash^2\vec{k}\cdot\vec{q}}{m} + \frac{\hslash^2\vec{q}^2}{2m} + \hslash\omega_\text{LO}
 \end{equation}
 The shift in the energy is then
 \begin{equation} \label{eq:delta_E_matrix}
-    \Delta E_\vec{k} = -\sum_\vec{q} \frac{|M_\vec{q}|^2}{\hbar\omega_\text{LO} + \frac{\hbar^2}{2m}q^2 - \frac{\hbar^2}{m}\vec{k}\cdot\vec{q}}
+    \Delta E_\vec{k} = -\sum_\vec{q} \frac{|M_\vec{q}|^2}{\hslash\omega_\text{LO} + \frac{\hslash^2}{2m}q^2 - \frac{\hslash^2}{m}\vec{k}\cdot\vec{q}}
 \end{equation}
 We may denote
 \begin{equation} \label{eq:interaction_matrix_simplified}
@@ -161,7 +162,7 @@ We may denote
 \end{equation}
 where
 \begin{equation} \label{eq:C}
-    C = (\hbar \omega_\text{LO})^2 \left(\frac{\hbar}{2m\omega_\text{LO}}\right)^{1/2} \left(\frac{4\pi\alpha}{\Omega}\right)
+    C = (\hslash \omega_\text{LO})^2 \left(\frac{\hslash}{2m\omega_\text{LO}}\right)^{1/2} \left(\frac{4\pi\alpha}{\Omega}\right)
 \end{equation}
 Defining $\mu = \frac{\vec{k}\cdot\vec{q}}{|\vec{k}||\vec{q}|}$, we can convert the sum in \cref{eq:delta_E_matrix} in an integral,
 \begin{equation}
@@ -169,9 +170,9 @@ Defining $\mu = \frac{\vec{k}\cdot\vec{q}}{|\vec{k}||\vec{q}|}$, we can convert 
 \end{equation}
 then,
 \begin{equation}\label{eq:delta_E_integral}
-    \Delta E_\vec{k} = - \frac{\Omega}{(2\pi)^2} \int_{-1}^1 \differential \mu \int_0^{q_\text{BZ}} \differential q \frac{C}{\hbar\omega_\text{LO} + \frac{\hbar^2}{2m}q^2 - \frac{\hbar^2}{m} kq\mu}
+    \Delta E_\vec{k} = - \frac{\Omega}{(2\pi)^2} \int_{-1}^1 \differential \mu \int_0^{q_\text{BZ}} \differential q \frac{C}{\hslash\omega_\text{LO} + \frac{\hslash^2}{2m}q^2 - \frac{\hslash^2}{m} kq\mu}
 \end{equation}
-where the integral is extended until the boundary of the first Brillouin zone. Although the integral in \cref{eq:delta_E_integral} may be exactly solved, we can gain some insights on the main physical meaning by developing it in powers of k and letting $q_\text{BZ} \rightarrow \infty$. Choosing an appropriate set of units, so that $\hbar  = \omega_\text{LO} = 2m = 1$,
+where the integral is extended until the boundary of the first Brillouin zone. Although the integral in \cref{eq:delta_E_integral} may be exactly solved, we can gain some insights on the main physical meaning by developing it in powers of k and letting $q_\text{BZ} \rightarrow \infty$. Choosing an appropriate set of units, so that $\hslash  = \omega_\text{LO} = 2m = 1$,
 \begin{equation}
     \Delta E_\vec{k} = - \frac{\alpha}{\pi} \left[
         2\int_0^\infty \differential q \frac{1}{1+q^2}
@@ -180,13 +181,13 @@ where the integral is extended until the boundary of the first Brillouin zone. A
 \end{equation}
 and plugging back the standard units,
 \begin{equation}
-    \Delta E_\vec{k} = -\alpha \hbar \omega_\text{LO} - \frac{\alpha}{6}\frac{\hbar^2}{2m}k^2
+    \Delta E_\vec{k} = -\alpha \hslash \omega_\text{LO} - \frac{\alpha}{6}\frac{\hslash^2}{2m}k^2
 \end{equation}
 Finally, the perturbed energy is
 \begin{equation} \label{eq:perturbation_energy}
-    E_\vec{k} = -\alpha \hbar \omega_\text{LO} + \left(1 - \frac{\alpha}{6}\right)\frac{\hbar^2}{2m}k^2
+    E_\vec{k} = -\alpha \hslash \omega_\text{LO} + \left(1 - \frac{\alpha}{6}\right)\frac{\hslash^2}{2m}k^2
 \end{equation}
-where the factor on the right can be interpreted as an electron with a new effective mass $m^* = m / (1-\alpha/6)$. The band energy is shifted down by an overall factor of $\alpha \hbar \omega_\text{LO}$ and the effective mass of the electron is increased. This is a reasonable conclusion: the electron digs itself a hole in the lattice potential, lowering its energy, and it has to carry the deformation along its path, resulting in a bigger effective mass.
+where the factor on the right can be interpreted as an electron with a new effective mass $m^* = m / (1-\alpha/6)$. The band energy is shifted down by an overall factor of $\alpha \hslash \omega_\text{LO}$ and the effective mass of the electron is increased. This is a reasonable conclusion: the electron digs itself a hole in the lattice potential, lowering its energy, and it has to carry the deformation along its path, resulting in a bigger effective mass.
 
 It is also possible to compute the average numbers of phonons coupled with the electron at $T = \SI{0}{K}$. The phonon number operator is given by
 \begin{equation}
@@ -201,17 +202,17 @@ where $\ket{\psi}$ is the electron-phonon ket. The ket can be expanded near a st
     \ket{\psi_\vec{k}} = \ket{\vec{k}, 0} + \ket{\delta\psi_\vec{k}}
 \end{equation}
 where $\ket{\delta\psi_\vec{k}}$ is the variation of the wavefunction due to the electron-phonons interaction. Using first-order perturbation theory, it can be found that
-\begin{equation}
+\begin{equation} \label{eq:sum_integral}
     \ket{\delta\psi_\vec{k}} = \sum_{a \neq \{\vec{k};0\}} \ket{a} \frac{\bra{\vec{k};0} \oper{H}_\text{el-ph} \ket{a}}{E_{\{\vec{k};0\}} - E_a}
     = \sum_\vec{q} \ket{\vec{k}-\vec{q};n_\vec{q}=1} \frac{M_\vec{q}}{E_{\{\vec{k};0\}} - E_{\{\vec{k}-\vec{q};n_\vec{q}=1\}}}
 \end{equation}
 Inserting the result in \cref{eq:number_phonons_polaron}, we obtain
 \begin{equation}
-    \langle \oper{N}_\text{ph} \rangle = \sum_\vec{q} \frac{\bra{\vec{k}-\vec{q};n_\vec{q}=1} \adjop{b}_\vec{q} \oper{b}_\vec{q} \ket{\vec{k}-\vec{q};n_\vec{q}=1}}{(\hbar\omega_\text{LO} + \frac{\hbar^2}{2m}q^2 - \frac{\hbar^2}{m}\vec{k}\cdot\vec{q})^2} |M_\vec{q}|^2
+    \langle \oper{N}_\text{ph} \rangle = \sum_\vec{q} \frac{\bra{\vec{k}-\vec{q};n_\vec{q}=1} \adjop{b}_\vec{q} \oper{b}_\vec{q} \ket{\vec{k}-\vec{q};n_\vec{q}=1}}{(\hslash\omega_\text{LO} + \frac{\hslash^2}{2m}q^2 - \frac{\hslash^2}{m}\vec{k}\cdot\vec{q})^2} |M_\vec{q}|^2
 \end{equation}
 and substituting $q$ and $\mu$ as before,
 \begin{equation}
-    \langle \oper{N}_\text{ph} \rangle = \sum_\vec{q} \frac{|M_\vec{q}|^2}{(\hbar\omega_\text{LO} + \frac{\hbar^2}{2m}q^2 - \frac{\hbar^2}{m} kq\mu)^2}
+    \langle \oper{N}_\text{ph} \rangle = \sum_\vec{q} \frac{|M_\vec{q}|^2}{(\hslash\omega_\text{LO} + \frac{\hslash^2}{2m}q^2 - \frac{\hslash^2}{m} kq\mu)^2}
 \end{equation}
 or, expressed in our usual set of units,
 \begin{equation}
@@ -223,7 +224,7 @@ Converting the sum into an integral, inserting \cref{eq:interaction_matrix_simpl
 \end{equation}
 The meaning of the parameter $\alpha$ is now more clear: it is a measure of the number of phonons coupled with the electron in the polaron.
 
-\subsection{Strong coupling: variational analysis}
+\subsection{Strong coupling limit}
 In the strong coupling regime, perturbation theory cannot be applied. However, it is possible to use a different approximation method: variational analysis. When the coupling is strong, we expect the electron to dig itself a deeper hole in the lattice potential. The electron will then localize inside the hole. In this regime, we can suppose the polaron wavefunction to be composed of two factors: an unknown phonon wavefunction $\ket{\phi_\text{ph}}$ and an electron wavefunction $\ket{\psi_\text{el}}$. The latter is assumed to have the shape of a gaussian
 \begin{equation}
     \psi(\vec{r}) = \frac{1}{r_p^{3/2}}e^{-\frac{r^2}{2r_p^2}}
@@ -234,8 +235,8 @@ where $r_p$ is the effective radius of the polaron, which we use as variational 
 \end{equation}
 where $\oper{H}$ is the Fr\"{o}hlich Hamiltonian
 \begin{equation}
-    \oper{H} = \sum_{\vec{k}} \frac{\hbar^2\vec{k}^2}{2m}
-    + \sum_{\vec{q}} \hbar \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
+    \oper{H} = \sum_{\vec{k}} \frac{\hslash^2\vec{k}^2}{2m}
+    + \sum_{\vec{q}} \hslash \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
     + \sum_{\vec{q}} M_{\vec{q}} e^{i\vec{q}\cdot\vec{r}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{equation}
 and $M$ is the usual interaction matrix derived in \cref{eq:frohlich_matrix}. In the natural units introduced in the previous section, the Hamiltonian becomes
@@ -278,6 +279,6 @@ and it is minimized for
 \end{equation}
 Plugging back standard units, the final energy is then
 \begin{equation}
-    E_\text{var} = -\frac{\alpha^2}{3\pi} \hbar\omega_\text{LO}
+    E_\text{var} = -\frac{\alpha^2}{3\pi} \hslash\omega_\text{LO}
 \end{equation}
 If we confront it with the result obtained in \cref{eq:perturbation_energy} using perturbation theory, we see that, for the ground state, the dependence on $\alpha$ is proportional to $-\alpha^2$ instead of $-\alpha$. The variational energy is then lower than the perturbation energy for large $\alpha$, which is the region of validity of the assumptions we made.

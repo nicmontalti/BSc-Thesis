@@ -1,4 +1,8 @@
-\documentclass[11pt,a4paper, oneside]{book}
+\documentclass[11pt,paper=a4,footinclude=false,headinclude=true, oneside]{scrbook} % KOMA-Script book
+\usepackage[eulermath, drafting, dottedtoc, listings]{classicthesis} % ,manychapters
+%\usepackage[osf]{libertine}
+
+%\documentclass[11pt,a4paper, oneside]{book}
 \usepackage[italian, english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -10,6 +14,7 @@
 
 % physics and math
 \usepackage{amsmath}
+\numberwithin{equation}{chapter}
 \usepackage{amssymb}
 \usepackage{physics}
 \usepackage[version=4]{mhchem}
@@ -41,15 +46,19 @@
 }
 
 % latex
+\usepackage{csquotes}
+\usepackage{pgf}
+\usepackage{booktabs}
+\usepackage{makecell}
 \usepackage{geometry}
-\usepackage[hidelinks]{hyperref}
+%\usepackage[hidelinks]{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=BrickRed,
     filecolor=blue,
-    urlcolor=cyan,
-    citecolor=blue,
-    pdftitle={Polarons}
+    %urlcolor=cyan,
+    %citecolor=blue,
+    pdftitle={DFT study of polarons}
 }
 \usepackage{graphicx}
 
@@ -62,6 +71,13 @@
 \usepackage{xspace} % spaces after \newcommand
 
 \usepackage{appendix}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{external}
+\tikzexternalize
+\tikzsetexternalprefix{figures/}
 
 %bibliography
 \usepackage[backend=biber, citestyle=numeric-comp, url=false, eprint=false, sorting=none]{biblatex}
@@ -81,6 +97,9 @@
 \newcommand{\dr}{\differential \vec{r}}
 \newcommand{\rrp}[1]{#1(\vec{r}')}
 \newcommand{\sches}{Schr\"{o}dinger equations\xspace}
+
+\DeclareSIUnit\angstrom{\protect \text {Å}}
+\DeclareSIUnit{\bohr}{\mu_B}
 
 
 % abstract definition

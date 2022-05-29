@@ -1,35 +1,59 @@
 \section{Results}
-The results of the calculations on the unit cell are reported in \cref{fig:bands_unit}. The band gap is found to be direct, in correspondence of the $\Gamma$ k-point. As expected, the gap was larger in the DFT+U calculation. In fact, the standard DFT calculation returned a band gap of \SI{1.83}{eV}, whereas the DFT+U calculation a band gap of \SI{2.33}{eV}. The Fermi energy was just above the valence band.
+\subsection{DFT and DFT+U calculation on rutile}
+In this section, we present the results of the calculations mentioned above. We start by discussing the results of the calculations on the unit cell, confronting the standard DFT and DFT+U approaches. We then look at the results of the supercell with an extra electron, comparing the delocalized solution with the formation of the polaron.
 
+The results of the calculations on the unit cell are reported in \cref{fig:bands_unit}. The band gap between the valence and conduction band is immediately visible, both in the band structure diagram and in the DOS plot. The energy scale is shifted to have the zero at the top of the valence band. At \SI{0}{\kelvin}, all the electrons are in the valence band, under the band gap.
+
+The band gap is found to be direct, meaning that both the top of the valence band and the bottom of the conduction band are found in correspondence of the $\Gamma$ k-point. As expected, the gap is larger in the DFT+U calculation. The standard DFT calculation returned a band gap of \SI{1.83}{eV}, whereas the DFT+U calculation a band gap of \SI{2.33}{eV}.
 
 \begin{figure}
     \centering
-    \begin{subfigure}[t]{0.95\textwidth}
+    \begin{subfigure}[t]{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/unit_cell}
-        \caption{Standard DFT}
+        \includegraphics[width=\textwidth]{figures/unit.pdf}
+        \caption{Unit cell, DFT}
         \label{fig:bands_unit_dft}
     \end{subfigure}
-    \begin{subfigure}[t]{0.95\textwidth}
+    \\
+    \begin{subfigure}[t]{\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/unit_cell_u}
-        \caption{DFT+U}
+        \includegraphics[width=\textwidth]{figures/unit+u.pdf}     \caption{Unit cell, DFT+U}
         \label{fig:bands_unit_dft+u}
     \end{subfigure}
-    \caption{Band structure and DOS of the $\ce{TiO_2}$ rutile unit cell. The zero of the energy scale is set to the Fermi energy $E_f$. The DOS is divided by the total number of atoms $N = 6$.
+    \caption[Band structure and DOS of the $\ce{TiO_2}$ rutile unit cell]{Band structure and DOS of the $\ce{TiO_2}$ rutile unit cell. The zero of the energy scale is set to the energy of the top of valence band $E_V$. The DOS is divided by the total number of atoms $N = 6$.
         The direct ($\Gamma - \Gamma$) band gap in (a) is \SI{1.83}{eV}, whereas in (b) it is \SI{2.33}{eV}.}
     \label{fig:bands_unit}
 \end{figure}
 
-The localization of the electron with the vanadium atom at the center of the cell was successful. A new state with spin +$\mu_B$ was formed in the conduction band, ax expected for an atom with one extra electron. The magnetic moment of all the atoms was zero except for the vanadium one. The central vanadium had a magnetic moment of $\SI{1.093}{\mu_B}$. Substituting the vanadium atom with a titanium one, the extra electron remained localizes. This was confirmed by a magnetic moment on the central atom of \SI{0.930}{\mu_B} and an extra state in the valence band visible in the DOS. Finally, setting $U-J$ to \SI{3.9}{eV} also for the central titanium atom, the final polaron state was found. The magnetic moment on the central atom was \SI{0.787}{\mu_B} and a new state was created \SI{0.74}{eV} under the conduction band (in correspondence of the $\Gamma$ k-point).
+We expected the results of the calculation on the supercell, without the extra electron, to be similar to the results of the unit cell. The band structure and the DOS of the rutile supercell is displayed in \cref{fig:bands_super}. It is immediately visible that in the supercell many more bands are accessible. This is due to the bigger number of atoms. Each atom contribute to the bands with its own atomic orbitals and electrons, so it is natural to have more bands with more atoms. Band-unfolding techniques have been developed to overcome this inconvenience, reducing the supercell band structure diagram to the unit cell one \cite{mayo2020}. However, since the exact band structure of rutile was not the main focus of this work, this was not done. Nevertheless, in \cref{fig:bands_super} we can still clearly see a band gap and a DOS similar to the ones observed in \cref{fig:bands_unit_dft+u}. In both diagrams, the DOS has been divided by the total number of atoms to make the results comparable.
 
-The DOS and the band structure of the polaronic solution are reported in \cref{fig:polaron_bands}. From the picture the extra state is clearly visible both from the DOS and from the band structure. The Fermi energy is just above this new state. On the other hand, the delocalized solution is reported in \cref{fig:delocalized_bands}. The extra electron enters the conduction band, and the Fermi energy is shifted accordingly.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/super.pdf}
+    \caption[Band structure and DOS of the $\ce{TiO_2}$ rutile supercell]{Band structure and DOS of the $\ce{TiO_2}$ rutile supercell. The zero of the energy scale is set to the energy of the top of valence band $E_V$. The DOS is divided by the total number of atoms $N = 162$.}
+    \label{fig:bands_super}
+
+\end{figure}
+
+\subsection{Electron localization}
+We now briefly look at the results of the process of localizing the extra electron at the center of the cell.
+
+Substituting the titanium atom in the middle of the cell with a vanadium atom with a high $U$-value resulted in a well localized electron at the center of the cell. Observing the resulting eigenvalues, a new state with spin +$\mu_B$ was found in the conduction band. The magnetic moments of the atoms were  all zero except for the vanadium one. The central vanadium atom had a magnetic moment of $1.093 \mu_B$.
+
+Once we succeeded in localizing the electron, we had to replace the vanadium atom with the original titanium one. With the titanium atom, and a high $U$-value, the extra electron remained localized. This was confirmed by a magnetic moment on the central atom of $0.930 \mu_B$ and an extra state in the valence band. Finally, setting $U-J$ to \SI{3.9}{eV} for the central titanium atom, the final polaron state was found. The magnetic moment on the central atom was $0.787 \mu_B$ and a new state was created \SI{0.70}{eV} under the conduction band (in correspondence of the $\Gamma$ k-point).
+
+\subsection{Polaron}
+
+The DOS and the band structure of the polaronic solution are displayed in \cref{fig:polaron_bands}. An extra state is clearly visible both in the DOS and in the band structure, \SI{0.70}{eV} below the conduction band in correspondence of the $\Gamma$ point. In the DOS diagram, the total DOS has been plotted together with the projection of the DOS on the central titanium atom. It is interesting to pay attention to the region between \SI{-0.2}{eV} and \SI{0.0}{eV}, which is the energy region of the polaron. Here, most of the contribution to the total DOS is given by the projection on the central atom. This means that the electron is mostly localized on this atom. In other energy regions, the central atom contributes to the total DOS as every other atom, so on average for $1/N$ where $N = 162$ is the total number of atoms in the supercell.
+
+The aforementioned plot has to be compared with the diagram in \cref{fig:delocalized_bands}. Here, it is displayed the delocalized solution. We notice that this time the electron enters the conduction band, and no new state is created in the middle of the energy gap. This is confirmed by the DOS. We see that some states just below \SI{0.0}{eV} are filled by the extra electron. The central atom contribution to the total DOS is not as relevant as before. This is compatible with an electron delocalized in the material, with all the atoms contributing in equal amounts to the total DOS.
 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/polaron}
+        %\input{figures/polaron.pgf}
         \caption{Electron localized: polaron}
         \label{fig:polaron_bands}
     \end{subfigure}
@@ -37,36 +61,38 @@ The DOS and the band structure of the polaronic solution are reported in \cref{f
     \begin{subfigure}[b]{\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/deloc}
+        %\input{figures/deloc.pgf}
         \caption{Electron delocalized}
         \label{fig:delocalized_bands}
     \end{subfigure}
-    \caption{Band structure and DOS of the $\ce{TiO_2}$ rutile supercell. The zero of the energy scale is set to the Fermi energy $E_f$. The DOS is divided by the total number of atoms $N = 162$. In (a) in addition to the total DOS, the partial DOS of the central atom - where the electron is localized - is reported as well.}
-    \label{fig:bands_super}
+    \caption[Band structure and DOS of the $\ce{TiO_2}$ rutile supercell with an extra electron]{Band structure and DOS of the $\ce{TiO_2}$ rutile supercell with an extra electron. The zero of the energy scale is set to the energy of the top of valence band $E_V$. The DOS is divided by the total number of atoms $N = 162$. In (a) in addition to the total DOS, the partial DOS of the central atom - where the electron is localized - is reported as well.}
+    \label{fig:bands_super_extra}
 \end{figure}
 
-The isosurfaces of the charge densities of both solutions, projected on the band of the extra electron, are reported in \cref{fig:isosurfaces_supercell,fig:isosurfaces_center}. In the polaronic solution, the extra electron is localized on the central titanium atom, and the oxygen atoms around it are displaced by \SI{}{\angstrom}. Conversely, in the delocalized solution the electron is delocalized on all the atoms of the supercell.
+The two cases can also be compared looking at the charge isosurfaces.
+To focus on the extra electron charge density, we have projected the total charge density on the band of the extra electron. The result is displayed in \cref{fig:isosurfaces_supercell,fig:isosurfaces_center}. In the first figure, the entire supercell is shown, whereas in the second one only the central atom with the six nearest-neighbours oxygen atoms. From \cref{fig:polaron_iso_super} it is clearly visible how in the polaronic case the charge is localized in the center of the supercell. The exact shape of the charge isosurface is better visible in \cref{fig:polaron_iso}. Here it is also emphasized how the localization of the charge is possible only thanks to the displacement of the oxygen atoms. The four oxygen atoms closer to the titanium atom are displaced by \SI{0.085}{\angstrom} outwards, whereas the two further oxygen atoms by \SI{0.023}{\angstrom}. In the delocalized case, displayed in \cref{fig:delocalized_iso_super,fig:delocalized_iso}, the electron is delocalized on both the titanium and oxygen atoms.
 
-\begin{figure}
+
+\begin{figure}[p]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/PARCHG_polaron_super}
         \caption{Electron localized: polaron}
-        \label{fig:polaron_iso}
+        \label{fig:polaron_iso_super}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/PARCHG_delocalized_super}
         \caption{Electron delocalized}
-        \label{fig:delocalized_iso}
+        \label{fig:delocalized_iso_super}
     \end{subfigure}
-    \caption{Supercell with the isosurface of the charge density projected on the extra-electron band. In (a) the extra electron is localized and forms a polaron, in (b) it is delocalized. The blue atoms are titanium atoms, whereas the red ones oxygen atoms.
+    \caption[Supercell with the isosurface of the charge density projected on the extra-electron band]{Supercell with the isosurface of the charge density projected on the extra-electron band. In (a) the extra electron is localized and forms a polaron, in (b) it is delocalized. The blue atoms are titanium atoms, whereas the red ones oxygen atoms.
     }
     \label{fig:isosurfaces_supercell}
 \end{figure}
-
-\begin{figure}
+\begin{figure}[p]
     \centering
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -81,7 +107,9 @@ The isosurfaces of the charge densities of both solutions, projected on the band
         \caption{Electron delocalized}
         \label{fig:delocalized_iso}
     \end{subfigure}
-    \caption{Isosurface of the charge density projected on the extra-electron band. In (a) the extra electron is localized and forms a polaron, in (b) it is delocalized. The blue atom is the central titanium atom, whereas the red ones are the nearest-neighbours oxygen atoms. In the polaronic solution the oxygen atoms are displaced by \SI{}{\angstrom} from their equilibrium positions.
+    \caption[Central atom with the isosurface of the charge density projected on the extra-electron band]{Central atom with the isosurface of the charge density projected on the extra-electron band. In (a) the extra electron is localized and forms a polaron, in (b) it is delocalized. The blue atom is the central titanium atom, whereas the red ones are the nearest-neighbours oxygen atoms.
     }
     \label{fig:isosurfaces_center}
 \end{figure}
+
+% The DFT+U correction was implemented in following the Duradev approach, setting the value of U to \SI{3.9}{eV} \cite{reticcioli2022}. The correction was applied to the d-orbitals of titanium, leaving the other orbitals unaltered.

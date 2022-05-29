@@ -1,4 +1,4 @@
-\section{Implementation}
+\section{Implementation} \label{sec:implementation}
 We are now interested in how the theory that we have presented is implemented in simulation programs. DFT is widely used for simulating many systems, from atoms to crystals. However, it is mainly employed to study solid state systems. The main reason is that in crystals, we can take advantage of the symmetries of the system to simplify the computation. We have shown in \cref{sec:crystals} that crystals are periodic systems, were the periodicity is governed by the lattice vectors $\vec{R}_n$. Every property, included the ion potential, shares the same periodicity. The central consequence is that the solutions to the \sche for this kind of potential can be written in a Block form
 \begin{equation}
     \Psi_{\vec{k}}(\vec{r}) = u_{\vec{k}}(\vec{r}) e^{i\vec{k}\cdot\vec{r}}
@@ -22,7 +22,7 @@ Sometimes, the integration has problems to converge because of the discontinuity
 
 The problem of solving the Kohn-Sham equations is not completely solved yet. In fact, in \cref{eq:sum_bloch} the sum is extended over an infinite number of reciprocal lattice vectors $\vec{G}$, so it is not possible to evaluate it exactly. Luckily, the single terms in the sum may be interpreted as solutions to \sches with a corresponding kinetic energy
 \begin{equation}
-    E_\vec{k} = \frac{\hbar^2(\vec{k}+\vec{G})^2}{2m}
+    E_\vec{k} = \frac{\hslash^2(\vec{k}+\vec{G})^2}{2m}
 \end{equation}
 The higher energy terms will have less physical meaning, so they can be excluded from the sum. This is done by choosing a cutoff value $E_\text{cut}$ and a corresponding value $G_\text{cut}$, and ignoring the terms with $|\vec{G}| < G_\text{cut}$.
 
@@ -31,6 +31,6 @@ Usually, in DFT applications, another simplification is made. Since most of the 
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{figures/pseudopotential/pseudopotential.pdf}
-    \caption{Comparison of a wavefunction in the Coulomb potential of the nucleus (black line) and in a pseudopotential (red line). The wavefunctions and potentials coincide for distances greater than $r_C$.}
+    \caption[Pseudopotentials]{Comparison of a wavefunction in the Coulomb potential of the nucleus (black line) and in a pseudopotential (red line). The wavefunctions and potentials coincide for distances greater than $r_C$.}
     \label{fig:pseudopotential}
 \end{figure}
