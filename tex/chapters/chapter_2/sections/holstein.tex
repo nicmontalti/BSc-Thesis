@@ -21,16 +21,16 @@ The electrons are allowed to interact with the lattice through a potential
     -\frac{\hslash^2}{2m} \frac{\partial^2}{\partial r^2}
     +     \sum_n U(r-R_n, x_n)
 \end{equation}
-Following the tight-binding approach described in the previous section, we express the electrons wavefunctions as a linear combination of the single atomic orbitals
+Following the tight-binding approach described in \cref{sec:tight-binding}, we express the electrons wavefunctions as a linear combination of the single atomic orbitals
 \begin{equation}
     \psi(r) = \sum_{n} \alpha_{n}(x_1 \dots x_N) \phi_n(r-na, x_n)
 \end{equation}
-where $\alpha_n$ complex coefficients and $\phi_n$ are the solution of the corresponding \sche
+where $\alpha_n$ complex coefficients and $\phi_n$ are the solutions of the corresponding Schrödinger equations
 \begin{equation}
     \left[ -\frac{\hslash^2}{2m} \frac{\partial^2}{\partial r^2} + U(r-na, x_n) \right] \phi_n = E_n(x_n) \phi_n
 \end{equation}
 
-This result in a differential equation for the coefficients $\alpha_n$, which is obtained through a standard projection procedure. The full calculation can be found in the Appendix of the original Holstein paper \cite{holstein1959}. We only report the result
+This results in a differential equation for the coefficients $\alpha_n$, which is obtained through a standard projection procedure. The full calculation can be found in the Appendix of the original Holstein paper \cite{holstein1959}. We only report the result
 \begin{multline} \label{eq:holstein_diff}
     \left[ i\hslash \pdv{}{t} - \sum_p \left( -\frac{\hslash^2}{2M} \pdv[2]{}{x_p} + \oh M \omega_0^2 x_p^2 \right) - E(x_n) - W_n(x_1\dots x_N) \right] \alpha_n(x_1\dots x_N)
     \\= \sum_{(\pm)} J(x_n, x_{n+1}) \alpha_{n\pm1}(x_1\dots x_N)
@@ -80,20 +80,20 @@ Like the Fröhlich Hamiltonian, the Holstein Hamiltonian is not exactly solvable
 \end{equation}
 where $z$ is the dimensionality of the problem, is small.
 
-We start by splitting the Holstein Hamiltonian in a unperturbed term $\oper{H}^{(0)} = \oper{H}_\text{el} + \oper{H}_\text{ph}$ and the perturbation $\oper{H}_\text{el-ph}$.
+We start by splitting the Holstein Hamiltonian in an unperturbed term $\oper{H}^{(0)} = \oper{H}_\text{el} + \oper{H}_\text{ph}$ and the perturbation $\oper{H}_\text{el-ph}$.
 The solution to the unperturbed problem is found solving the Hamiltonian
 \begin{equation}
     \oper{H^{(0)}} = \sum_{\vec{k}} \epsilon_{\vec{k}}^\text{tb} \adjop{c}_{\vec{k}}\oper{c}_{\vec{k}} + \hslash \omega_0\sum_{\vec{q}}  \left( \adjop{b}_{\vec{q}} \oper{b}_{\vec{q}} \right)
 \end{equation}
 where we have ignored the ground-state phonon energy and where
 \begin{equation} \label{eq:holstein_weak_free}
-    \epsilon_\vec{k}^\text{tb} = -t \sum_{    \delta} \cos(\vec{k}\cdot\vec{r}_\delta)
+    \epsilon_\vec{k}^\text{tb} = -t \sum_{    \delta} \cos(\vec{k}\cdot\vec{R}_\delta)
 \end{equation}
-where $\delta$ is an index of the nearest neighbors. Working in one dimension, considering a linear chain of atoms separated by a unitary distance, \cref{eq:holstein_weak_free} becomes
+where $\delta$ is an index of the nearest neighbours. Working in one dimension, considering a linear chain of atoms separated by a unitary distance, \cref{eq:holstein_weak_free} becomes
 \begin{equation} \label{eq:holstein_ground}
     \epsilon_k^\text{tb} = -2t \cos(k)
 \end{equation}
-where the factor two arises from the fact that there are two nearest neighbors for each ion.
+where the factor two arises from the fact that there are two nearest neighbours for each ion.
 
 If we separate the polaron ket in its electron and phonon part
 $    \ket{k, n_q} = \ket{k}\ket{n_1\dots n_q \dots}$ we can find its unperturbed energy

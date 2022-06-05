@@ -1,6 +1,6 @@
 Cubic diamond               # first line used as comment
    5.5                      # lattice constant (in angstrom)
-#--- Definition of the base vectors of the primitive cell---
+#--- Definition of the basis vectors of the primitive cell---
   0.0    0.5     0.5        # a1
   0.5    0.0     0.5        # a2
   0.5    0.5     0.0        # a3

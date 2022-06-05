@@ -1,10 +1,10 @@
-\section{Fr\"{o}hlich polarons}
-We have anticipated in \cref{sec:landau_pekar} a simple model for polarons. We are now ready to improve that first simple model, taking now into account a more precise mechanics of the lattice polarization. In this section we will discuss the Fr\"ohlich Hamiltonian, derived by Fr\"{o}hlich in 1950 \cite{frohlich1950}. This Hamiltonian is appropriate to describe polarons in ionic crystals and polar semiconductors. In these materials we expect electrons to interact strongly with longitudinal optical phonons through the electric field produced by the polarization of the lattice. The contribution of transversal phonons is expected to be negligible because of the smaller electric field they produce.
+\section{Fröhlich polarons}
+We have anticipated in \cref{sec:landau_pekar} a simple model for polarons. We are now ready to improve that first simple model, taking now into account a more precise mechanics of the lattice polarization. In this section we will discuss the Fröhlich Hamiltonian, derived by Fröhlich in 1950 \cite{frohlich1950}. This Hamiltonian is appropriate to describe polarons in ionic crystals and polar semiconductors. In these materials we expect electrons to interact strongly with longitudinal optical phonons through the electric field produced by the polarization of the lattice. The contribution of transversal phonons is expected to be negligible because of the smaller electric field they produce.
 
-\subsection{Derivation of the Fr\"{o}hlich Hamiltonian}
-In this section we derive the Fr\"{o}hlich Hamiltonian following the approach described by Kittel \cite{kittel1987}. We assume the longitudinal phonons to be dispersionless (with frequency $\omega_\text{LO}$) and we treat the polarizable medium as a continuum.
+\subsection{Derivation of the Fröhlich Hamiltonian}
+In this section we derive the Fröhlich Hamiltonian following the approach described by Kittel \cite{kittel1987}. We assume the longitudinal phonons to be dispersionless (with frequency $\omega_\text{LO}$) and we treat the polarizable medium as a continuum.
 
-In an ionic crystal, the polarization $\vec{P}$ can be considered as the sum of two components: the optical polarization $\vec{P}_o$ and the infra-red polarization $\vec{P}_\text{ir}$. The former is due to the displacement of bound electrons, and it is characterized by a resonance frequency in the optical or ultra-violet region; the latter is due to the displacement of ions and its resonance frequency is in the infra-red region. Given the slow velocities of the electrons that we are going to consider, the optical polarization is always excited at its static value. Thus, given the absence of a dependence on the velocity of the electron, the optical polarization $\vec{P}_o$ is of no interest to us, since it does not modify the energy of the electron between different states. On the other hand, this does not apply to the infra-red polarization, because of its lower resonance frequency. At long distances from the electric charge (placed at $\vec{r}_0)$, $\vec{P}_\text{ir}$ can be obtained subtracting the optical polarization $\vec{P}_o$ from the total polarization $\vec{P}$. Thus, it can be derived from an electric potential $V(\vec{r})$ by
+In an ionic crystal, the polarization $\vec{P}$ can be considered as the sum of two components: the optical polarization $\vec{P}_o$ and the infra-red polarization $\vec{P}_\text{ir}$. The former is due to the displacement of bound electrons, and it is characterized by a resonance frequency in the optical or ultraviolet region; the latter is due to the displacement of ions and its resonance frequency is in the infra-red region. Given the slow velocities of the electrons that we are going to consider, the optical polarization is always excited at its static value. Thus, given the absence of a dependence on the velocity of the electron, the optical polarization $\vec{P}_o$ is of no interest to us, since it does not modify the energy of the electron between different states. On the other hand, this does not apply to the infra-red polarization, because of its lower resonance frequency. At long distances from the electric charge (placed at $\vec{r}_0)$, $\vec{P}_\text{ir}$ can be obtained subtracting the optical polarization $\vec{P}_o$ from the total polarization $\vec{P}$. Thus, it can be derived from an electric potential $V(\vec{r})$ by
 \begin{equation} \label{eq:polarization_potential}
     4\pi\vec{P}_\text{ir}(\vec{r}) = \grad V(\vec{r})
 \end{equation}
@@ -12,7 +12,7 @@ where
 \begin{equation}
     V(\vec{r}) = -\frac{1}{\kappa} \frac{e}{|\vec{r}-\vec{r}_0|}
 \end{equation}
-with $1/\kappa = 1 / \epsilon^\infty - 1/\epsilon^0$. As, in the Landau-Pekar model, the contribution of the lattice to the dielectric constant ($\kappa$) is obtained by removing the contribution of the electrons ($\epsilon^\infty$) from the static dielectric constant ($\epsilon^0$).
+with $1/\kappa = 1 / \epsilon^\infty - 1/\epsilon^0$. As in the Landau-Pekar model, the contribution of the lattice to the dielectric constant ($\kappa$) is obtained by removing the contribution of the electrons ($\epsilon^\infty$) from the static dielectric constant ($\epsilon^0$).
 
 
 The infra-red polarization is proportional to the amplitude of the displacement of the ions. Generalizing \cref{eq:phonon_coordinates} for a generic point $\vec{r}$, we can express the displacement in the point $\vec{r}$ as
@@ -95,15 +95,15 @@ which is more commonly written as
 \begin{equation} \label{eq:frohlich_matrix}
     M_\vec{q} =  \frac{\hslash \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hslash}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2}
 \end{equation}
-where $\alpha$ is the dimsensionless Fr\"{o}hlich coupling constant,  defined as
+where $\alpha$ is the dimensionless Fröhlich coupling constant,  defined as
 \begin{equation}
     \alpha = \frac{e^2}{\hslash} \left( \frac{1}{\epsilon^\infty} - \frac{1}{\epsilon^0} \right) \sqrt{\frac{m}{2\hslash\omega_\text{LO}}}
 \end{equation}
 where $m$ is the electron band mass.
 
-Adding the electrons and phonons contributions, and approximating the wavefunctions of the electrons to plane waves as we did in \cref{eq:plane_waves}, we can write the Fr\"{o}hlich Hamiltonian as
+Adding the electrons and phonons contributions, and approximating the wavefunctions of the electrons to plane waves as we did in \cref{eq:plane_waves}, we can write the Fröhlich Hamiltonian as
 \begin{multline} \label{eq:frohlich_hamiltonian}
-    H_\text{Fr\"{o}hlich} = \sum_{\vec{k}} \frac{\hslash^2\vec{k}^2}{2m}
+    H_\text{Fröhlich} = \sum_{\vec{k}} \frac{\hslash^2\vec{k}^2}{2m}
     + \sum_{\vec{q}} \hslash \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
     \\ + \sum_{\vec{k}\vec{q}} \frac{\hslash \omega_\text{LO}}{|\vec{q}|} \left(\frac{\hslash}{2m\omega_\text{LO}}\right)^{1/4} \left(\frac{4\pi\alpha}{\Omega}\right)^{1/2} \adjop{c}_{\vec{k}}\oper{c}_{\vec{k}-\vec{q}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{multline}
@@ -113,7 +113,7 @@ The interaction of the electrons with the lattice described by \cref{eq:frohlich
     \item The effective mass of the electron is increased, because the electron has to deform the lattice while moving, carrying the deformation with itself.
     \item The mobility of the electron is modified, because the polaron experiences scattering effects different from the ones of a free electron.
 \end{itemize}
-We can analyse quantitatively the first of these two effects using approximation techniques. We will do it in the next two sections, applying perturbation theory and variational methods to the Fr\"{o}hlich Hamiltonian.
+We can analyse quantitatively the first of these two effects using approximation techniques. We will do it in the next two sections, applying perturbation theory and variational methods to the Fröhlich Hamiltonian.
 
 \subsection{Weak coupling limit} \label{sec:weak_frohlich}
 Polarons are often divided in two classes: large and small. The name is due to their effective radius $l_p$, which is defined as the effective radius of the polarized area. If $l_p$ is greater than the interatomic distance $d$, the polaron is said to be large; on the contrary, if $l_p \lesssim d$, the polaron is said to be small. In the former case, the coupling is usually weak ($\alpha < 1$), in the latter it is strong ($\alpha > 1$). In the weak-coupling regime, it is possible to use perturbation theory to derive some properties of large polarons.
@@ -133,7 +133,7 @@ and it is supposed to be small ($\alpha < 1$). The unperturbed Hamiltonian
 \begin{equation}
     \oper{H}^{(0)} = \oper{H}_\text{el} + \oper{H}_\text{ph}
 \end{equation}
-has plane waves $\ket{\vec{k}}$ as eigenfcuntions for the single  electron part and many-body basis kets $\ket{n_1 \dots n_\vec{q} \dots}$ as eigenfunctions for the phonon part. The full eigenkets are given by the composition of the two parts $\ket{\vec{k}; \{n_\vec{q}\}} = \ket{\vec{k}}\ket{n_1 \dots n_\vec{q} \dots}$. The energy of this state is
+has plane waves $\ket{\vec{k}}$ as eigenfunctions of the single  electron part and many-body basis kets $\ket{n_1 \dots n_\vec{q} \dots}$ as eigenfunctions of the phonon part. The full eigenkets are given by the composition of the two parts $\ket{\vec{k}; \{n_\vec{q}\}} = \ket{\vec{k}}\ket{n_1 \dots n_\vec{q} \dots}$. The energy of this state is
 \begin{equation}
     E_{\vec{k}, \{n_\vec{q}\}}^{(0)} = \frac{\hslash^2\vec{k}^2}{2m} + \hslash \omega_\text{LO}\sum n_\vec{q}
 \end{equation}
@@ -189,7 +189,7 @@ Finally, the perturbed energy is
 \end{equation}
 where the factor on the right can be interpreted as an electron with a new effective mass $m^* = m / (1-\alpha/6)$. The band energy is shifted down by an overall factor of $\alpha \hslash \omega_\text{LO}$ and the effective mass of the electron is increased. This is a reasonable conclusion: the electron digs itself a hole in the lattice potential, lowering its energy, and it has to carry the deformation along its path, resulting in a bigger effective mass.
 
-It is also possible to compute the average numbers of phonons coupled with the electron at $T = \SI{0}{K}$. The phonon number operator is given by
+It is also possible to compute the average number of phonons coupled with the electron at $T = \SI{0}{K}$. The phonon number operator is given by
 \begin{equation}
     \oper{N}_\text{ph} = \sum_\vec{q} \adjop{b}_\vec{q} \oper{b}_\vec{q}
 \end{equation}
@@ -225,7 +225,7 @@ Converting the sum into an integral, inserting \cref{eq:interaction_matrix_simpl
 The meaning of the parameter $\alpha$ is now more clear: it is a measure of the number of phonons coupled with the electron in the polaron.
 
 \subsection{Strong coupling limit}
-In the strong coupling regime, perturbation theory cannot be applied. However, it is possible to use a different approximation method: variational analysis. When the coupling is strong, we expect the electron to dig itself a deeper hole in the lattice potential. The electron will then localize inside the hole. In this regime, we can suppose the polaron wavefunction to be composed of two factors: an unknown phonon wavefunction $\ket{\phi_\text{ph}}$ and an electron wavefunction $\ket{\psi_\text{el}}$. The latter is assumed to have the shape of a gaussian
+In the strong coupling regime, perturbation theory cannot be applied. However, it is possible to use a different approximation method: variational analysis. When the coupling is strong, we expect the electron to dig itself a deeper hole in the lattice potential. The electron will then localize inside the hole. In this regime, we can suppose the polaron wavefunction to be composed of two factors: an unknown phonon wavefunction $\ket{\phi_\text{ph}}$ and an electron wavefunction $\ket{\psi_\text{el}}$. The latter is assumed to have the shape of a Gaussian
 \begin{equation}
     \psi(\vec{r}) = \frac{1}{r_p^{3/2}}e^{-\frac{r^2}{2r_p^2}}
 \end{equation}
@@ -233,7 +233,7 @@ where $r_p$ is the effective radius of the polaron, which we use as variational 
 \begin{equation}
     \bra{\phi_\text{ph}} \bra{\psi_\text{el}} \oper{H} \ket{\psi_\text{el}} \ket{\phi_\text{ph}}
 \end{equation}
-where $\oper{H}$ is the Fr\"{o}hlich Hamiltonian
+where $\oper{H}$ is the Fröhlich Hamiltonian
 \begin{equation}
     \oper{H} = \sum_{\vec{k}} \frac{\hslash^2\vec{k}^2}{2m}
     + \sum_{\vec{q}} \hslash \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
