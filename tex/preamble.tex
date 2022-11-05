@@ -1,8 +1,6 @@
-\documentclass[11pt,paper=a4,footinclude=false,headinclude=true, oneside]{scrbook} % KOMA-Script book
-\usepackage[eulermath, drafting, dottedtoc, listings]{classicthesis} % ,manychapters
-%\usepackage[osf]{libertine}
+\documentclass[11pt,paper=a4,footinclude=false,headinclude=true, twoside]{scrbook}
+\usepackage[eulermath, dottedtoc, listings, floatperchapter]{classicthesis}
 
-%\documentclass[11pt,a4paper, oneside]{book}
 \usepackage[italian, english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -14,13 +12,15 @@
 
 % physics and math
 \usepackage{amsmath}
-\numberwithin{equation}{chapter}
+\numberwithin{equation}{chapter} % numera equazioni nella forma 1.23
 \usepackage{amssymb}
 \usepackage{physics}
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
 
 \usepackage{float}
+
+% per pezzi di codice
 \usepackage{listings}
 \definecolor{veryLightGrey}{rgb}{0.9629411,0.9629411,0.9629411}
 \lstset{
@@ -53,12 +53,13 @@
 \usepackage{geometry}
 %\usepackage[hidelinks]{hyperref}
 \hypersetup{
+    ocgcolorlinks=true,
     colorlinks=true,
-    linkcolor=BrickRed,
-    filecolor=blue,
-    %urlcolor=cyan,
-    %citecolor=blue,
-    pdftitle={DFT study of polarons}
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=black,
+    citecolor=black,
+    pdftitle={Analytical and numerical study of polarons}
 }
 \usepackage{graphicx}
 
@@ -80,9 +81,8 @@
 \tikzsetexternalprefix{figures/}
 
 %bibliography
-\usepackage[backend=biber, citestyle=numeric-comp, url=false, eprint=false, sorting=none]{biblatex}
+\usepackage[backend=biber, citestyle=numeric-comp, url=false, eprint=false, sorting=none, backref=true]{biblatex}
 \addbibresource{thesis.bib}
-%\let\cite=\supercite
 
 
 % shortpaths
@@ -103,8 +103,6 @@
 
 
 % abstract definition
-%\usepackage{fancyhdr}
-
 \newenvironment{abstract}%
 {\cleardoublepage \null \vfill \begin{center}%
         \bfseries \abstractname \end{center}}%

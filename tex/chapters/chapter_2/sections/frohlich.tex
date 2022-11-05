@@ -1,5 +1,5 @@
 \section{Fröhlich polarons}
-We have anticipated in \cref{sec:landau_pekar} a simple model for polarons. We are now ready to improve that first simple model, taking now into account a more precise mechanics of the lattice polarization. In this section we will discuss the Fröhlich Hamiltonian, derived by Fröhlich in 1950 \cite{frohlich1950}. This Hamiltonian is appropriate to describe polarons in ionic crystals and polar semiconductors. In these materials we expect electrons to interact strongly with longitudinal optical phonons through the electric field produced by the polarization of the lattice. The contribution of transversal phonons is expected to be negligible because of the smaller electric field they produce.
+We have anticipated in \cref{sec:landau_pekar} a simple model for the description of polarons. To improve that first model, we have to describe the mechanics of the lattice polarization more precisely. In this section, we discuss the Fröhlich Hamiltonian, derived by Fröhlich in 1950 \cite{frohlich1950}. This Hamiltonian is appropriate for the description of large polarons in ionic crystals and polar semiconductors. In these materials, we expect electrons to interact strongly with longitudinal optical phonons. The interaction is mediated by the electric field produced by the polarization of the lattice. The contribution of transversal phonons is expected to be negligible because of the smaller electric field they produce.
 
 \subsection{Derivation of the Fröhlich Hamiltonian}
 In this section we derive the Fröhlich Hamiltonian following the approach described by Kittel \cite{kittel1987}. We assume the longitudinal phonons to be dispersionless (with frequency $\omega_\text{LO}$) and we treat the polarizable medium as a continuum.
@@ -15,7 +15,7 @@ where
 with $1/\kappa = 1 / \epsilon^\infty - 1/\epsilon^0$. As in the Landau-Pekar model, the contribution of the lattice to the dielectric constant ($\kappa$) is obtained by removing the contribution of the electrons ($\epsilon^\infty$) from the static dielectric constant ($\epsilon^0$).
 
 
-The infra-red polarization is proportional to the amplitude of the displacement of the ions. Generalizing \cref{eq:phonon_coordinates} for a generic point $\vec{r}$, we can express the displacement in the point $\vec{r}$ as
+The infra-red polarization is proportional to the amplitude of the displacement of the ions. Generalizing \cref{eq:phonon_coordinates}, for a generic point $\vec{r}$, we can express the displacement in the point $\vec{r}$ as
 \begin{equation}
     \vec{\xi}(\vec{r}) = \sum_{\vec{q}} A \vers{\epsilon}_{\vec{q}} e^{i\vec{q} \cdot \vec{r}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{equation}
@@ -43,13 +43,13 @@ Using \cref{eq:polarization_potential} and comparing \cref{eq:polarization_field
 \begin{equation}
     V(\vec{q}) = 4\pi \frac{F A}{q} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{equation}
-We now want to express the constant $F$ in terms of the interaction energy of two electrons in a polarizable material of dielectric constant $\epsilon$. We consider two electrons completely localized in two points $\vec{r}_1$ and $\vec{r}_2$. The electrons will interact directly through the vacuum electric field and indirectly through a perturbation induced by the optical phonon field. The interaction Hamiltonian is given by the sum of the potential of the two electrons
+We want to express the constant $F$ in terms of the interaction energy of two electrons in a polarizable material of dielectric constant $\epsilon$. We consider two electrons completely localized in two points $\vec{r}_1$ and $\vec{r}_2$. The electrons will interact directly through the vacuum electric field and indirectly through a perturbation induced by the optical phonon field. The interaction Hamiltonian is given by the sum of the potential of the two electrons
 \begin{multline} \label{eq:hamiltonian_coulomb_medium}
     H_\text{el-el} = -e V(\vec{r}_1) -e V(\vec{r}_2)
     = 4\pi e F A \sum_\vec{q} q^{-1} (e^{i\vec{q} \cdot \vec{r}_1} + e^{i\vec{q} \cdot \vec{r}_2} ) (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
     \\ = 4\pi e F A \sum_\vec{q} q^{-1} \left[ \oper{b}_{\vec{q}} (e^{i\vec{q} \cdot \vec{r}_1} + e^{i\vec{q} \cdot \vec{r}_2} )   + \adjop{b}_{\vec{q}} (e^{-i\vec{q} \cdot \vec{r}_1} + e^{-i\vec{q} \cdot \vec{r}_2} )\right]
 \end{multline}
-where in the second line we have changed the sign of $\vec{q}$ in the second term, using the fact that the sum is extended over all $\vec{q}$. The second-order energy perturbation caused by the previous Hamiltonian is given by
+where in the second line we have changed the sign of $\vec{q}$ in the second term, using the fact that the sum is taken over all $\vec{q}$. The second-order energy perturbation caused by the previous Hamiltonian is given by
 \begin{equation}
     \Delta E = -\sum_\vec{q} \frac{\bra{0}H_\text{el-el}\ket{\vec{q}}\bra{\vec{q}}H_\text{el-el}\ket{0}}{\hslash\omega_\text{LO}}
 \end{equation}
@@ -74,7 +74,7 @@ The form of this interaction is exactly the same of an attractive Coulomb potent
 \begin{equation} \label{eq:dielectric_factor}
     - \frac{8\pi \Omega A^2 F^2}{\hslash \omega_\text{LO}}
 \end{equation}
-gives exactly the contribution of the ions to the dielectric constant. Since the static dielectric constant $\epsilon^0$ includes both the contribution of ions and of the electrons, and the high-frequency dielectric constant $\epsilon^\infty$ only the contribution of the electrons, we can express \cref{eq:dielectric_factor} as
+gives exactly the contribution of the ions to the dielectric constant. Since the static dielectric constant $\epsilon^0$ includes both the contribution of the ions and of the electrons, and the high-frequency dielectric constant $\epsilon^\infty$ only the contribution of the electrons, we can express \cref{eq:dielectric_factor} as
 \begin{equation}
     \frac{1}{\epsilon^0} = \frac{1}{\epsilon^\infty} - \frac{8\pi \Omega A^2 F^2}{\hslash \omega_\text{LO}}
 \end{equation}
@@ -116,7 +116,7 @@ The interaction of the electrons with the lattice described by \cref{eq:frohlich
 We can analyse quantitatively the first of these two effects using approximation techniques. We will do it in the next two sections, applying perturbation theory and variational methods to the Fröhlich Hamiltonian.
 
 \subsection{Weak coupling limit} \label{sec:weak_frohlich}
-Polarons are often divided in two classes: large and small. The name is due to their effective radius $l_p$, which is defined as the effective radius of the polarized area. If $l_p$ is greater than the interatomic distance $d$, the polaron is said to be large; on the contrary, if $l_p \lesssim d$, the polaron is said to be small. In the former case, the coupling is usually weak ($\alpha < 1$), in the latter it is strong ($\alpha > 1$). In the weak-coupling regime, it is possible to use perturbation theory to derive some properties of large polarons.
+Polarons are often divided in two classes: large and small. The name is due to their effective radius $r_p$, which is defined as the effective radius of the polarized area. If $r_p$ is greater than the interatomic distance $l$, the polaron is said to be large; on the contrary, if $r_p \lesssim l$, the polaron is said to be small. In the former case, the coupling is usually weak ($\alpha < 1$), in the latter it is strong ($\alpha > 1$). In the weak-coupling regime, it is possible to use perturbation theory to derive some properties of large polarons.
 
 The total Hamiltonian is
 \begin{multline}
@@ -218,11 +218,11 @@ or, expressed in our usual set of units,
 \begin{equation}
     \langle \oper{N}_\text{ph} \rangle = \sum_\vec{q} \frac{|M_\vec{q}|^2}{(1 + q^2 - \frac{kq}{2}\mu)^2}
 \end{equation}
-Converting the sum into an integral, inserting \cref{eq:interaction_matrix_simplified}, and expanding to the lowest order in $k$, we find
+Converting the sum into an integral, inserting \cref{eq:frohlich_matrix_perturbation}, and expanding to the lowest order in $k$, we find
 \begin{equation}
     \langle \oper{N}_\text{ph} \rangle = \frac{\Omega}{(2\pi)^2} \frac{4\pi\alpha}{\Omega} \int_0^\infty \frac{4\pi}{(1+q^2)^2} \differential q = \frac{\alpha}{2}
 \end{equation}
-The meaning of the parameter $\alpha$ is now more clear: it is a measure of the number of phonons coupled with the electron in the polaron.
+The meaning of the parameter $\alpha$ is now more clear: it is a measure of the number of phonons coupled with the electron.
 
 \subsection{Strong coupling limit}
 In the strong coupling regime, perturbation theory cannot be applied. However, it is possible to use a different approximation method: variational analysis. When the coupling is strong, we expect the electron to dig itself a deeper hole in the lattice potential. The electron will then localize inside the hole. In this regime, we can suppose the polaron wavefunction to be composed of two factors: an unknown phonon wavefunction $\ket{\phi_\text{ph}}$ and an electron wavefunction $\ket{\psi_\text{el}}$. The latter is assumed to have the shape of a Gaussian
@@ -239,14 +239,14 @@ where $\oper{H}$ is the Fröhlich Hamiltonian
     + \sum_{\vec{q}} \hslash \omega_\text{LO} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
     + \sum_{\vec{q}} M_{\vec{q}} e^{i\vec{q}\cdot\vec{r}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{equation}
-and $M$ is the usual interaction matrix derived in \cref{eq:frohlich_matrix}. In the natural units introduced in the previous section, the Hamiltonian becomes
+and $M_\vec{q}$ is the usual interaction matrix given in \cref{eq:frohlich_matrix_perturbation}. In the natural units introduced in the previous section, the Hamiltonian becomes
 \begin{equation}
     \oper{H} = \sum_{\vec{k}} \vec{k}^2
     + \sum_{\vec{q}} \left( \adjop{b}_{ \vec{q}} \oper{b}_{ \vec{q}} + \frac{1}{2} \right)
     + \sum_{\vec{q}} M_{\vec{q}} e^{i\vec{q}\cdot\vec{r}} (\oper{b}_{\vec{q}} + \adjop{b}_{-\vec{q}})
 \end{equation}
-Using the kinetic energy
-\begin{equation}
+Defining the kinetic energy
+\begin{equation} \label{eq:variational_kinetic}
     E_\text{kin} = \bra{\psi_\text{el}} \vec{k}^2 \ket{\psi_\text{el}}  = \frac{3}{2r_p^2}
 \end{equation}
 and the electron density
@@ -261,15 +261,15 @@ Ignoring the phonon ground state energy and completing the square, we find
 \begin{equation}
     \bra{\psi_\text{el}} \oper{H} \ket{\psi_\text{el}} = E_\text{kin} + \sum_\vec{q} \left( \adjop{b}_\vec{q} + M_\vec{q}\rho_\vec{q} \right)\left( \oper{b}_\vec{q} + M^*_\vec{q}\rho^*_\vec{q} \right) - \sum_\vec{q} |M_\vec{q}\rho_\vec{q}|^2
 \end{equation}
-The second term is easily understandable as a displaced harmonic oscillator. The equilibrium position is shifted from zero by $M_\vec{q}\rho_\vec{q}$. This is precisely the effect of the polarization induced by the electron. It is clear that the minimum of the functional will correspond to the vacuum state of the displaced operator. In this state, the energy is simply
-\begin{equation}
+The second term is easily understandable as a displaced harmonic oscillator. The equilibrium position is shifted from zero to $-M_\vec{q}\rho_\vec{q}$. This is precisely the effect of the polarization induced by the electron. It is clear that the minimum of the functional will correspond to the vacuum state of the displaced harmonic oscillator. In this state, the energy is simply
+\begin{equation} \label{eq:variational_ground_displaced}
     E_\text{var} = \bra{\psi_\text{el}} \oper{H} \ket{\psi_\text{el}} = E_\text{kin} - \sum_\vec{q} |M_\vec{q}\rho_\vec{q}|^2
 \end{equation}
-Converting the sum in an integral, integrating over the angular part, and inserting \cref{eq:interaction_matrix_simplified} and \cref{eq:electron_density}, the second term becomes
-\begin{equation}
-    \frac{\Omega}{(2\pi)^3} \int_0^\infty  4\pi q^2 \frac{C}{q^2} e^{-q^2r_p^2/2} \differential q = \sqrt{\frac{2}{\pi}} \frac{\alpha}{r_p}
+Converting the sum to an integral, integrating over the angular part, and inserting \cref{eq:frohlich_matrix_perturbation,eq:electron_density}, the second term becomes
+\begin{equation} \label{eq:variational_matrix_integral}
+    \sum_\vec{q} |M_\vec{q}\rho_\vec{q}|^2 \simeq \frac{\Omega}{(2\pi)^3} \int_0^\infty  4\pi q^2 \frac{C}{q^2} e^{-q^2r_p^2/2} \differential q = \sqrt{\frac{2}{\pi}} \frac{\alpha}{r_p}
 \end{equation}
-Thus, the variational energy is
+Thus, inserting \cref{eq:variational_matrix_integral,eq:variational_kinetic} in \cref{eq:variational_ground_displaced}, the variational energy is
 \begin{equation}
     E_\text{var} = \frac{3}{2r_p^2} - \sqrt{\frac{2}{\pi}} \frac{\alpha}{r_p}
 \end{equation}
@@ -277,7 +277,7 @@ and it is minimized for
 \begin{equation}
     r_p = \sqrt{\frac{\pi}{2}}\frac{3}{\alpha}
 \end{equation}
-Plugging back standard units, the final energy is then
+Plugging back the standard units, the final energy is
 \begin{equation}
     E_\text{var} = -\frac{\alpha^2}{3\pi} \hslash\omega_\text{LO}
 \end{equation}

@@ -1,23 +1,23 @@
-Before discussing polarons and their properties, we offer a brief review of some fundementals of condesed matter physics. We start by discussing the second quantization formalism, which will be used extensively in the rest of the thesis. Then, we will briefly describe the behaviour of electrons and phonons in materials, included their interaction, which serves as a basis for the descrition of polarons.
+Before discussing polarons and their properties, we offer a brief review of some fundamentals of condensed matter physics. We start by discussing the second quantization formalism, which will be used extensively in the rest of the thesis. Then, we briefly describe the behaviour of electrons and phonons in materials. Electrons and phonons are initially studied as non-interacting. Then, their interaction, which serves as a basis for the description of polarons, is discussed as well.
 
 \section{Second quantization} \label{sec:second_quantization}
-Second quantization, also referred to as occupation number representation, is a formalism used to describe and analyse quantum many-body systems. The key ideas of this method were introduced in 1927 by Paul Dirac \cite{dirac1927}, and were later developed by Vladimir Fock and Pascual Jordan \cite{fock1932}. The key idea of second quantization is to represent states of a many-body system as elements of a Fock space. The elements of a Fock space are labelled only by the number of particles in the different single-particle states. This approach is particularly useful because it allows us to neglect the individual single-particle states, and focus only on the whole system.
+Second quantization, also referred to as occupation number representation, is a formalism used to describe and analyse quantum many-body systems. The key ideas of this method were introduced in 1927 by Paul Dirac \cite{dirac1927}, and were later developed by Vladimir Fock and Pascual Jordan \cite{fock1932}. The key idea of second quantization is to represent states of a many-body system as elements of a Fock space. The elements of a Fock space are labelled by the number of particles in each single-particle state. The individual single-particle states are neglected, focusing only on the whole system.
 
 \subsection{Occupation number representation}
-In condensed matter physics we often have to deal with systems of many particles. We can describe such a system starting from the wavefunctions of the single particles $\ket{k}$, where the particle is in the eigenstate of eigenvalue $k$ of an operator $\oper{K}$. We suppose this set of vectors to be orthonormal. We could initially write the total state vector as the product of the single ones.
-\begin{equation} \label{eq:simple_base}
+In condensed matter physics we often have to deal with systems of many particles. We can describe such a system starting from the wavefunctions of the single particles $\ket{k}$, where the particle is in an eigenstate of eigenvalue $k$ of the operator $\oper{K}$. We suppose this set of vectors to be orthonormal. A first approach to describe the system could be to write the total state vector as the product of the single-particle states.
+\begin{equation} \label{eq:simple_basis}
     \ket{\Psi} = \ket{k_1}\ket{k_2}\dots\ket{k_N}
 \end{equation}
-However, the former expression does not take into account the indistinguishability of quantum particles. In fact, the physics of the system must be invariant under the exchange of two particles. This is possible only if $\ket{\Psi}$ is symmetric or antisymmetric for the exchange of two particles. The former case is true for bosons, the latter for fermions. %reference
+However, the former expression does not take into account the indistinguishability of quantum particles. In fact, the physics of the system must be invariant under the exchange of two particles. This is possible only if $\ket{\Psi}$ is either symmetric or antisymmetric for the exchange of two particles. The former case is true for bosons, the latter for fermions. %reference
 
-In order to satisfy this condition, we have to modify \cref{eq:simple_base}. An appropriate linear combination of the products of the single kets, compatible with the symmetry constraints required by Bose and Fermi statistics is given by
-\begin{equation} \label{eq:complete_base}
+In order to satisfy this condition, we have to modify \cref{eq:simple_basis}. An appropriate linear combination of the products of the single kets, compatible with the symmetry constraints required by Bose and Fermi statistics is given by
+\begin{equation} \label{eq:complete_basis}
     \ket{\Psi} = \ket{k_1, k_2, \dots, k_N} = \sqrt{\frac{1}{N!}} \sum_P \xi^P \ket{P[k_1]}\ket{P[k_2]}\dots\ket{P[k_N]}
 \end{equation}
-where the sum is taken over the $N!$ permutations $P$ of ${k_1, k_2, \dots k_N}$. The constant $\xi$ is equal to $1$ for bosons and $-1$ for fermions. For fermions, $\xi^P = 1$ for even permutations and $\xi^P = -1$ for odd permutations. This construction assures that the total wavefunction is symmetric for the exchange of two bosons and antisymmetric for the exchange of two fermions. It is important to notice that \cref{eq:complete_base} has an ambiguity in the phase of the final vector. To remove it, we chose the permutation to be even when $k_1 < k_2 < \dots k_N$.
+where the sum is taken over the $N!$ permutations $P$ of ${k_1, k_2, \dots k_N}$. The constant $\xi$ is equal to $1$ for bosons and $-1$ for fermions. For fermions, $\xi^P = 1$ for even permutations and $\xi^P = -1$ for odd permutations. This construction assures that the total wavefunction is symmetric for the exchange of two bosons and antisymmetric for the exchange of two fermions. It is important to notice that \cref{eq:complete_basis} has an ambiguity in the phase of the final vector. To remove it, we chose the permutation to be even when $k_1 < k_2 < \dots k_N$.
 
 It is useful to compute the product of a basis bra and a basis ket of two total state vectors.
-\begin{multline} \label{eq:base_product}
+\begin{multline} \label{eq:basis_product}
     \bra{m_1, \dots, m_N} \ket{k_1, \dots, k_N} = \frac{1}{N!}
     \\ = \sum_P \sum_{P'} \xi^{P+P'} \bra{P[m_1]}\bra{P[m_2]}\dots\bra{P[m_N]} \cross \ket{P'[k_1]}\ket{P'[k_2]}\dots\ket{P'[k_N]}
     \\ = \sum_{P''} \xi^{P''} \braket{m_1}{P''[k_1]} \dots \braket{m_N}{P''[k_N]}
@@ -32,7 +32,7 @@ where $|\cdot|_{\xi = -1}$ represents a determinant and $|\cdot|_{\xi = 1}$ a pe
 \begin{equation}
     P''\{k_1, \dots, k_N\} = \{m_1, \dots, m_N\}
 \end{equation}
-If a state is composed of $n_j$ bosons in the state $k_j$, the norm squared of the state vector will be equal to the total number of identical permutations
+If a state is composed of $n_j$ bosons in the state $k_j$, the norm squared of the state vector is equal to the total number of identical permutations
 \begin{equation}
     \braket{k_1, \dots, k_N} = n_1!n_2!\dots n_N!
 \end{equation}
@@ -59,15 +59,15 @@ is a state with no particles in any single-particle states, and
 is a state with exactly one particle in the $k_i$ state.
 
 \subsection{Creation and annihilation operators}
-Now that we have defined the basis kets, we can introduce two operators that are used to transform the states. We define the \emph{creation operator} as
+Now that we have defined the basis kets, we can introduce two operators that are used to transform them. We define the \emph{creation operator} as
 \begin{equation} \label{eq:creation_definition}
     \adjoint{\oper{a}_i} \ket{k_1, k_2, \dots} = \ket{k_i,k_1, k_2, \dots}
-\end{equation}
-Below we show several properties that derive from this definition, but its essential role can be understood applying it to the vacuum state.
+\end{equation} and the \emph{annihilation operator} $\oper{a}_i$ as its adjoint.
+Below, we show several properties that derive from this definition, but its essential role can be understood by applying it to the vacuum state.
 \begin{equation}
     \adjoint{\oper{a}_i} \ket{\vec{0}} = \ket{k_i}
 \end{equation}
-Its effect is to add a particle in $k_i$ state to the system. It is easy to interpret its adjoint as an \emph{annihilation operator}, in fact
+Its effect is to add a particle in the state $k_i$ to the system. It is also easy to interpret the role of the \emph{annihilation operator}, in fact
 \begin{equation}
     1 = \braket{k_i}{k_i} = \bra{\vec{0}}\oper{a}_i\adjoint{\oper{a}_i}\ket{\vec{0}} = \bra{\vec{0}}\oper{a}_i\ket{k_i}
 \end{equation}
@@ -81,7 +81,7 @@ We now try to prove these properties on a general basis ket. We consider the tra
     \\ =  \bra{k_1, \dots, k_N} \adjoint{\oper{a}_i} \ket{m_1, \dots, m_{N-1}}^*
     = \bra{k_1, \dots, k_N} \ket{k_i, m_1, \dots, m_{N-1}}^*
 \end{multline}
-Using \cref{eq:base_product} we write it as the determinant
+and, using \cref{eq:basis_product}, we write it as the determinant
 \begin{equation}
     \mathcal{A} = \begin{vmatrix}
         \braket{k_1}{k_i} & \braket{k_1}{m_1} & \dots & \braket{k_1}{m_{N-1} } \\
@@ -90,7 +90,7 @@ Using \cref{eq:base_product} we write it as the determinant
         \braket{k_N}{k_i} & \braket{k_N}{m_1} & \dots & \braket{k_N}{m_{N-1}}  \\
     \end{vmatrix}_\xi^*
 \end{equation}
-and developing it along the first column
+Developing it along the first column, we find
 \begin{multline}
     \label{eq:transition_matrix_prov}
     \mathcal{A} = \left( \sum_{j=1}^N \xi^{j+1} \braket{k_j}{k_i}
@@ -104,13 +104,13 @@ and developing it along the first column
     \\ = \sum_{j=1}^N \xi^{j+1} \braket{k_i}{k_j}  \bra{k_1, \dots (\text{no } k_j), k_N} \ket{m_1, \dots, m_{N-1}}^*
     \\ = \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j}  \bra{m_1, \dots, m_{N-1}} \ket{k_1, \dots (\text{no } k_j), k_N}
 \end{multline}
-Confronting \cref{eq:transition_matrix_prov} with \cref{eq:annihilation_matrix} we conclude
+and confronting \cref{eq:transition_matrix_prov} with \cref{eq:annihilation_matrix} we conclude
 \begin{multline} \label{eq:annihilation_operator}
     \oper{a}_i \ket{k_1, \dots, k_N}
     = \sum_{j=1}^N \xi^{j+1} \braket{k_i}{k_j} \ket{k_1, \dots (\text{no } k_j), k_N}
     \\= \sum_{j=1}^N \xi^{j+1} \delta_{k_ik_j} \ket{k_1, \dots (\text{no } k_j), k_N}
 \end{multline}
-If $k_i$ is not present in $\ket{k_1, \dots, k_N}$, $\delta_{k_ik_j} = 0$ and overall $ \oper{a}_i \ket{k_1, \dots, k_N} = 0$. On the other hand, if $k_i$ is included in the ket $n_i$ times, there will be $n_i$ non-null terms in the sum. Thus, in the case of bosons,
+If $k_i$ is not present in $\ket{k_1, \dots, k_N}$, $\delta_{k_ik_j} = 0$ and overall $ \oper{a}_i \ket{k_1, \dots, k_N} = 0$. On the other hand, if $k_i$ is included in the ket $n_i$ times, there are $n_i$ non-null terms in the sum. Thus, in the case of bosons,
 \begin{equation}
     \oper{a}_i \ket{k_1, \dots, k_N} = n_i \ket{k_1, \dots (\text{one less }k_i), k_N}
 \end{equation}
@@ -131,17 +131,17 @@ The same argument, developed for the creation operator $\adjoint{\oper{a}_i}$, l
 
 For fermions, the occupation numbers can either be 1 or 0. The creation operator $\adjoint{\oper{a}_i}$ returns zero if $n_i=1$ and a phase factor of $\pm 1$ if $n_i=0$. The annihilation operator $\oper{a}_i$ does the opposite.
 
-We can define another useful operator, the number operator $\oper{N}_i = \adjoint{\oper{a}_i}\oper{a}_i$. If we apply it to a basis ket of a system of bosons
+We can define another useful operator, the number operator $\oper{N}_i = \adjoint{\oper{a}_i}\oper{a}_i$. If we apply it to a basis ket, we find
 \begin{multline} \label{eq:number_operator}
     \oper{N}_i \ket{n_1, n_2, \dots, n_i, \dots}
     = \adjoint{\oper{a}_i}\oper{a}_i \ket{n_1, n_2, \dots, n_i, \dots}
     \\ = \adjoint{\oper{a}_i} \sqrt{n_i} \ket{n_1, n_2, \dots, n_i-1, \dots}
     = n_i \ket{n_1, n_2, \dots, n_i, \dots}
 \end{multline}
-The number operator $\oper{N}_i$, as the name suggests, returns the number of bosons in the state $k_i$ in the system
+From \cref{eq:number_operator}, it is clear that the number operator $\oper{N}_i$, as the name suggests, returns the number of bosons in the state $k_i$ in the system.
 
 \subsection{Commutation relations}
-All the properties of the creation and annihilation operators can be deduced from their (anti)commutation relations, which will be derived in this section. Applying $\adjop{a}_k\adjop{a}_{k'}$ on a basis ket, using  \cref{eq:creation_definition}
+All the properties of the creation and annihilation operators can be deduced from their (anti)commutation relations, which will be derived in this section. Applying $\adjop{a}_k\adjop{a}_{k'}$ on a basis ket, and using  \cref{eq:creation_definition}, we find
 \begin{multline}
     \adjop{a}_{k'}\adjop{a}_k \ket{k_1, k_2, \dots}
     = \ket{k',k,k_1, k_2, \dots}
@@ -174,11 +174,11 @@ and
 \begin{equation} \label{eq:creation_annihilation_commutator}
     [\oper{a}_{k'}, \adjop{a}_k]_\xi = \braket{k'}{k} = \delta_{kk'}
 \end{equation}
-The previous equation is of fundamental importance in second quantization formalism. If we have a set of single-state basis kets $\ket{k}$ and we define a creation and annihilation operator that satisfy \cref{eq:creation_annihilation_commutator}, we obtain multi-particle basis kets $\ket{k_1, k_2, \dots}$ that automatically satisfy the symmetry condition of Fermi and Bose statistics. The kets can then be expressed in the more compact occupation number representation $\ket{n_{1}, n_{2}, \dots}$.
+The previous equation is of fundamental importance in second quantization formalism. If we have a set of single-state basis kets $\ket{k}$, and we define a creation and annihilation operator that satisfy \cref{eq:creation_annihilation_commutator}, we obtain multi-particle basis kets $\ket{k_1, k_2, \dots}$ that automatically satisfy the symmetry condition of Fermi and Bose statistics. The kets can then be expressed in the more compact occupation number representation $\ket{n_{1}, n_{2}, \dots}$.
 
 \subsection{Dynamical variables}
 The final aim of second-quantization is to express every operator in terms of the creation and annihilation operators. The action of every operator can be interpreted as a combination of the creation ($\adjop{a}$), annihilation ($\oper{a}$) and counting ($\oper{N}$) of the particles in the system. This allows us to use Fock states as kets and to simplify our equations.
-We focus our discussion on additive single-particle operator \cite{sakurai2020}. Examples are momentum, kinetic energy and single body potentials. In these cases, the total expectation value of the operator is simply given by the sum of the expectation values of the operator applied to the single particles.
+We focus our discussion on additive single-particle operator. Examples are momentum, kinetic energy and single body potentials. In these cases, the total expectation value of the operator is simply given by the sum of the expectation values of the operator applied to the single particles \cite{sakurai2020}.
 
 Given an operator $\oper{K}$ of eigenkets $\ket{k_i}$, with $\oper{K} \ket{k_i} = k_i\ket{k_i}$, and a state vector
 \begin{equation}
@@ -193,7 +193,7 @@ Confronting this expression with the definition of the number operator expressed
     \label{eq:creation_annihilation_operator}
     \oper{K} = \sum_i k_i \oper{N}_i = \sum_i k_i  \adjop{a}_i\oper{a}_i
 \end{equation}
-It could happen to have a state ket expressed in a base different from the eigenkets of our operator of interest. If we suppose this base to be formed by $\ket{l_j}$, using the relation of completeness,
+It could happen to have a state ket expressed in a basis different from the eigenkets of our operator of interest. If we suppose this basis to be formed by $\ket{l_j}$, using the relation of completeness,
 \begin{equation} \label{eq:change_basis}
     \ket{k_i} = \sum_j \ket{l_j} \braket{l_j}{k_i}
 \end{equation}
@@ -223,4 +223,4 @@ This allows us to write every additive operator in terms of the creation and ann
 \begin{equation} \label{eq:second_quantization}
     \oper{H} = \sum_{mn} \bra{l_m}\oper{T}+\oper{V_1}\ket{l_n} \adjop{b}_m\oper{b}_n
 \end{equation}
-where $V_1$ is the non-interacting (single particle) potential and $\oper{T}$ the kinetic energy.
+where $V_1$ is the non-interacting potential and $\oper{T}$ the kinetic energy of the single particle.

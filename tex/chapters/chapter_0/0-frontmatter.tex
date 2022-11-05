@@ -1,48 +1,44 @@
+\cleardoublepage
+\cleardoubleoddemptypage
+\selectlanguage{english}
+%\addcontentsline{toc}{chapter}{Introduction}
+%\chaptermark{Introduction}
+\begin{abstract}
+    The aim of this thesis is to introduce the polaron concept and to perform a DFT numerical calculation of a small polaron in the rutile phase of $\ce{TiO_2}$. In the first chapters, we present an analytical study of small and large polarons, based on the Holstein and Fröhlich Hamiltonians. The necessary mathematical formalism and physics fundamentals are briefly reviewed in the first chapter. In the second part of the thesis, Density Functional Theory (DFT) is introduced together with the DFT+U correction and its implementation in the Vienna Ab-Initio Simulation Package (VASP). The calculation of a small polaron in rutile is then described and discussed at a qualitative level. The polaronic solution is compared with the one of a delocalized electron.
+
+    The calculation showed how the polaron creates a new energy level \SI{0.70}{eV} below the conduction band. The energy level is visible both in the band structure diagram and in the density of states diagram. The electron is localized on a titanium atom, distorting the surrounding lattice. In particular, the four oxygen atoms closer to the titanium atom are displaced by \SI{0.085}{\angstrom} outwards, whereas the two further oxygen atoms by \SI{0.023}{\angstrom}. The results are compatible, at a qualitative level, with the literature. Further developments of this work may try to improve the precision of the results and to quantitatively compare them with the literature.
+\end{abstract}
+
 \selectlanguage{italian}
 \begin{abstract}
-    Lo scopo di questa tesi è di introdurre il concetto di polarone e di presentare un calcolo DFT di uno small polaron nel rutile. Nei primi capitoli si analizzano gli small e large polarons con un approccio analitico, basato sulle Hamiltoniane di Holstein e di Fröhlich. Il formalismo matematico e le basi fisiche necessarie vengono introdotte nel primo capitolo.
+    Questa tesi si propone di introdurre il concetto di polarone e di presentare un calcolo DFT di uno small polaron nella fase rutilo del $\ce{TiO_2}$. Nei primi capitoli si analizzano gli small e large polarons da un punto di vista analitico, basato sulle Hamiltoniane di Holstein e di Fröhlich. Il formalismo matematico e le basi fisiche necessarie vengono introdotte nel primo capitolo. Nella seconda parte della tesi, si introducono la Density Functional Theory (DFT), una sua correzione (DFT+U), e la sua implementazione nel Vienna Ab-Initio Simulation Package (VASP). Un calcolo numerico di uno small polaron è poi descritto e discusso a livello qualitativo. La soluzione polaronica è confrontata con un quella di un elettrone delocalizzato nel materiale.
 
-    Nella seconda parte della tesi, si introduce la Density Functional Theory, una sua correzione (DFT+U) e la sua implementazione in VASP. Il calcolo numerico è poi descritto e discusso a un livello qualitativo. La soluzione polaronica è confrontata con un elettrone delocalizzato nel materiale.
-
-    Il calcolo ha evidenziato come il polarone crea un nuovo stato energetico \SI{0.70}{eV} sotto la banda di conduzione. Il nuovo livello energetico era visibile sia nella struttura a bande, sia nel grafico della densità degli stati. L'elettrone si localizza su un atomo di titanio, distorcendo il reticolo circostante. In particolare, i quattro atomi più vicini al titanio si allontano di \SI{0.085}{\angstrom}, mentre i due atomi di ossigeno più distanti di \SI{0.023}{\angstrom}.
-
-    I risultati sono qualitativamente compatibili con la letteratura. Futuri sviluppi del lavoro possono cercare di migliorare la precisione del calcolo, proponendo un confronto quantitativo.
+    Il calcolo ha evidenziato come il polarone crei un nuovo stato energetico \SI{0.70}{eV} sotto la banda di conduzione. Il nuovo livello energetico è visibile sia nella struttura a bande, sia nel grafico della densità degli stati. L'elettrone si localizza su un atomo di titanio, distorcendo il reticolo circostante. In particolare, i quattro atomi di ossigeno più vicini al titanio si allontano di \SI{0.085}{\angstrom}, mentre i due atomi più distanti di \SI{0.023}{\angstrom}. I risultati sono qualitativamente compatibili con la letteratura. Futuri sviluppi del lavoro possono cercare di migliorare la precisione del calcolo, per poi proporre un confronto quantitativo.
 \end{abstract}
 
 \selectlanguage{english}
-\begin{abstract}
-    The aim of this thesis is to introduce the polaron concept and to perform a DFT numerical calculation of a small polaron in rutile $\ce{TiO_2}$. In the first chapters we present an analytical study of small and large polarons, based on the Holstein and Fröhlich Hamiltonians. The necessary mathematical formalism and physics fundamentals are briefly reviewed in the first chapter.
-
-    In the second part of the thesis, Density Functional Theory is introduced together with the DFT+U correction and its implementation in VASP. The actual calculation is then described and discussed at qualitative level. The polaronic solution is compared in detail with a delocalized electron.
-
-    The calculation showed how the polaron creates a new energy level \SI{0.70}{eV} under the conduction band. The energy level was visible both in the band structure diagram and in the density of states diagram. The electron localizes on a Ti atom, distorting the surrounding lattice. In particular, the four oxygen atoms closer to the titanium atom are displaced by \SI{0.085}{\angstrom} outwards, whereas the two further oxygen atoms by \SI{0.023}{\angstrom}.
-
-    The results are compatible, at a qualitative level, with the literature. Further developments of this work may try to improve the precision of the results and compare them with the literature.
-
-\end{abstract}
-
-\chapter*{Acknowledgements}
-This work would have not been possible without the help and the support of many people, more than this page could contain. Not only the ones that have contributed directly or indirectly to it in the past months, but everyone I met along the path of taking this degree.
-
-First of all, I want to thank my supervisor Prof. Cesare Franchini for giving me the opportunity of working on such an interesting topic. I am grateful for the time he dedicated to me and to this work. I also want to thank Lorenzo Varrassi for the help he gave me understanding DFT and VASP. I would not have been able to conclude this work without his advices. Finally, I am grateful to the Department of Physics of the University of Bologna for letting me use their HPC Cluster for running my calculations.
-
-I want to thank my family, especially my parents and grandparents, for believing in me and encouraging my passion in Physics. This work is dedicated to my mother, who could not fulfill the dream of studying this subject like me. I thank my father for his patience, his support and for feeding my curiosity since I was child. I am grateful to my sisters, for bearing me talking about my work, and to my grandparents, for their support and interest in my studies.
-
-Between my friends, a special thanks goes to Mattia, Adriano, Alessandro and Pietro, for making me feel home in a city it has never been really mine. I will never be able to repay them for their heartwarming hospitality. I have to thank Alessandro in particular for all the time he dedicated to listening to me, and Claudia and Lorenzo for their friendship and the time we spent together.
-
-I also want to thank Lorenzo and Alice, who have been two invaluable peers in the path to obtaining this degree. They have had a major role in keeping my curiosity and my enthusiasm always high in the past years. They have been among the few people I could actually discuss my work with, and help me when I needed it.
-
-A final, heartfelt thanks goes to Edoardo, Thomas, Jakob F., Jakob S., Samira, Riley, and all the other wonderful people I met in Groningen. With them, I spent the best months of my studies. Each of them changed me in their own way, making me discover a whole new me I could have not found otherwise. I am sure we will meet again many times all over Europe.
-
-I hope that all these people will be as proud of this work as I am, even the ones who might not understand it.
-
 \clearpage
 \begingroup
-\hypersetup{linkcolor=black}
+%\hypersetup{linkcolor=black}
 \pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
-\listoffigures
+%\listoffigures
 \endgroup
+
+\chapter{Acknowledgements}
+This work would have not been possible without the help and the support of many people, more than this page could contain. Not only the ones who have contributed directly to it in the past months, but everyone I have met along the path of taking this degree.
+
+First of all, I want to thank my supervisor Prof. Cesare Franchini for giving me the opportunity of working on such an interesting topic. I am grateful for the time he dedicated to me and to this work. I also want to thank Lorenzo Varrassi for the help he gave me in understanding how DFT and VASP work. I would not have been able to conclude this work without his advices. Finally, I am grateful to the Department of Physics of the University of Bologna for letting me use their HPC Cluster for running the calculations.
+
+I want to thank my family, especially my parents and grandparents, for believing in me and encouraging my passion in Physics. This work is dedicated to my mother, who could not fulfill the dream of studying this subject like me. I thank my father for his patience, his support and for feeding my curiosity since I was child. I am grateful to my sisters, for bearing me talking about my work, and to my grandparents, for their support and their interest in my studies.
+
+Between my friends, a special thanks goes to Mattia, Adriano, Alessandro and Pietro, for making me feel home in a city that has never been really mine. I will never be able to repay them for their heart-warming hospitality. I have to thank Alessandro in particular for all the time he dedicated to listening to me in the past years. I am also grateful to Claudia and Lorenzo for their friendship and all the time we spent together.
+
+I also want to thank Lorenzo and Alice, who have been two invaluable peers in the path to obtaining this degree. In the past years, they played a major role in keeping my curiosity and my enthusiasm always high. They have been among the few people I could actually discuss my work with, and help me when I needed it.
+
+A final, heartfelt, thanks goes to Edoardo, Thomas, Jakob F., Jakob S., Samira, Riley, and all the other wonderful people I met in Groningen. With them, I spent the best months of my studies. Each of them changed me in their own way, helping me discover a whole new me, and contributed to making this experience unforgettable.
+
+I hope that all these people will be as proud of this work as I am, even the ones who might not understand it.
 
 \chapter{Introduction}
 %\addcontentsline{toc}{chapter}{Introduction}
